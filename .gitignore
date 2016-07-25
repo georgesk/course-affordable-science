@@ -1,0 +1,8 @@
+course.html
+course.tex
+course.pdf
+*.log
+*.out
+*.toc
+*.aux
+fft.dat

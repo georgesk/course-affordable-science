@@ -1,0 +1,325 @@
+#+TITLE:       Affordable Measurement Box for Science
+#+AUTHOR:      Georges Khaznadar
+#+DATE:        <2016-07-19 Tue>
+#+EMAIL:       <georges.khaznadar@free.fr>
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:t toc:t
+
+* Booting live USB sticks
+** We proudly choose an "Unsecure" system
+
+Some laptop manufacturers are applying a new policy proposed by Microsoft:
+disallow users to boot freely their operating systems, verify that the system
+loaded during the boot process bears a cryptographic signature approved by
+Microsoft. This feature is known as "Secure Boot", as presumabily operating
+systems can be considered as secure, only if they are made by Microsoft company.
+
+So far, Microsoft company does not provide free/libre operating systems, and
+as we want to distribute live USB sticks which our students will be able to
+duplicate, understand, and even enhance, Microsoft Windows cannot be used.
+To have a more precise idea about the problem, let us take a look at the
+end-user agreement which comes with Windows 10:
+
+ (excerpt of
+ https://www.microsoft.com/en-us/Useterms/OEM/Windows/10/UseTerms_OEM_Windows_10_English.htm)
+ 1. [...]
+ 2.      Installation and Use Rights.
+  a.      License. The software is licensed, not sold.[...]
+  b. [...]
+  c.      Restrictions. [...] this license does not give you any right to, and you may not:
+    (i)      use or virtualize features of the software separately;
+    (ii)     publish, copy (other than the permitted backup copy), rent, lease, or lend the software;
+    [...]
+    (vi)    reverse engineer, decompile, or disassemble the software, or attempt to do so [...]
+
+*** To sum it up:
+- the software is licensed, not sold: /it can be free as *free beer*, but as
+ we shall see further, it is not free as in *freedom*./
+- students (and teachers) are not allowed to publish, neither to distribute
+ copies of the operating system. Even if this may be technically feasible, one can be sued if she does it.
+- students (and teachers) will never be allowed to understand how the
+ operating system works. Its source is not published, and attempts to
+ reverse engineer its binaries are forbidden by license.
+
+*** So to sum up the summary:
+
+|--------------------------------------------------|
+| <c>                                              |
+| AS WE WANT OUR STUDENTS TO BE ABLE TO UNDERSTAND |
+| WHAT THEY USE AND WHAT THEY DO,                  |
+| WE MUST DEFINITELY OPT FOR UNSECURE SYSTEMS.     |
+|--------------------------------------------------|
+
+** Disabling the "Secure Boot" feature
+
+Until year 2015, vendors who wanted to apply the "Approved by Microsoft"
+sticker on their laptop had to enforce the "Secure Boot" feature by default,
+but they used to let a possibility for the users to disable this feature,
+more or less easily.
+
+More recently, vendors who want to get this sticker are encouraged to remove
+the possibility of disabling the "Secure Boot" feature. Depending on anti-trust
+law which apply in such or such country, this removal can be considered legal
+or not. However, one can now find laptops which are difficult to boot without
+the "Secure Boot" feature.
+
+Here are hints provided by Microsoft Company, about disabling the "Secure Boot"
+feature (source: https://msdn.microsoft.com/en-us/windows/hardware/commercialize/manufacture/desktop/disabling-secure-boot)
+
+*** To disable Secure Boot:
+
+    Before disabling Secure Boot, consider whether it is necessary. From time to time, your manufacturer may update the list of trusted hardware, drivers, and operating systems for your PC. To check for updates, go to Windows Update, or check your manufacturer's website.
+
+    Open the PC BIOS menu. You can often access this menu by pressing a key during the bootup sequence, such as F1, F2, F12, or Esc.
+
+    Or, from Windows, hold the Shift key while selecting Restart. Go to Troubleshoot > Advanced Options: UEFI Firmware Settings.
+
+    Find the Secure Boot setting, and if possible, set it to Disabled. This option is usually in either the Security tab, the Boot tab, or the Authentication tab.
+
+    Save changes and exit. The PC reboots.
+
+    Install the graphics card, hardware, or operating system that’s not compatible with Secure Boot.
+
+    In some cases, you may need to change other settings in the firmware, such as enabling a Compatibility Support Module (CSM) to support legacy BIOS operating systems. To use a CSM, you may also need to reformat the hard drive using the Master Boot Record (MBR) format, and then reinstall Windows. For more info, see Windows Setup: Installing using the MBR or GPT partition style.
+
+    If you’re using Windows 8.1, you may see a watermark on the desktop alerting
+    you that Secure Boot is not configured correctly. Get this update to remove
+    the Secure Boot desktop watermark.
+
+** Now our system is ready, let's boot with the USB stick
+
+When possible, alongside with the "Secure Boot" option tweak, you can choose the
+order of bootable devices. If the live USB stick is plugged in, you may reorder
+boot methods so the USB stick is considered as prioritary (before the boot on
+hard disk, and before the boot on network interface). If you could define the
+USB stick as a prioritary boot medium, just keep it plugged in while booting.
+
+If you could not define the default boot sequence order, you can choose the boot
+medium on the fly: on most laptops, the key "F8" (or F9, or F12) is dedicated at
+this purpose. If the key is activated during the early boot process, you are
+given the choice between a few boot options in the so-called "boot menu". Choose
+your USB stick, and press "Enter".
+
+When the system can boot from the USB stick, and if the graphic card of the
+laptop is VESA compatible, you will see a welcome splash screen provided by GRUB
+(GRand UNified Bootloader), with a few options selectable by keyboard's arrow
+keys. Usually, you just need to wait a few seconds, or you can type "Enter" to
+select the first entry. Then the boot process begins, and you can see a few
+messages on the screen, during the hardware check-up. One minute later, the
+graphic desktop should be usable.
+
+The main menu (applications, settings, etc.) lies in the left bottom corner, you
+can begin exploring it. When an Ethernet cable is plugged in, the automatic
+configuration of network access is attempted, and chances are that you begin
+with a usable network configuration. There is also a possibility to get network
+access thanks to WIFI hotspots if any.
+
+ # this is a comment
+* Why should I use a live USB stick with free software?
+** Ten reasons why live USB sticks are /good/:
+The following set of reasons is non-exhaustive!
+1. I can get an efficient system with a USB stick weighing 8GB. This is
+ quite affordable. About one half of the storage space is used for the
+ operating system and programs; the second half is available for the "payload";
+2. When I am travelling, or just going from place to place, all I need can
+ fit in my pocket;
+3. As far as I want to keep my USB stick /private/, I know that no spy program
+ hosted by the local computer will access my data;
+4. Duplicating a USB stick (and all of its features) is a matter of a quarter
+ of an hour;
+5. With the KNOPPIX-based live system, I can also duplicate the operating
+  system and the programs without disclosing private data;
+6. When used in an educational context, USB live sticks provide an interesting
+ feature: students can replay an exercise, or finish it outside the classroom,
+ with exactly the same software environment they were using previously;
+7. A live USB stick can be used to boot a computer when it cannot boot
+ on its hard disk for any reason; it is a valuable rescue system;
+8. A live USB stick can survive in a washing machine; a computer cannot;
+9. A live USB stick can survive strong accelerations, like falling downstairs; a
+ computer cannot;
+10. *Small is beautiful (see figure [[fig:usb-stick]]).*
+
+#+CAPTION: Don't keep more in your pocket
+#+NAME:   fig:usb-stick
+[[./img/usb-stick.jpg]]
+
+** Ten reasons why free software and open formats will be preferred:
+1. Free software is defined by a list of four elementary freedoms,
+   a. the freedom to use the software in any case (for example, not only in
+    educational context);
+   b. the freedom to learn how the software functions. That implies an access to
+    its source code;
+   c. the freedom to make derivative works based on the software;
+   d. the freedom to copy and distribute the software, either in its original
+    form or as a derivative work;
+2. As, with the definition above, there is no limitation of use (the software
+   does not need to be shared costlessly), people can earn their life when
+   working with free software;
+3. As the source of the software must be delivered with it, fair interactions
+   can be organized between competitors; every company can access specifications
+   about open formats being used; however, competitors cannot build their wealth
+   upon secrecy; the cost of the software must be justified by its quality;
+4. As the source of the software must be transmitted along, the software becomes
+   "eternal", in the sense that you can always hire a skilled person to adapt
+   the software and maintain it if a previous author or vendor fails to do it;
+5. Free software can be audited for security issues by specialists, who can know
+   details of its design by studying its source; if a security issue is
+   detected, it can be fixed by the same people;
+6. When the source of the software is written in a "human readable" form, one
+   can check that there is no spyware included;
+7. When the software is used to make science (or to teach science), it is not
+   a "black box"; everyone may watch its internals, and experiments can be
+   readily reproduced;
+8. When there is no constraint on copies or instances of a running software,
+   license management is way cheaper;
+9. The ability for everyone to access the source of the software is a strong
+   incentive for progress and software quality;
+10. Most non-free software from the last ten years is now dead; on the contrary,
+    free software, even when it is old, can be revived with some work; the same
+    is true with data which were saved in non-open formats, if nobody took the
+    opportunity to convert them to a new format when it was still possible.
+** Why would my students like to use copies of my live USB stick?
+Here are a few "irrational reasons" why my students like my system based on
+a live USB stick:
+- Thanks to [[https://en.wikipedia.org/wiki/Klaus_Knopper][Klaus Knopper]]'s efforts, every derivative of KNOPPIX comes with an
+  excellent support of accelerated graphic cards, and the desktop is managed by
+  Compiz. If you do not know what Compiz provides, you cannot understand why
+  your students are playing with dozens of applications open in separate
+  windows, like jugglers with their balls.
+- Creating awesome graphics is a matter of seconds; open Gimp, then
+  File \rightarrow Create \rightarrow Logos \rightarrow (choose a style) \rightarrow (type your logos's text)  \rightarrow click,
+  /et voilà/!
+- They can cheat when preparing their homework! For example, the application
+  wxMaxima allows them to find immediately the roots of most equations. Of
+  course, when students "begin to cheat", the teacher just needs to propose them
+  more creative assignments: they become able to solve problems which are
+  usually thought as out of their reach at their education level.
+And now, here here is at least one "rational reason" why my students do use my
+system based on a live USB stick:
+- They are assigned homework which can precisely be done with the help of
+  that live USB stick.
+* First use of the expEYES box
+** Pickup voltage: where does it come from?
+#+CAPTION: Main window of expEYES-Jr features an oscilloscope screen
+#+NAME:   fig:expeyes00
+[[./img/expeyes-jr00.png]]
+
+Boot your computer with the live USB stick; bind the expEYES Jr box to the
+computer with a USB cable, launch the application expEYES Junior (probably
+a menu item under Education \rightarrow Science). The window which appears should bear
+a mention to the detected hardware in its title bar, and feature an oscilloscope
+screen with one track enabled. In figure [[fig:expeyes00]], one can read "Four
+Channel CRO+ found expEYES-Junior on =/dev/ttyACM0=", which means that the
+application "CRO+" (an enhanced Cathode-Ray Oscilloscope) has detected the box
+named expEYES-Junior, via the serial port known as =/dev/ttyACM0=.
+
+Take an insulated wired in your hand (do not touch directly the metal), and
+touch the analogic input A1 with the bare end of the wire. The track on the
+oscilloscope screen should change a little. Then change the duration of the
+sampled data set, by dragging the slider "ms/div" to the right (this slider is
+on the left of the window, just below the list of channels CH1 ... CH4). When
+the duration of the sweep is well tuned, you shall see a few wave periods in the
+oscilloscope's screen.
+
+#+CAPTION: Pickup voltage, time sweep: 5 ms/div
+#+NAME:   fig:expeyes01
+[[./img/expeyes-jr01.png]]
+
+Click the "Save Traces to" button: a file named =cro.txt= (or some other name if you
+change the default) will be written. You can take a look at this file, with
+various tools. Try to open the file with the following applications:
+1. inside a Terminal, type the command =cat cro.txt= (and type "Enter"): you will
+   be provided many lines of text, which you can scroll up and down with the
+   vertical slider of the terminal. The command =cat= is a very simple command: it
+   opens one or more files given as arguments, and concatenates their contents
+   to the standard output, which is the terminal's display in that case.
+2. inside the same terminal, type the command =less cro.txt= (and type "Enter"):
+   you will be provided the same set of lines, but you are using a so-called
+   "pager" (the command =less= calls the default pager of the system). You can
+   access previous and following lines by using vertical arrow keys, or Page-Up
+   Page-Down keys. Type "Q" to stop the pager program and come back to the
+   terminal's prompt.
+3. launch the application Qtiplot (probably available under the menu Education
+   \rightarrow Science). Then, import data from the file =cro.txt=: Window's Menu \rightarrow File \rightarrow
+   Import \rightarrow import an ASCII file, or quicker with the graphic button which does
+   the same (an icon with "123" written above), or else with the keyboard
+   shortcut Ctrl+K. Chose the right file, import it. If numbers are not well
+   imported, you may want to change some import options, like the number's input
+   format. The values from the file =cro.txt= will be displaied in a data
+   grid. You can select both columns with the mouse, then plot the data easily
+   (either by calling a contextual menu by a right click, or by using the
+   "Plot" window's menu). The application Qtiplot has many features to analyze
+   data series, which deserve a detailed study.
+4. you can also import the data with LibreOffice's spreadsheet program, known as
+   =calc=. When data are there, other features of the spreadsheet can be enjoied.
+
+#+CAPTION: The same data, accessed by "cat", "less" and "qtiplot"
+#+NAME:   fig:cat-less-qtiplot
+[[./img/cat-less-qtiplot.png]]
+
+While maintaining the right sampling settings, use the left mouse button
+to drag the symbol "CH1" to the symbol "FIT" in the left part of the screen. The
+application will begin to fit the sampled data with a template function based on
+a sinus. The amplitude and the frequency should appear in "real time" near the
+oscilloscope's screen.
+
+In order to reply to the title's question, while maintaining the wire connected
+to the A1 input, one hand on the insulating part of the wire, move your body, or
+just a member, nearer or further from areas where you know that power lines are
+embedded. If the "FIT" feature is enabled, you may notice that the amplitude
+depends tightly on the proximity between your body and power lines, while the
+frequency remains mostly unchanged. One can read "A1: 0.19 V, 50.8 Hz"
+in the middle of the right part of the window, in figure [[fig:expeyes01]].
+
+Another question which is worth a short
+documentation search for students is "why precisely 50 Hz?". Wikipedia's web
+site gives valuable information about the history of that frequency standard.
+** experimenting with a few wires only
+ExpEYES-Junior is a measurement box, but not only that: it is enhanced by
+numerous generators. By the way, the program =expeyes-junior= comes with some
+powerful features, like one-click Fourier transform.
+*** Fourier transform, page 30 of the manual
+As a first try, let us open the /User Manual/, page 30.
+It is a simple manipulation about Fourier transforms, for a sinusoidal and for
+a square wave.
+
+The manual says to use two wires, one from SINE to A1, the second from SQR1 to
+A2. I rather use four short wires with crocodile clips, and do the same by
+joining clips accordingly.
+
+When the box is bound to the computer, and the wires are in place, please launch
+the program expeyes-junior. Figure [[fig:exp-wave00]] shows two oscilloscope
+tracks, we can see that SQR1 is enabled, with a frequency of 150 Hz.
+
+The symbols A1 and A2 in the left column of the window have been dragged with
+the mouse and dropped on the symbols CH1 and CH2 respectively.
+
+#+CAPTION: Two tracks of the oscilloscope are used, the frequency of both signals are quite the same
+#+NAME:   fig:exp-wave00
+[[./img/exp-wave00.png]]
+
+In order to get a Fourier transform of the signals, the manipulation is very
+simple: when you drag the symbol CH1 on the neighboring symbol FTR, you get
+a new window with figure [[fig:exp-wave01]], and when you drag CH2 on FTR, you get
+another window with figure [[fig:exp-wave02]]. The fast Fourier transform is done
+quickly by the application. You can notice more peaks in the FFT plot of the
+square wave. The first peak is a frequency 0 (it is due to a non-null DC
+component), and other peaks are at frequencies which build an arithmetic progression.
+
+#+CAPTION: Fourier transform of the SINE wave
+#+NAME:   fig:exp-wave01
+[[./img/exp-wave01.png]]
+#+CAPTION: Fourier transform of SQR1's signal at 150 Hz
+#+NAME:   fig:exp-wave02
+[[./img/exp-wave02.png]]
+*** Using the MIC output
+Install a wire (or two wires bound by crocodile clips) between the MIC socket,
+which is the outpout of an amplified microphone, and A1, the first analog input.
+Then, you must provide some "musical" sound near the microphone, which is placed
+at the left bottom end of the expEYES box. For example, use some whistle, or
+sing a single tune during a few seconds. Adjust the time sweep in order to have
+a few waves in the oscilloscope's display. Begin to drag the symbol CH1 above
+the symbol FTR, and drop it when the oscilloscope's track is well shaped. This
+records data in a file (which can be reopened later by some other program), and
+a new window appears with the signal reprocessed by a FFT (Fast Fourier
+Transform).

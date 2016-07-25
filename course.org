@@ -4,6 +4,7 @@
 #+EMAIL:       <georges.khaznadar@free.fr>
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:t toc:t
+#+LATEX_HEADER: \usepackage{lmodern}
 
 * Booting live USB sticks
 ** We proudly choose an "Unsecure" system
@@ -320,6 +321,279 @@ at the left bottom end of the expEYES box. For example, use some whistle, or
 sing a single tune during a few seconds. Adjust the time sweep in order to have
 a few waves in the oscilloscope's display. Begin to drag the symbol CH1 above
 the symbol FTR, and drop it when the oscilloscope's track is well shaped. This
-records data in a file (which can be reopened later by some other program), and
-a new window appears with the signal reprocessed by a FFT (Fast Fourier
-Transform).
+records data in two files: =cro.dat=, which contains original data resampled with
+a time step which ensures that a good FFT can be done, and =fft.dat=, which is the
+fast fourier transform of the same data to give a power /vs./ frequecy spectrum.
+
+The figures [[fig:exp-wave03]] to [[fig:exp-wave06]] show data recorded,first with
+a voiced "AAA", then with a mouth-wistled still tune of higher frequency.
+
+#+CAPTION: A voiced "AAA": the original signal
+#+NAME:   fig:exp-wave03
+[[./img/exp-wave03.png]]
+#+CAPTION: A voiced "AAA": fast fourier transform
+#+NAME:   fig:exp-wave04
+[[./img/exp-wave04.png]]
+
+#+CAPTION: Mouth-whistled still tune: the original signal
+#+NAME:   fig:exp-wave05
+[[./img/exp-wave05.png]]
+#+CAPTION: Mouth-whistled still tune: fast fourier transform
+#+NAME:   fig:exp-wave06
+[[./img/exp-wave06.png]]
+
+Further is (figure [[fig:exp-wave07]]) another analysis of a mouth-whistled tune, done
+with the file =cro.dat= which was imported (as ASCII data) in the application
+=qtiplot=. You can notice that the abscissa for frequency should be kHz (not Hz),
+because the unit for time exported from =expeyes-junior= is millisecond, not
+second.
+
+#+CAPTION: Another mouth-whistled still tune, analyzed by qtiplot.
+#+NAME:   fig:exp-wave07
+[[./img/exp-wave07.png]]
+
+*** A "standalone" experiment, with the DC motor
+:PROPERTIES:
+:ID:       fef7fc86-e6a0-4170-ae48-dad0ffc2e80e
+:END:
+The expEYES-Junior kit comes with a DC motor (which is ordinarily used to drive
+a CDROM); this DC motor can act as a low voltage motor, but it is also an
+efficient tachymeter, that is, an angular velocity probe: it outputs a voltage
+which is proportional to its angular velocity, and as it has few internal
+friction, it can be used to measure the movement of a pendulum. When the main
+application =expeyes-junior= is running, click on the "EXPERIMENTS" button:
+a submenu appears, where you must activate the entry named "Pendulum Waveform".
+
+The window of the main application remains in place, but it looses the control
+of the experiment box, which is given to a specialized application. To enjoy the
+secondary application, you must make the following connections:
+
+1. from inverting amplifier's OUT plug to analog entry A1, with one wire;
+2. the motor's wires are connected between the ground (GND), and the input (IN)
+   of the inverting amplifier.
+
+Then, you can check that the second application begins to record voltage data as
+soon as the motor has enough angular velocity.You can stop the record at any
+time with the "STOP" button.
+
+Put the motor's axis horizontal, near the edge of a table, and grasp firmly the
+motor's body. Fit the motors's axis to a pendulum; there are many ways to do it,
+all are correct, as long as most of the mass ofthe pendulum is far enough from
+the motor's axis, and that the pendulum remains tightly fixed to the motor's
+axis during oscillations.
+
+Here are two easy and cheap solutions used by the author:
+- either a metal pendulum coupled to the motor's axis with a small and strong
+  enough magnet,
+- or a wood stick fastened to the motor's axis with a screw for wood of diameter
+  2 mm, with some relatively heavy clip fastened at the other end of the stick,
+  see figure [[fig:pendulum01]].
+
+When the motor is int good position, slowly put the pendulum far fromits
+equilibrium position, and let it go freely. The angular velocity probed by the
+motor goes quicly above the threshold which triggers the record's begin. The
+record's duration is 15 seconds by default (but you can change it). When the
+record is finished, you should click on two buttons, first "SAVE To", later
+"FIT". So, you get a file with the data recorded, for further analysis, and the
+FIT method gives you two interesting coefficients: the oscillation's
+pseudo-frequency, and its damping coefficient; see figure [[fig:pendulum00]].
+
+The last figure of this section ([[fig:pendulum02]]) shows the data from the file
+=pendulum.dat= reworked with =qtiplot='s analysis tools (Analysis \rightarrow Fit Wizard
+... define a user fit). You can see that the choosen formula is
+$A1 * \exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)$; so, it is a damped sinusoidal
+function, with damping coefficient $A2$, frequency $A3$, and phase $A4$; $A1$ is an
+arbitrary multiplying factor. Initial values to perform the fit were $A1=1.5$
+(the order of magnitude of the initial amplitude), $A2=10$, as the movement is
+significantly damped within 10 seconds, $A3=1$ since the pseudo-frequency is
+near $1\, Hz$, and $A4=1.5$ (which is near $\pi/2$). The fitting algorithm of =qtiplot=
+yelds a damping factor $A2=1.2\, s$ and a frequency $A3=1.069\, Hz$, with an
+excellent correlation factor: $R^2=0.993$. The precision is greater for the
+frequency than for the damping factor.
+
+#+CAPTION: Record of a pendulum's angular velocity
+#+NAME:   fig:pendulum00
+[[./img/pendulum00.png]]
+#+CAPTION: Pendulum made with a wood stick, a screw and a clip.
+#+NAME:   fig:pendulum01
+[[./img/pendulum01.png]]
+#+CAPTION: Reworking the data with qtiplot.
+#+NAME:   fig:pendulum02
+[[./img/pendulum02.png]]
+* Mastering Python
+Python is an interpreted computer language created by by Guido van Rossum at
+Centrum Wiskunde & Informatica (CWI) in the Netherlands, fifteen years ago
+approximately. Currently thislanguage is considered as excellent for dealing
+with scientific and experimental data, and most important software libraries
+which can be used it that area have been llinked to Python and areexposing
+well-documented Programming Interfaces.
+
+** Empowering oneself with Python
+Archimedes said "/Give me a place to stand and with a lever I will move the whole
+world/". He was probably thinking about Python ;).
+
+Computers come now with unprecedented arithmetic power, and there are clever
+programs which make it usable for calculus also. Of course, students must know
+how to make operations by themselves, but when thousands of calculations are
+necessary, controlling a computer is the solution. Python is one of the shortest
+ways to control this power.
+
+Incidentally,  the way Python programs must be written makes them often quite
+readable by non-aware people. I could discuss with a teacher of philosophy who
+showed me a source program and pointed one precise part, saying "there is an
+error, right there!".
+** A guide to learn Python quickly
+*** Level of difficulty
+Learning to walk with one's legs is a non-trivial task, most humans achieve it
+in their early youth. Driving a helicopter is also a non-trivial task, but few
+humans achieve it, even if it might give them huge advantages. There are reasons
+why few persons can learn to drive a helicopter: the learning environment is
+very expensive, and also somewhat risky: a beginner can destroy a helicopter and
+herself in the same run with some probability.
+
+Learning arithmetic operations is also a tough task, which most persons achieve
+in developed countries. Controlling a computer, compared to basic arithmetics,
+is quite like driving a helicopter, compared to walking. However, unlike the
+helicopter example, it is much safer: Python is a free-libre program, you can
+get it gratuitously; accidentally breaking a computer while learning
+computer science with Python is most unlikely.
+
+In a few words, the best guide to learn Python quickly is your own curiosity,
+as long as you choose a project which makes sense. Good tutorials exist in many
+places, here is the tutorial of the Python Fundation:
+https://docs.python.org/3/tutorial/index.html.
+
+Currently, there are two families in the Python language, known as Python2 and
+Python3; the fork between both families has begun a few years ago. If you
+are beginning, you should definitely learn Python3, as it is the only branch
+which will be maintained and developed in the future, even if many efforts are
+still deployed to help the large community of people who are still using Python2.
+
+*** Examples of small projects which can be used to learn Python
+1. Repeat writing the same line of text many times
+2. Write lines of text made of some character, for example a star (*), which
+   will build some interesting shape when watched from some distance: a ball,
+   a robot, a toy, a pet, etc.
+3. Produce automatically arithmetic tables: for addition, multiplication,
+   etc. and why not, logarithms too?
+4. Create some interactive game: the computer asks a question, the player
+   replies, the further exchanges depend on the replies, etc. For instance, the
+   computer chooses a random number within a range, and the player has a limited
+   number of questions left to know which it is ...
+5. Draw an elephant, which will cross the screen, coming from the left and going
+   to the right (or the opposite)
+6. Create a structure which can be used to manage your collection of music
+   records, and two different routines to display collection's items, with more
+   or less details
+7. Create an interactive program which allows one to query your collection's
+   items, based on search criteria (author, publisher, duration, music style,
+   etc.)
+8. Write a program which quickly solves equations of degree one, two ... three,
+   four (if you dare to go that far)
+9. Write a program able to say how many different colors there are in a picture
+10. Write a program which automatically detects a human face in a given picture
+
+*** Python and expEYES
+Your computer does not work in "real time": that means that when you begin some
+task, you cannot require with certitude a precise duration for that task to
+complete. For example, if you want your computer to measure a thousand times the
+voltage of a precise pin during one second, you cannot be sure that it will
+perform this operation uninterrupted.
+
+This is why the physical measurements are done inside expEYES box with
+a separate program designed to work in /real time/. Then, your computer can ask
+the box to make the thousand measurements, they will be done
+uninterrupted. Later, the results will be given back to your computer, possibly
+with some interruptions, but you are sure that the data were captured on
+a regular time basis. As the computer, despite its many interruptions, works
+very very fast, you experience a rich feedback, not unlike the feeling you can
+have with an oscilloscope. However, because of its calculation capability,
+your computer can go way further than an oscilloscope, and this is why Python is
+used, to enjoy the many libraries which can crunch numbers for us.
+
+Now, let us begin with Python+expEYES: let us open the application =geany= (a
+good development environment for programmers... Windows users will probably use
+=Notepad++=), and type the few lines presented in figure [[fig:ej01]]. Then, save them
+with the filename =p1.py=. As soon as the name of the file is defined, =geany= will use
+colors and styles to make the syntax of the source file more evident. For
+example, key words like =import=, =print=, are displaid in a particular fashion.
+
+#+CAPTION: Our first program with Python+expEYES ever.
+#+NAME:   fig:ej01
+[[./img/ej01.png]]
+
+When the file is saved, press the "F5" key (it is a shortcut to launch
+the program which has been edited). You will get a heap of numbers written in
+a /Terminal/, and you will be prompted to press the "Enter" key. When you press
+it, the /Terminal/ is closed. The series of numbers were a sequence of voltages
+measured very fast on the analog input A1. If you want more variety inside this
+sequence of numbers, you can connect a wire to this input and act exactly as for
+the previous experiment [[Pickup voltage: where does it come from?]["Pickup voltage"]]. The number sequence can be impressive,
+but it not as expressive as a good plot. In order to make a plot, you need three
+more lines in the program. Save the previous program with a new file name, like
+=p2.py=. So, the first program still exists and can be used as a begin point for
+other variations. Then add three more lines, as showed in figure
+[[fig:ej02]]. Save the program and type "F5". If there is some "pickup voltage", you
+should get a plot like in figure [[fig:ej03]].
+
+#+CAPTION: The second program with Python+expEYES.
+#+NAME:   fig:ej02
+[[./img/ej02.png]]
+#+CAPTION: The plot given by the second program
+#+NAME:   fig:ej03
+[[./img/ej03.png]]
+
+You can notice that the plot comes in a separate window which has its own close
+button, and that you will have to close the /Terminal/ too after the end of the
+program.
+
+*** Understanding the first programs for Python+expEYES
+Let us comment the few lines in the program =p1.py=:
+- =import expeyes.eyesj= :: this declares that the library which drives
+     expEYES-Junior will be used; the library's name is expeyes.eyesj, if we
+     want a shorter alias, it is possible to declare it, more about that later ...
+- p=expeyes.eyesj.open() :: this line calls the function =open()= from the library
+     which drives expEYES-Junior, and the resulting object is stored into the
+     /variable/ =p=; hence, =p= contains the intialized driver to deal with the
+     measurement box.
+- t, v=p.capture(1,100,2000) :: this line calls the method =capture()= from the
+     driver, with three parameters:
+  1. =1= is the number of the input channel; =1= stands for channel A1
+  2. =100= is the number of samples to collect: a hundred of measurements are
+     requested
+  3. =2000= is the duration between two consecutive measurements: measurements
+     will be done every $2000\, ns = 2\, \mu s$; so the total duration of the
+     "experiment" is requested to be $200\, \mu s$. The results are assigned to
+     /variables/ =t= and =v=, =t= is the list of timestamps, =v= is the liste of measured
+     voltages.
+- =print(v)= :: this line asks to print the hundred values measured in the
+     /standard output/ of the program, which is the /Terminal/, there.
+
+Now let us comment the new lines in the program =p2.py=:
+- =import expeyes.eyesj as ej= :: exactly the same as in =p1.py=, but the alias =ej=
+     will be used to name the library.
+- =from pylab import *= :: this line means that every objects and functions of the
+     library =pylab= will be available directly in the program. Such an
+     instruction may cause problems if two libraries provide same names for
+     different functions. Here there will be no problem because the program is
+     very short. The functions which will be used are =plot()= and =show()=.
+- p=ej.open() :: exactly the same as in =p1.py=, you can notice that the alias =ej=
+     is used there.
+- plot(t,v) :: this is the call to a function provided by the library =pylab=, it
+     builds a very simple plot with the series of values =t= as abscissa and the
+     series of values =v= as ordinate.
+- =show()= :: this call creates a graphic window to contain the plot, and allow
+     users to interact with it. This window "lives" independently of the main
+     program.
+*** Proposition of exercises
+as you can see, the plot in figure [[fig:ej02]] is not very precise, and some
+features of the expected waveform are not as detailed as they might be. You can
+make a series of exercises, in order to:
+- make more measurements, in the same total time
+- make a longer measurement, with more samples but same laps of time
+You can also try to find the limits of the measurement box:
+- which is the shortest duration between two consecutive measurements?
+- how many measurements can be stored in the box for a one-shot measurement
+  series?
+- how many different inputs has the box, which numbers are they assigned?
+- etc.

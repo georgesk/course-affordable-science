@@ -618,51 +618,34 @@ entries of this webpage, as captured in August 2016:
 When one uses plain Python, she can manipulate series of numbers as so-called
 lists: for example the 10 first even integers are this Python list:
 =[0,2,4,6,8,10,12,14,16,18]=; such a list can have a memory footprint bigger than
-ten times the placenecessary to store an integer, because Python lists can
+ten times the place necessary to store an integer, because Python lists can
 contain any type of element (for example, a list can contain another list), and
 such a flexibility requires more memory space and sometimes slower algorithms to
 take in account all the possibilities.
 
 The module numpy allows you to declare or to construct numeric arrays, which
-contain only numbers, and which can be computed efficiently. Here is the code to
-get the same numbers as above in an array:
-#+NAME: np00
-#+BEGIN_SRC python -n -i
-import numpy as np  # "np" is a handy alias
+contain only numbers, and which can be computed efficiently. The figure [[fig:np0]]
+shows the code to get the same numbers as above in an array.
+#+CAPTION: ten first even numbers, with numpy: source code, and ouput
+#+NAME: fig:np0
+[[./img/np0.png]]
+The =arange= function allows us to build very easily long arithmetic
+series. For example =arange(0,2,1e-3)= yelds an array of two thousand numbers.
 
-a=np.arange(0,20,2) # (start, stop, step)
-print(a)
-#+END_SRC
+Numpy provides also mathematic functions and operators which work directly on
+arrays; here are two example programs, in figures [[fig:np1]] and [[fig:np2]].
 
-This code gives the following result: call_np00[:results output]()
+Both compute =y=2*x= and =z=sin(x)= for any element of an arithmetic series, we can
+notice that =numpy= allows us to use a more clear programming style!
 
-The =arange= function allows you to build very easily long arithmetic
-series. Numpy provides mathematic functions and operators which work directly on
-arrays; here are two example programs, both compute =y=2*x= and =z=sin(x)= for any
-element of an arithmetic series:
-**** _first program, plain Python code_
-#+NAME: np01
-#+BEGIN_SRC python -n -i
-import math
+#+CAPTION: some math with number series, without numpy
+#+NAME: fig:np1
+[[./img/np1.png]]
 
-x=range(0,20,2)
-y=[]
-z=[]
-for element in x:
-    y.append(2*element)
-    z.append(math.sin(element))
-#+END_SRC
-**** _second program, with =numpy=_
-#+NAME: np02
-#+BEGIN_SRC python -n -i
-import numpy as np
+#+CAPTION: some math with number series, and numpy
+#+NAME: fig:np2
+[[./img/np2.png]]
 
-x=arange(0,20,2)
-y=2*x
-z=np.sin(x)
-#+END_SRC
-
-As can be seen, =numpy= allows us to use a clear style for coding.
 ** Python libraries for graphic user interfaces
 Some Python modules used for science can provide good tools for user
 interaction: for example, the module =pylab= provides two functions, =plot()= and
@@ -674,7 +657,7 @@ a physic interaction, or to launch some process on captured data. So, general
 purpose GUI (Graphic User Interface) modules are useful. A good GUI library
 allows one to internationalize easily a program, making it usable by wide
 communities. Additionnally, good GUI libraries inherit knowledge about
-human-machine interaction, and the author of program can focus her attention
+human-machine interaction, and the author of programs can focus her attention
 about things which really matter for the end user: creating an /intuitive
 interface/, /i.e./ reusing popular widgets with well-known behaviors, defining
 contextual help phrases, making the current status well understandable, etc.
@@ -686,7 +669,7 @@ Some popular GUI libraries come with a specialized application to design the GUI
 layout. For Gnome Toolkit libraries (Gtk), it is known as [[https://glade.gnome.org/][=glade=]]; we shall
 make some exercises below with [[http://doc.qt.io/qt-5/qtdesigner-manual.html][=designer=]], which goes with Qt. Both =Gtk= and =Qt=
 libraries work well with Python, and they can target a wide list of platforms,
-ranging from desktop and laptop computers with various operating systems to
+ranging from desktop and laptop computers with various operating systems, to
 mobile devices.
 
 *** Our first GUI layout
@@ -695,7 +678,7 @@ Let us create our first GUI layout with =designer=, which will feature:
 2. one button to launch a specific process
 3. one button to quit the application.
 
-To begin with, the appplication =designer= must be launched withoutany option. So
+To begin with, the appplication =designer= must be launched without any option. So
 it will display a menu and we shall choose the =Main Window= item. An empty Main
 Window prototype appears in the center of the screen, collections of widgets are
 proposed in a column at the left side.
@@ -725,7 +708,7 @@ column of =designer='s window. There, you should modify the button's name to
 (QAbstractButton \rightarrow text). Select the right push button, and make similar
 modifications: its name should be "closeButton" and its label should be "Close".
 
-Save you work again. It is finished, youcan close the application =designer=.
+Save you work again. It is finished, you can close the application =designer=.
 
 The suffix =.ui= of the saved file means that this a file to describe the layout
 of the GUI in an open format. More than an application is able to read and to
@@ -745,87 +728,32 @@ interpret this format efficiently and to compose a sensible user interface.
    from =designer='s =.ui= format to Python source.
 
 *** Our first working program
-Here is our first program which will rely upon the just created user interface:
-#+NAME: ui01
-#+BEGIN_SRC python -n -i
-#!/usr/bin/python3
+Here is our first program which will rely upon the just created user
+interface. The series of snapshots (taken from =geany='s buffers) has a few
+comments.
 
-import sys
-from PyQt4 import QtGui, QtCore
-from UI_p1 import Ui_MainWindow
-from qwt import QwtPlotCurve
-import numpy as np
+#+CAPTION: Program's header with inclusion of modules and definition of our custom Main Window
+#+NAME:   fig:firstgui00
+[[./img/firstgui00.png]]
 
-class MyWindow(QtGui.QMainWindow):
-    """
-    This class implements a derivative of
-    PyQt4.QtGui.QMainWindow, a complete application
-    window, which can feature menus, submenus,
-    status bar, etc. In this example, it uses
-    few of those features.
-    """
+#+CAPTION: The constructor of our custom window: mandatory part
+#+NAME:   fig:firstgui01
+[[./img/firstgui01.png]]
 
-    def __init__(self, parent=None):
-        """
-        Constructor: creates an instance of MyWindow
-        """
-        #########################################
-        # Necessary actions, which must be done #
-        # for any project                       #
-        #########################################
-        # first, calling the ancestor's creator
-        QtGui.QMainWindow.__init__(self, parent)
-        # get the User Interface from the module UI_p1
-        self.ui=Ui_MainWindow()
-        # initialize the user interface
-        self.ui.setupUi(self)
-        #########################################
-        # Custom actions, which can be written  #
-        # in other ways for other projects.     #
-        #########################################
-        # aliases for some parts of the user interface
-        self.plotWidget    = self.ui.qwtPlot
-        self.measureButton = self.ui.measureButton
-        self.closeButton   = self.ui.closeButton
-        # connect methods to buttons' click signals
-        self.measureButton.clicked.connect(self.measure)
-        self.closeButton.clicked.connect(self.close)
-        # initialize an empty curve for the plot widget
-        self.curve         = QwtPlotCurve()
-        self.curve.attach(self.plotWidget)
-        return
+#+CAPTION: The constructor of our custom window: custom part
+#+NAME:   fig:firstgui02
+[[./img/firstgui02.png]]
 
-    def measure(self):
-        """
-        This is a custom method to connect to the
-        button for measurements.
-        There is no need for another custom method,
-        since the method "close" is already inherited
-        from the ancestor class.
-        """
-        # create data for a curve with some fixed
-        # and some random features
-        import random
-        x=np.arange(0,8,1e-2)      # abscissa: [0, 0.01, 0.02, ... 7.99]
-        r=random.random()
-        y=np.sin(x)+r*np.sin(3*x)  # calculated ordinate
-        # feed new data into the curve
-        self.curve.setData(x,y,len(x))
-        # change the title of the plot on the fly
-        self.plotWidget.setTitle("sin(x) + {} sin(3x)".format(r))
-        # display the result
-        self.plotWidget.replot()
-        return
+#+CAPTION: our custom window's "measure" method
+#+NAME:   fig:firstgui03
+[[./img/firstgui03.png]]
 
-if __name__=="__main__":
-    app=QtGui.QApplication(sys.argv)
-    window=MyWindow()
-    window.show()
-    sys.exit(app.exec_())
-#+END_SRC
+#+CAPTION: footer of the program: what to do if it is called as a main program
+#+NAME:   fig:firstgui04
+[[./img/firstgui04.png]]
 
-You cannot copy and paste this program from a PDF document, however it can be
-downloaded from [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py][a Github.com repository]].
+You cannot copy and paste the screenshots, however the complete program =p1.py=
+can be downloaded from [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py][a Github.com repository]].
 
 Download the file (=p1.py=) and open it in a good editor to check its content. It
 should work easily. For example, you can launch it by typing =python3 p1.py= and
@@ -840,16 +768,16 @@ example, take a look at lines 56 -68: they are there like a placeholder, for
 some useful program which you want to write. Plotting a function with random
 values is quite a nonsense, but it will become far from a nonsense if you
 replace those lines by a program to plot captured physical measurements.
-*** Including some meat into the first nonsensical program
+*** Introducing some "meat" to replace nonsenses of the first program
 The two subsequent programs will show you how to make some sense with the
 previous program, by wisely replacing  some of its structure.
 
-You can download [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p2.py][here]] the second program, named =p2.py=. The modified part are:
-1. the header which includes more modules
+You can download [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p2.py][here]] the second program, named =p2.py=. The modified parts are:
+1. the program's header, to include one more module
 2. the =__init__= constructor, which initializes the expEYES Junior box
 3. the =measure= method, which captures physical data thanks to the box, and plots
    them
-
+*** Details of the first modification
 **** modifications of the header part
 The line  =import expeyes.eyesj as ej= allows us to control the expEYES Junior
 measurement box from Python.
@@ -857,3 +785,72 @@ measurement box from Python.
 The single line =self.p = ej.open()= attaches expEYES' driver object to the main
 window.
 **** modifications of the =measure= method
+Only two lines are used: =t,v = self.p.capture(1,1000,200)= to request a thousand
+voltage measurements, and =self.curve.setData(t,v,len(t))= to plot them.
+
+The conclusion is: that *four lines of code* are sufficient to turn
+a general-purpose GUI program into a usable scientific tool.
+*** A few more code, to deal with real life problems and exceptions
+The program =p2.py= works very well, with one exception: when no exPEYES Junior
+box is connected to the computer, nothing happens as expected. If the program
+was  launched from a command line in a Terminal, you may notice error messages
+appearing there. But if the program is launched by some other method, chances
+are that it will not work, and the reasons why it doesn't are not obvious for the
+average user.
+
+The designer of a program which touches physical realities must always keep
+a thought about what can go wrong; the most usual issue is a false connection, or
+no connection at all. Here we have an example: if the expEYES Junior box is not
+connected, the application should provide an a strong enough feedback for
+making the end user aware of the probable failure's reason.
+
+Fortunately, Python offers a nice structure to deal with exceptions: the
+construct =try: {some code which might trigger a failure} except: {someting to
+do if the failure was triggered}=. You must write two blocks of code, the first
+one is governed by the keyword =try:=, and it must raise an error (in the Python
+sense) if anything goes wrong; the second one is governed by the keyword =except:=
+and contain instructions to process if an error was raised in the previous
+block.
+
+[[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p3.py][Here you can download]] a third program, which can deal with mistaken connection to
+expEYES Junior (or any error reason which can fool the detection of the
+hardware)
+
+The differences between programs =p2.py= and =p3.py= are few:
+- In the =try:= clause, :: the line =self.p = ej.open()= is now embeded in the =try:=
+  block. A condition is tested just after this line: =assert(self.p.fd)= is an
+  affirmation that the driver has a working file descriptor; unless this
+  descriptor exists, a Python error is raised (you would see it if you write the
+  same program line without the =try:= block); if this descriptor exists, the next
+  lines change the title of the Main Window. In most cases, this title will become
+  "=expEYES Junior found on port /dev/ttyACM0="
+- In the =except:= clause, :: there are two lines of code, to manage the exception.
+  The first one assigns the
+  Main Window's title to "=ERROR: expEYES Junior NOT FOUND!=". The second one
+  disables the button "=Measure=", since this button should not be used to
+  make measurements.
+*** Exercises: improve our first program
+Here are some exercise propositions, which can make you more fluent with GUI
+programming. Some are modifications touching just the user interface's design,
+others touching the way captures are done, or are implementing additional features.
+1. Change the user interface file, replace the label "Measure" by some other
+   label, like "Launch a capture", for example
+2. Add a button to save data into a file named "data.csv"; verify that this file
+   can be readily opened by other programs like LibreOffice Calc.
+3. Add a text input allowing end users to choose another file name
+4. Change the capture instruction, in order to get a thousand voltage values,
+   separated by time gaps of two milliseconds; the total capture time should be
+   two seconds
+5. Two seconds is quite a long time for our impatient students. Try to implement
+   some way to provide a feedback message stating "Measuring voltage... please
+   wait" from the click's time until the plot's update.
+6. Add a text input to let users request a precise number of voltage samples, so
+   they can ask for as many samples as they want inside a reasonable range.
+7. Add text inputs to let users request other input channels than "A1", and also
+   to change the sample frequency
+8. Modify the widget used to request the measurement channel; replace it by
+   a set of radio buttons, with labels "A1", "A2", "IN1", "IN2", "SEN", etc.
+9. Change the set of radio buttons to a set of checkboxes, so users can select
+   up to four of them, and up to four channels can be sampled simultaneously
+10. Provide a second plot widget, which will display the power spectrum of the
+    signal (i.e. amplitude vs. frequency) after a Fast Fourier Transform

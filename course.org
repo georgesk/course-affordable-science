@@ -822,9 +822,38 @@ if __name__=="__main__":
     window=MyWindow()
     window.show()
     sys.exit(app.exec_())
-
 #+END_SRC
 
-You can copy and paste this program in a good editor, then save it (file =p1.py=). It
+You cannot copy and paste this program from a PDF document, however it can be
+downloaded from [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py][a Github.com repository]].
+
+Download the file (=p1.py=) and open it in a good editor to check its content. It
 should work easily. For example, you can launch it by typing =python3 p1.py= and
-hitting the Enter key.
+hitting the Enter key, provided the default directory of the Terminal contains
+=p1.py=.
+
+Don't be afraid by this program! Obviously, seventy lines in a language which
+you do not master currently can be an issue, but they are less an issue if you
+consider that you can freely copy this program source, and that you become
+really productive, just by modifying small details inside its structure. For
+example, take a look at lines 56 -68: they are there like a placeholder, for
+some useful program which you want to write. Plotting a function with random
+values is quite a nonsense, but it will become far from a nonsense if you
+replace those lines by a program to plot captured physical measurements.
+*** Including some meat into the first nonsensical program
+The two subsequent programs will show you how to make some sense with the
+previous program, by wisely replacing  some of its structure.
+
+You can download [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p2.py][here]] the second program, named =p2.py=. The modified part are:
+1. the header which includes more modules
+2. the =__init__= constructor, which initializes the expEYES Junior box
+3. the =measure= method, which captures physical data thanks to the box, and plots
+   them
+
+**** modifications of the header part
+The line  =import expeyes.eyesj as ej= allows us to control the expEYES Junior
+measurement box from Python.
+**** modifications of the constructor
+The single line =self.p = ej.open()= attaches expEYES' driver object to the main
+window.
+**** modifications of the =measure= method

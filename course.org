@@ -597,3 +597,234 @@ You can also try to find the limits of the measurement box:
   series?
 - how many different inputs has the box, which numbers are they assigned?
 - etc.
+** Python libraries for science
+As we already know, Python exists for fifteen years approximately, and most
+important free and open-sourcelibraries have been made available for Python,
+thanks to a versatile toolset which allows one to link C and C++ libraries to
+Python language.
+
+You can access a good review about Python Libraries for Science at
+https://wiki.python.org/moin/NumericAndScientific. Here are the two first
+entries of this webpage, as captured in August 2016:
+- NumPy :: http://www.numpy.org/ -- Numerical Python adds a fast, compact,
+     multidimensional array facility to Python. [...]
+- SciPy :: http://www.scipy.org/ SciPy is an open source library of scientific
+     tools for Python. SciPy supplements the popular NumPy module, gathering
+     a variety of high level science and engineering modules together as
+     a single package. SciPy includes modules for linear algebra, optimization,
+     integration, special functions, signal and image processing, statistics,
+     genetic algorithms, ODE solvers, and others.
+*** =numpy=: the advantage of using arrays vs. plain Python lists
+When one uses plain Python, she can manipulate series of numbers as so-called
+lists: for example the 10 first even integers are this Python list:
+=[0,2,4,6,8,10,12,14,16,18]=; such a list can have a memory footprint bigger than
+ten times the placenecessary to store an integer, because Python lists can
+contain any type of element (for example, a list can contain another list), and
+such a flexibility requires more memory space and sometimes slower algorithms to
+take in account all the possibilities.
+
+The module numpy allows you to declare or to construct numeric arrays, which
+contain only numbers, and which can be computed efficiently. Here is the code to
+get the same numbers as above in an array:
+#+NAME: np00
+#+BEGIN_SRC python -n -i
+import numpy as np  # "np" is a handy alias
+
+a=np.arange(0,20,2) # (start, stop, step)
+print(a)
+#+END_SRC
+
+This code gives the following result: call_np00[:results output]()
+
+The =arange= function allows you to build very easily long arithmetic
+series. Numpy provides mathematic functions and operators which work directly on
+arrays; here are two example programs, both compute =y=2*x= and =z=sin(x)= for any
+element of an arithmetic series:
+**** _first program, plain Python code_
+#+NAME: np01
+#+BEGIN_SRC python -n -i
+import math
+
+x=range(0,20,2)
+y=[]
+z=[]
+for element in x:
+    y.append(2*element)
+    z.append(math.sin(element))
+#+END_SRC
+**** _second program, with =numpy=_
+#+NAME: np02
+#+BEGIN_SRC python -n -i
+import numpy as np
+
+x=arange(0,20,2)
+y=2*x
+z=np.sin(x)
+#+END_SRC
+
+As can be seen, =numpy= allows us to use a clear style for coding.
+** Python libraries for graphic user interfaces
+Some Python modules used for science can provide good tools for user
+interaction: for example, the module =pylab= provides two functions, =plot()= and
+=show()= which are very handy to get a simple plot in an interactive window: users
+can zoom in some part of the plot, and save it in a file, etc.
+*** General purpose GUI libraries
+However user interfaces must often contain some controls to let the user trigger
+a physic interaction, or to launch some process on captured data. So, general
+purpose GUI (Graphic User Interface) modules are useful. A good GUI library
+allows one to internationalize easily a program, making it usable by wide
+communities. Additionnally, good GUI libraries inherit knowledge about
+human-machine interaction, and the author of program can focus her attention
+about things which really matter for the end user: creating an /intuitive
+interface/, /i.e./ reusing popular widgets with well-known behaviors, defining
+contextual help phrases, making the current status well understandable, etc.
+
+One good practice is to develop separately the user interface's layout and the
+program's processes which do the "backoffice work".
+*** GUI design programs
+Some popular GUI libraries come with a specialized application to design the GUI
+layout. For Gnome Toolkit libraries (Gtk), it is known as [[https://glade.gnome.org/][=glade=]]; we shall
+make some exercises below with [[http://doc.qt.io/qt-5/qtdesigner-manual.html][=designer=]], which goes with Qt. Both =Gtk= and =Qt=
+libraries work well with Python, and they can target a wide list of platforms,
+ranging from desktop and laptop computers with various operating systems to
+mobile devices.
+
+*** Our first GUI layout
+Let us create our first GUI layout with =designer=, which will feature:
+1. one area to plot scientific data
+2. one button to launch a specific process
+3. one button to quit the application.
+
+To begin with, the appplication =designer= must be launched withoutany option. So
+it will display a menu and we shall choose the =Main Window= item. An empty Main
+Window prototype appears in the center of the screen, collections of widgets are
+proposed in a column at the left side.
+
+Scroll down this column, select the widget known as =QwtPlot= which is part of the
+"Qwt widgets" family, and drag its icon to the top of the Main Window prototype.
+
+Then scroll up the widget column, select a =Horizontal layout= widget, and drag it
+onto the Main Window, drop it below the =QwtPlot= footprint. Then, you must drag
+and drop two =Push Button= widgets onto the =Horizontal Layout=. The first one is
+easily dropped. In order to get a usable structure, the second one must be
+dropped when a dark blue line appears on the west or on the east border of the
+=Horizontal Layout=, meaning that the second button will be organized horizontally
+either on the right or on the left of the previous button. If you want the
+buttons to be packed on the right, you can drag and drop a =Horizontal Spacer=
+widget at the east border of the =Horizontal layout=. Then, click on some free
+area of the Main Window to select it, and click on the "Vertical Layout" _tool
+button_, in the upper part of the window, just below the menus. This will
+organize all of the Main Window.
+
+Finally, save your work (File \rightarrow Save) with some filename like =p1.ui=
+
+It is better to add more attributes to the push buttons. Click on the left push
+button to select it, then browse its attributes in the middle of the right
+column of =designer='s window. There, you should modify the button's name to
+"measureButton" (QObject \rightarrow objectName) and its label to "Measure"
+(QAbstractButton \rightarrow text). Select the right push button, and make similar
+modifications: its name should be "closeButton" and its label should be "Close".
+
+Save you work again. It is finished, youcan close the application =designer=.
+
+The suffix =.ui= of the saved file means that this a file to describe the layout
+of the GUI in an open format. More than an application is able to read and to
+interpret this format efficiently and to compose a sensible user interface.
+
+*** Compiling the layout file to a Python program
+1. Open a Terminal, ensure that the default directory contains the recently made
+   =p1.ui= file, type the command line =pyuic4 p1.ui -o UI_p1.py=, and hit the Enter
+   key. This will create a new file in Python language with the name
+   =UI_p1.py=.
+2. Open that last file with a source editor, go to the end, and make
+   a small change to the last line: instead of =from qwt_plot import QwtPlot=,
+   this line should contain: =from qwt import QwtPlot=, to comply with the name of
+   the module inside a Debian distribution (I assume that we are working with
+   the USB live stick). This second operation should not be necessary, it is
+   just implied by a small bug in the debian package of =pyuic4=, the convertor
+   from =designer='s =.ui= format to Python source.
+
+*** Our first working program
+Here is our first program which will rely upon the just created user interface:
+#+NAME: ui01
+#+BEGIN_SRC python -n -i
+#!/usr/bin/python3
+
+import sys
+from PyQt4 import QtGui, QtCore
+from UI_p1 import Ui_MainWindow
+from qwt import QwtPlotCurve
+import numpy as np
+
+class MyWindow(QtGui.QMainWindow):
+    """
+    This class implements a derivative of
+    PyQt4.QtGui.QMainWindow, a complete application
+    window, which can feature menus, submenus,
+    status bar, etc. In this example, it uses
+    few of those features.
+    """
+
+    def __init__(self, parent=None):
+        """
+        Constructor: creates an instance of MyWindow
+        """
+        #########################################
+        # Necessary actions, which must be done #
+        # for any project                       #
+        #########################################
+        # first, calling the ancestor's creator
+        QtGui.QMainWindow.__init__(self, parent)
+        # get the User Interface from the module UI_p1
+        self.ui=Ui_MainWindow()
+        # initialize the user interface
+        self.ui.setupUi(self)
+        #########################################
+        # Custom actions, which can be written  #
+        # in other ways for other projects.     #
+        #########################################
+        # aliases for some parts of the user interface
+        self.plotWidget    = self.ui.qwtPlot
+        self.measureButton = self.ui.measureButton
+        self.closeButton   = self.ui.closeButton
+        # connect methods to buttons' click signals
+        self.measureButton.clicked.connect(self.measure)
+        self.closeButton.clicked.connect(self.close)
+        # initialize an empty curve for the plot widget
+        self.curve         = QwtPlotCurve()
+        self.curve.attach(self.plotWidget)
+        return
+
+    def measure(self):
+        """
+        This is a custom method to connect to the
+        button for measurements.
+        There is no need for another custom method,
+        since the method "close" is already inherited
+        from the ancestor class.
+        """
+        # create data for a curve with some fixed
+        # and some random features
+        import random
+        x=np.arange(0,8,1e-2)      # abscissa: [0, 0.01, 0.02, ... 7.99]
+        r=random.random()
+        y=np.sin(x)+r*np.sin(3*x)  # calculated ordinate
+        # feed new data into the curve
+        self.curve.setData(x,y,len(x))
+        # change the title of the plot on the fly
+        self.plotWidget.setTitle("sin(x) + {} sin(3x)".format(r))
+        # display the result
+        self.plotWidget.replot()
+        return
+
+if __name__=="__main__":
+    app=QtGui.QApplication(sys.argv)
+    window=MyWindow()
+    window.show()
+    sys.exit(app.exec_())
+
+#+END_SRC
+
+You can copy and paste this program in a good editor, then save it (file =p1.py=). It
+should work easily. For example, you can launch it by typing =python3 p1.py= and
+hitting the Enter key.

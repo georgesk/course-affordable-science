@@ -10,28 +10,31 @@ import expeyes.eyesj as ej
 
 class MyWindow(QtGui.QMainWindow):
     """
-    This class implements a derivative of PyQt4.QtGui.QMainWindow,
-    a complete application widow, which can feature menus,submenus,
-    status bar, etc. In this example, it uses few of those features.
+    This class implements a derivative of
+    PyQt4.QtGui.QMainWindow, a complete application
+    window, which can feature menus, submenus,
+    status bar, etc. In this example, it uses
+    few of those features.
     """
 
     def __init__(self, parent=None):
         """
         Constructor: creates an instance of MyWindow
         """
-        ##########################################################
-        # Necessary actions, which must be done for any project  #
-        ##########################################################
+        #########################################
+        # Necessary actions, which must be done #
+        # for any project                       #
+        #########################################
         # first, calling the ancestor's creator
         QtGui.QMainWindow.__init__(self, parent)
         # get the User Interface from the module UI_p1
         self.ui=Ui_MainWindow()
         # initialize the user interface
         self.ui.setupUi(self)
-        ##########################################################
-        # Custom actions, which can be written in other ways     #
-        # for other projects.                                    #
-        ##########################################################
+        #########################################
+        # Custom actions, which can be written  #
+        # in other ways for other projects.     #
+        #########################################
         # aliases for some parts of the user interface
         self.plotWidget    = self.ui.qwtPlot
         self.measureButton = self.ui.measureButton
@@ -57,10 +60,11 @@ class MyWindow(QtGui.QMainWindow):
 
     def measure(self):
         """
-        This is a custom method to connect to the button for measurements.
-        .
-        There is no need for another custom method, since the method
-        close is already inherited from the ancestor class.
+        This is a custom method to connect to the
+        button for measurements.
+        There is no need for another custom method,
+        since the method "close" is already inherited
+        from the ancestor class.
         """
         t,v = self.p.capture(1,1000,200)
         self.curve.setData(t,v,len(t))

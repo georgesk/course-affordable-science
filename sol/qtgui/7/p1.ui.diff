@@ -1,0 +1,94 @@
+--- ../0/p1.ui	2016-07-28 18:41:43.901131753 +0200
++++ p1.ui	2016-07-28 20:06:56.778520826 +0200
+@@ -19,6 +19,91 @@
+      <widget class="QwtPlot" name="qwtPlot"/>
+     </item>
+     <item>
++     <layout class="QHBoxLayout" name="horizontalLayout_3">
++      <item>
++       <widget class="QLabel" name="label">
++        <property name="text">
++         <string>Samples:</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <widget class="QLineEdit" name="samplesEdit">
++        <property name="text">
++         <string>1000</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <spacer name="horizontalSpacer_3">
++        <property name="orientation">
++         <enum>Qt::Horizontal</enum>
++        </property>
++        <property name="sizeHint" stdset="0">
++         <size>
++          <width>40</width>
++          <height>20</height>
++         </size>
++        </property>
++       </spacer>
++      </item>
++      <item>
++       <widget class="QLabel" name="label_2">
++        <property name="text">
++         <string>Time gap µs:</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <widget class="QLineEdit" name="delayEdit">
++        <property name="text">
++         <string>200</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <spacer name="horizontalSpacer_4">
++        <property name="orientation">
++         <enum>Qt::Horizontal</enum>
++        </property>
++        <property name="sizeHint" stdset="0">
++         <size>
++          <width>40</width>
++          <height>20</height>
++         </size>
++        </property>
++       </spacer>
++      </item>
++      <item>
++       <widget class="QLabel" name="label_3">
++        <property name="text">
++         <string>Input channel:</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <widget class="QLineEdit" name="inputEdit">
++        <property name="text">
++         <string>1</string>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <spacer name="horizontalSpacer_2">
++        <property name="orientation">
++         <enum>Qt::Horizontal</enum>
++        </property>
++        <property name="sizeHint" stdset="0">
++         <size>
++          <width>40</width>
++          <height>20</height>
++         </size>
++        </property>
++       </spacer>
++      </item>
++     </layout>
++    </item>
++    <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">

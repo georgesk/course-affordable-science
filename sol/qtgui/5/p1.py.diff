@@ -1,0 +1,19 @@
+--- ../0/p1.py	2016-07-28 18:31:30.916991920 +0200
++++ p1.py	2016-07-28 19:49:01.421888009 +0200
+@@ -66,7 +66,15 @@
+         since the method "close" is already inherited
+         from the ancestor class.
+         """
+-        t,v = self.p.capture(1,1000,200)
++        sample=1000
++        delay=2000                      # in µs
++        duration=int(sample*delay/1000) # in ms
++        self.ui.statusbar.showMessage(
++            "Measuring data for {} seconds, please be patient...".format(duration/1000),
++            duration
++        )
++        self.ui.statusbar.repaint() # immediately shows the status
++        t,v = self.p.capture(1, sample, delay)
+         self.curve.setData(t,v,len(t))
+         # display the result
+         self.plotWidget.replot()

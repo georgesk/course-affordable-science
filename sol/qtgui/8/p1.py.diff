@@ -1,0 +1,44 @@
+--- ../0/p1.py	2016-07-28 18:31:30.916991920 +0200
++++ p1.py	2016-07-28 21:40:59.182809115 +0200
+@@ -66,12 +66,40 @@
+         since the method "close" is already inherited
+         from the ancestor class.
+         """
+-        t,v = self.p.capture(1,1000,200)
++        sample=int(self.ui.samplesEdit.text())
++        delay=int(self.ui.delayEdit.text())
++        channel=self.inputCode()
++        duration=int(sample*delay/1000) # in ms
++        self.ui.statusbar.showMessage(
++            "Measuring data for {} seconds, please be patient...".format(duration/1000),
++            duration
++        )
++        self.ui.statusbar.repaint() # immediately shows the status
++        t,v = self.p.capture(channel, sample, delay)
+         self.curve.setData(t,v,len(t))
+         # display the result
+         self.plotWidget.replot()
+         return
+ 
++    def inputCode(self):
++        """
++        considers the radio buttons
++        @return the code for the selected input channel
++        """
++        value={
++            "A1":  1,
++            "A2":  2,
++            "IN1": 3,
++            "IN2": 4,
++            "SEN": 5,
++        }
++        radios=[r for r in self.ui.groupBox.children()
++                  if isinstance(r, QtGui.QRadioButton)]
++        for r in radios:
++            if r.isChecked():
++                return value[r.text().strip()]
++        return 0
++
+ if __name__=="__main__":
+     app=QtGui.QApplication(sys.argv)
+     window=MyWindow()

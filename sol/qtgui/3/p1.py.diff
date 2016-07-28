@@ -1,0 +1,42 @@
+--- ../0/p1.py	2016-07-28 18:31:30.916991920 +0200
++++ p1.py	2016-07-28 19:31:24.469026531 +0200
+@@ -39,9 +39,11 @@
+         self.plotWidget    = self.ui.qwtPlot
+         self.measureButton = self.ui.measureButton
+         self.closeButton   = self.ui.closeButton
++        self.saveButton   = self.ui.saveButton
+         # connect methods to buttons' click signals
+         self.measureButton.clicked.connect(self.measure)
+         self.closeButton.clicked.connect(self.close)
++        self.saveButton.clicked.connect(self.save)
+         # initialize an empty curve for the plot widget
+         self.curve         = QwtPlotCurve()
+         self.curve.attach(self.plotWidget)
+@@ -66,10 +68,25 @@
+         since the method "close" is already inherited
+         from the ancestor class.
+         """
+-        t,v = self.p.capture(1,1000,200)
+-        self.curve.setData(t,v,len(t))
++        self.t, self.v = self.p.capture(1,1000,200)
++        self.curve.setData(self.t, self.v, len(self.t))
+         # display the result
+         self.plotWidget.replot()
++        # activate the save widget
++        self.saveButton.setEnabled(True)
++        return
++        
++    def save(self):
++        """
++        save data into a file named by the content of the lineEdit
++        widget.
++        """
++        filename=self.ui.lineEdit.text()
++        with open(filename, "w") as outfile:
++           for i in range(len(self.t)):
++               outfile.write("{} {}\n".format(self.t[i], self.v[i]))
++        delay=2000 # 2000 ms = 2 seconds
++        self.ui.statusbar.showMessage("saved data to file {}".format(filename),delay)
+         return
+ 
+ if __name__=="__main__":

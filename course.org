@@ -597,6 +597,9 @@ You can also try to find the limits of the measurement box:
   series?
 - how many different inputs has the box, which numbers are they assigned?
 - etc.
+
+Propositions of solutions for this set of exercises are published in the
+"[[https://github.com/georgesk/course-affordable-science/tree/master/sol/basics][repository]]".
 ** Python libraries for science
 As we already know, Python exists for fifteen years approximately, and most
 important free and open-sourcelibraries have been made available for Python,
@@ -854,3 +857,5 @@ others touching the way captures are done, or are implementing additional featur
    up to four of them, and up to four channels can be sampled simultaneously
 10. Provide a second plot widget, which will display the power spectrum of the
     signal (i.e. amplitude vs. frequency) after a Fast Fourier Transform
+
+Propositions of solutions for this set of exercises are published in the "[[https://github.com/georgesk/course-affordable-science/tree/master/sol/qtgui][repository]]".

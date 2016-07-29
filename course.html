@@ -1,0 +1,1512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Affordable Measurement Box for Science</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Georges Khaznadar" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Affordable Measurement Box for Science</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline7">1. Booting live USB sticks</a>
+<ul>
+<li><a href="#orgheadline3">1.1. We proudly choose an &ldquo;Unsecure&rdquo; system</a>
+<ul>
+<li><a href="#orgheadline1">1.1.1. To sum it up:</a></li>
+<li><a href="#orgheadline2">1.1.2. So to sum up the summary:</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5">1.2. Disabling the &ldquo;Secure Boot&rdquo; feature</a>
+<ul>
+<li><a href="#orgheadline4">1.2.1. To disable Secure Boot:</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline6">1.3. Now our system is ready, let&rsquo;s boot with the USB stick</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">2. Why should I use a live USB stick with free software?</a>
+<ul>
+<li><a href="#orgheadline8">2.1. Ten reasons why live USB sticks are <i>good</i>:</a></li>
+<li><a href="#orgheadline9">2.2. Ten reasons why free software and open formats will be preferred:</a></li>
+<li><a href="#orgheadline10">2.3. Why would my students like to use copies of my live USB stick?</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline17">3. First use of the expEYES box</a>
+<ul>
+<li><a href="#orgheadline12">3.1. Pickup voltage: where does it come from?</a></li>
+<li><a href="#orgheadline16">3.2. experimenting with a few wires only</a>
+<ul>
+<li><a href="#orgheadline13">3.2.1. Fourier transform, page 30 of the manual</a></li>
+<li><a href="#orgheadline14">3.2.2. Using the MIC output</a></li>
+<li><a href="#orgheadline15">3.2.3. A &ldquo;standalone&rdquo; experiment, with the DC motor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline40">4. Mastering Python</a>
+<ul>
+<li><a href="#orgheadline18">4.1. Empowering oneself with Python</a></li>
+<li><a href="#orgheadline24">4.2. A guide to learn Python quickly</a>
+<ul>
+<li><a href="#orgheadline19">4.2.1. Level of difficulty</a></li>
+<li><a href="#orgheadline20">4.2.2. Examples of small projects which can be used to learn Python</a></li>
+<li><a href="#orgheadline21">4.2.3. Python and expEYES</a></li>
+<li><a href="#orgheadline22">4.2.4. Understanding the first programs for Python+expEYES</a></li>
+<li><a href="#orgheadline23">4.2.5. Proposition of exercises</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline26">4.3. Python libraries for science</a>
+<ul>
+<li><a href="#orgheadline25">4.3.1. <code>numpy</code>: the advantage of using arrays vs. plain Python lists</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline39">4.4. Python libraries for graphic user interfaces</a>
+<ul>
+<li><a href="#orgheadline27">4.4.1. General purpose GUI libraries</a></li>
+<li><a href="#orgheadline28">4.4.2. GUI design programs</a></li>
+<li><a href="#orgheadline29">4.4.3. Our first GUI layout</a></li>
+<li><a href="#orgheadline30">4.4.4. Compiling the layout file to a Python program</a></li>
+<li><a href="#orgheadline31">4.4.5. Our first working program</a></li>
+<li><a href="#orgheadline32">4.4.6. Introducing some &ldquo;meat&rdquo; to replace nonsenses of the first program</a></li>
+<li><a href="#orgheadline36">4.4.7. Details of the first modification</a></li>
+<li><a href="#orgheadline37">4.4.8. A few more code, to deal with real life problems and exceptions</a></li>
+<li><a href="#orgheadline38">4.4.9. Exercises: improve our first program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">1</span> Booting live USB sticks</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.1</span> We proudly choose an &ldquo;Unsecure&rdquo; system</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Some laptop manufacturers are applying a new policy proposed by Microsoft:
+disallow users to boot freely their operating systems, verify that the system
+loaded during the boot process bears a cryptographic signature approved by
+Microsoft. This feature is known as &ldquo;Secure Boot&rdquo;, as presumabily operating
+systems can be considered as secure, only if they are made by Microsoft company.
+</p>
+
+<p>
+So far, Microsoft company does not provide free/libre operating systems, and
+as we want to distribute live USB sticks which our students will be able to
+duplicate, understand, and even enhance, Microsoft Windows cannot be used.
+To have a more precise idea about the problem, let us take a look at the
+end-user agreement which comes with Windows 10:
+</p>
+
+<p>
+(excerpt of
+<a href="https://www.microsoft.com/en-us/Useterms/OEM/Windows/10/UseTerms_OEM_Windows_10_English.htm">https://www.microsoft.com/en-us/Useterms/OEM/Windows/10/UseTerms_OEM_Windows_10_English.htm</a>)
+</p>
+<ol class="org-ol">
+<li>[&#x2026;]</li>
+<li>Installation and Use Rights.
+<ol class="org-ol">
+<li>License. The software is licensed, not sold.[&#x2026;]</li>
+<li>[&#x2026;]</li>
+<li>Restrictions. [&#x2026;] this license does not give you any right to, and you may not:
+(i)      use or virtualize features of the software separately;
+(ii)     publish, copy (other than the permitted backup copy), rent, lease, or lend the software;
+[&#x2026;]
+(vi)    reverse engineer, decompile, or disassemble the software, or attempt to do so [&#x2026;]</li>
+</ol></li>
+</ol>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> To sum it up:</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>the software is licensed, not sold: <i>it can be free as <b>free beer</b>, but as
+we shall see further, it is not free as in <b>freedom</b>.</i></li>
+<li>students (and teachers) are not allowed to publish, neither to distribute
+copies of the operating system. Even if this may be technically feasible, one can be sued if she does it.</li>
+<li>students (and teachers) will never be allowed to understand how the
+operating system works. Its source is not published, and attempts to
+reverse engineer its binaries are forbidden by license.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2"><span class="section-number-4">1.1.2</span> So to sum up the summary:</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-center" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-center">AS WE WANT OUR STUDENTS TO BE ABLE TO UNDERSTAND</td>
+</tr>
+
+<tr>
+<td class="org-center">WHAT THEY USE AND WHAT THEY DO,</td>
+</tr>
+
+<tr>
+<td class="org-center">WE MUST DEFINITELY OPT FOR UNSECURE SYSTEMS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">1.2</span> Disabling the &ldquo;Secure Boot&rdquo; feature</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Until year 2015, vendors who wanted to apply the &ldquo;Approved by Microsoft&rdquo;
+sticker on their laptop had to enforce the &ldquo;Secure Boot&rdquo; feature by default,
+but they used to let a possibility for the users to disable this feature,
+more or less easily.
+</p>
+
+<p>
+More recently, vendors who want to get this sticker are encouraged to remove
+the possibility of disabling the &ldquo;Secure Boot&rdquo; feature. Depending on anti-trust
+law which apply in such or such country, this removal can be considered legal
+or not. However, one can now find laptops which are difficult to boot without
+the &ldquo;Secure Boot&rdquo; feature.
+</p>
+
+<p>
+Here are hints provided by Microsoft Company, about disabling the &ldquo;Secure Boot&rdquo;
+feature (source: <a href="https://msdn.microsoft.com/en-us/windows/hardware/commercialize/manufacture/desktop/disabling-secure-boot">https://msdn.microsoft.com/en-us/windows/hardware/commercialize/manufacture/desktop/disabling-secure-boot</a>)
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.2.1</span> To disable Secure Boot:</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Before disabling Secure Boot, consider whether it is necessary. From time to time, your manufacturer may update the list of trusted hardware, drivers, and operating systems for your PC. To check for updates, go to Windows Update, or check your manufacturer&rsquo;s website.
+</p>
+
+<p>
+Open the PC BIOS menu. You can often access this menu by pressing a key during the bootup sequence, such as F1, F2, F12, or Esc.
+</p>
+
+<p>
+Or, from Windows, hold the Shift key while selecting Restart. Go to Troubleshoot &gt; Advanced Options: UEFI Firmware Settings.
+</p>
+
+<p>
+Find the Secure Boot setting, and if possible, set it to Disabled. This option is usually in either the Security tab, the Boot tab, or the Authentication tab.
+</p>
+
+<p>
+Save changes and exit. The PC reboots.
+</p>
+
+<p>
+Install the graphics card, hardware, or operating system that’s not compatible with Secure Boot.
+</p>
+
+<p>
+In some cases, you may need to change other settings in the firmware, such as enabling a Compatibility Support Module (CSM) to support legacy BIOS operating systems. To use a CSM, you may also need to reformat the hard drive using the Master Boot Record (MBR) format, and then reinstall Windows. For more info, see Windows Setup: Installing using the MBR or GPT partition style.
+</p>
+
+<p>
+If you’re using Windows 8.1, you may see a watermark on the desktop alerting
+you that Secure Boot is not configured correctly. Get this update to remove
+the Secure Boot desktop watermark.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">1.3</span> Now our system is ready, let&rsquo;s boot with the USB stick</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+When possible, alongside with the &ldquo;Secure Boot&rdquo; option tweak, you can choose the
+order of bootable devices. If the live USB stick is plugged in, you may reorder
+boot methods so the USB stick is considered as prioritary (before the boot on
+hard disk, and before the boot on network interface). If you could define the
+USB stick as a prioritary boot medium, just keep it plugged in while booting.
+</p>
+
+<p>
+If you could not define the default boot sequence order, you can choose the boot
+medium on the fly: on most laptops, the key &ldquo;F8&rdquo; (or F9, or F12) is dedicated at
+this purpose. If the key is activated during the early boot process, you are
+given the choice between a few boot options in the so-called &ldquo;boot menu&rdquo;. Choose
+your USB stick, and press &ldquo;Enter&rdquo;.
+</p>
+
+<p>
+When the system can boot from the USB stick, and if the graphic card of the
+laptop is VESA compatible, you will see a welcome splash screen provided by GRUB
+(GRand UNified Bootloader), with a few options selectable by keyboard&rsquo;s arrow
+keys. Usually, you just need to wait a few seconds, or you can type &ldquo;Enter&rdquo; to
+select the first entry. Then the boot process begins, and you can see a few
+messages on the screen, during the hardware check-up. One minute later, the
+graphic desktop should be usable.
+</p>
+
+<p>
+The main menu (applications, settings, etc.) lies in the left bottom corner, you
+can begin exploring it. When an Ethernet cable is plugged in, the automatic
+configuration of network access is attempted, and chances are that you begin
+with a usable network configuration. There is also a possibility to get network
+access thanks to WIFI hotspots if any.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11"><span class="section-number-2">2</span> Why should I use a live USB stick with free software?</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">2.1</span> Ten reasons why live USB sticks are <i>good</i>:</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The following set of reasons is non-exhaustive!
+</p>
+<ol class="org-ol">
+<li>I can get an efficient system with a USB stick weighing 8GB. This is
+quite affordable. About one half of the storage space is used for the
+operating system and programs; the second half is available for the &ldquo;payload&rdquo;;</li>
+<li>When I am travelling, or just going from place to place, all I need can
+fit in my pocket;</li>
+<li>As far as I want to keep my USB stick <i>private</i>, I know that no spy program
+hosted by the local computer will access my data;</li>
+<li>Duplicating a USB stick (and all of its features) is a matter of a quarter
+of an hour;</li>
+<li>With the KNOPPIX-based live system, I can also duplicate the operating
+system and the programs without disclosing private data;</li>
+<li>When used in an educational context, USB live sticks provide an interesting
+feature: students can replay an exercise, or finish it outside the classroom,
+with exactly the same software environment they were using previously;</li>
+<li>A live USB stick can be used to boot a computer when it cannot boot
+on its hard disk for any reason; it is a valuable rescue system;</li>
+<li>A live USB stick can survive in a washing machine; a computer cannot;</li>
+<li>A live USB stick can survive strong accelerations, like falling downstairs; a
+computer cannot;</li>
+<li><b>Small is beautiful (see figure <a href="#orgparagraph1">1</a>).</b></li>
+</ol>
+
+
+<div id="orgparagraph1" class="figure">
+<p><img src="./img/usb-stick.jpg" alt="usb-stick.jpg" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Don&rsquo;t keep more in your pocket</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">2.2</span> Ten reasons why free software and open formats will be preferred:</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>Free software is defined by a list of four elementary freedoms,
+<ol class="org-ol">
+<li>the freedom to use the software in any case (for example, not only in
+educational context);</li>
+<li>the freedom to learn how the software functions. That implies an access to
+its source code;</li>
+<li>the freedom to make derivative works based on the software;</li>
+<li>the freedom to copy and distribute the software, either in its original
+form or as a derivative work;</li>
+</ol></li>
+<li>As, with the definition above, there is no limitation of use (the software
+does not need to be shared costlessly), people can earn their life when
+working with free software;</li>
+<li>As the source of the software must be delivered with it, fair interactions
+can be organized between competitors; every company can access specifications
+about open formats being used; however, competitors cannot build their wealth
+upon secrecy; the cost of the software must be justified by its quality;</li>
+<li>As the source of the software must be transmitted along, the software becomes
+&ldquo;eternal&rdquo;, in the sense that you can always hire a skilled person to adapt
+the software and maintain it if a previous author or vendor fails to do it;</li>
+<li>Free software can be audited for security issues by specialists, who can know
+details of its design by studying its source; if a security issue is
+detected, it can be fixed by the same people;</li>
+<li>When the source of the software is written in a &ldquo;human readable&rdquo; form, one
+can check that there is no spyware included;</li>
+<li>When the software is used to make science (or to teach science), it is not
+a &ldquo;black box&rdquo;; everyone may watch its internals, and experiments can be
+readily reproduced;</li>
+<li>When there is no constraint on copies or instances of a running software,
+license management is way cheaper;</li>
+<li>The ability for everyone to access the source of the software is a strong
+incentive for progress and software quality;</li>
+<li>Most non-free software from the last ten years is now dead; on the contrary,
+free software, even when it is old, can be revived with some work; the same
+is true with data which were saved in non-open formats, if nobody took the
+opportunity to convert them to a new format when it was still possible.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">2.3</span> Why would my students like to use copies of my live USB stick?</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Here are a few &ldquo;irrational reasons&rdquo; why my students like my system based on
+a live USB stick:
+</p>
+<ul class="org-ul">
+<li>Thanks to <a href="https://en.wikipedia.org/wiki/Klaus_Knopper">Klaus Knopper</a>&rsquo;s efforts, every derivative of KNOPPIX comes with an
+excellent support of accelerated graphic cards, and the desktop is managed by
+Compiz. If you do not know what Compiz provides, you cannot understand why
+your students are playing with dozens of applications open in separate
+windows, like jugglers with their balls.</li>
+<li>Creating awesome graphics is a matter of seconds; open Gimp, then
+File &rarr; Create &rarr; Logos &rarr; (choose a style) &rarr; (type your logos&rsquo;s text)  &rarr; click,
+<i>et voilà</i>!</li>
+<li>They can cheat when preparing their homework! For example, the application
+wxMaxima allows them to find immediately the roots of most equations. Of
+course, when students &ldquo;begin to cheat&rdquo;, the teacher just needs to propose them
+more creative assignments: they become able to solve problems which are
+usually thought as out of their reach at their education level.</li>
+</ul>
+<p>
+And now, here here is at least one &ldquo;rational reason&rdquo; why my students do use my
+system based on a live USB stick:
+</p>
+<ul class="org-ul">
+<li>They are assigned homework which can precisely be done with the help of
+that live USB stick.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">3</span> First use of the expEYES box</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">3.1</span> Pickup voltage: where does it come from?</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<div id="orgparagraph2" class="figure">
+<p><img src="./img/expeyes-jr00.png" alt="expeyes-jr00.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Main window of expEYES-Jr features an oscilloscope screen</p>
+</div>
+
+<p>
+Boot your computer with the live USB stick; bind the expEYES Jr box to the
+computer with a USB cable, launch the application expEYES Junior (probably
+a menu item under Education &rarr; Science). The window which appears should bear
+a mention to the detected hardware in its title bar, and feature an oscilloscope
+screen with one track enabled. In figure <a href="#orgparagraph2">2</a>, one can read &ldquo;Four
+Channel CRO+ found expEYES-Junior on <code>/dev/ttyACM0</code>&rdquo;, which means that the
+application &ldquo;CRO+&rdquo; (an enhanced Cathode-Ray Oscilloscope) has detected the box
+named expEYES-Junior, via the serial port known as <code>/dev/ttyACM0</code>.
+</p>
+
+<p>
+Take an insulated wired in your hand (do not touch directly the metal), and
+touch the analogic input A1 with the bare end of the wire. The track on the
+oscilloscope screen should change a little. Then change the duration of the
+sampled data set, by dragging the slider &ldquo;ms/div&rdquo; to the right (this slider is
+on the left of the window, just below the list of channels CH1 &#x2026; CH4). When
+the duration of the sweep is well tuned, you shall see a few wave periods in the
+oscilloscope&rsquo;s screen.
+</p>
+
+
+<div id="orgparagraph3" class="figure">
+<p><img src="./img/expeyes-jr01.png" alt="expeyes-jr01.png" />
+</p>
+<p><span class="figure-number">Figure 3:</span> Pickup voltage, time sweep: 5 ms/div</p>
+</div>
+
+<p>
+Click the &ldquo;Save Traces to&rdquo; button: a file named <code>cro.txt</code> (or some other name if you
+change the default) will be written. You can take a look at this file, with
+various tools. Try to open the file with the following applications:
+</p>
+<ol class="org-ol">
+<li>inside a Terminal, type the command <code>cat cro.txt</code> (and type &ldquo;Enter&rdquo;): you will
+be provided many lines of text, which you can scroll up and down with the
+vertical slider of the terminal. The command <code>cat</code> is a very simple command: it
+opens one or more files given as arguments, and concatenates their contents
+to the standard output, which is the terminal&rsquo;s display in that case.</li>
+<li>inside the same terminal, type the command <code>less cro.txt</code> (and type &ldquo;Enter&rdquo;):
+you will be provided the same set of lines, but you are using a so-called
+&ldquo;pager&rdquo; (the command <code>less</code> calls the default pager of the system). You can
+access previous and following lines by using vertical arrow keys, or Page-Up
+Page-Down keys. Type &ldquo;Q&rdquo; to stop the pager program and come back to the
+terminal&rsquo;s prompt.</li>
+<li>launch the application Qtiplot (probably available under the menu Education
+&rarr; Science). Then, import data from the file <code>cro.txt</code>: Window&rsquo;s Menu &rarr; File &rarr;
+Import &rarr; import an ASCII file, or quicker with the graphic button which does
+the same (an icon with &ldquo;123&rdquo; written above), or else with the keyboard
+shortcut Ctrl+K. Chose the right file, import it. If numbers are not well
+imported, you may want to change some import options, like the number&rsquo;s input
+format. The values from the file <code>cro.txt</code> will be displaied in a data
+grid. You can select both columns with the mouse, then plot the data easily
+(either by calling a contextual menu by a right click, or by using the
+&ldquo;Plot&rdquo; window&rsquo;s menu). The application Qtiplot has many features to analyze
+data series, which deserve a detailed study.</li>
+<li>you can also import the data with LibreOffice&rsquo;s spreadsheet program, known as
+<code>calc</code>. When data are there, other features of the spreadsheet can be enjoied.</li>
+</ol>
+
+
+<div id="orgparagraph4" class="figure">
+<p><img src="./img/cat-less-qtiplot.png" alt="cat-less-qtiplot.png" />
+</p>
+<p><span class="figure-number">Figure 4:</span> The same data, accessed by &ldquo;cat&rdquo;, &ldquo;less&rdquo; and &ldquo;qtiplot&rdquo;</p>
+</div>
+
+<p>
+While maintaining the right sampling settings, use the left mouse button
+to drag the symbol &ldquo;CH1&rdquo; to the symbol &ldquo;FIT&rdquo; in the left part of the screen. The
+application will begin to fit the sampled data with a template function based on
+a sinus. The amplitude and the frequency should appear in &ldquo;real time&rdquo; near the
+oscilloscope&rsquo;s screen.
+</p>
+
+<p>
+In order to reply to the title&rsquo;s question, while maintaining the wire connected
+to the A1 input, one hand on the insulating part of the wire, move your body, or
+just a member, nearer or further from areas where you know that power lines are
+embedded. If the &ldquo;FIT&rdquo; feature is enabled, you may notice that the amplitude
+depends tightly on the proximity between your body and power lines, while the
+frequency remains mostly unchanged. One can read &ldquo;A1: 0.19 V, 50.8 Hz&rdquo;
+in the middle of the right part of the window, in figure <a href="#orgparagraph3">3</a>.
+</p>
+
+<p>
+Another question which is worth a short
+documentation search for students is &ldquo;why precisely 50 Hz?&rdquo;. Wikipedia&rsquo;s web
+site gives valuable information about the history of that frequency standard.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.2</span> experimenting with a few wires only</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+ExpEYES-Junior is a measurement box, but not only that: it is enhanced by
+numerous generators. By the way, the program <code>expeyes-junior</code> comes with some
+powerful features, like one-click Fourier transform.
+</p>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">3.2.1</span> Fourier transform, page 30 of the manual</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+As a first try, let us open the <i>User Manual</i>, page 30.
+It is a simple manipulation about Fourier transforms, for a sinusoidal and for
+a square wave.
+</p>
+
+<p>
+The manual says to use two wires, one from SINE to A1, the second from SQR1 to
+A2. I rather use four short wires with crocodile clips, and do the same by
+joining clips accordingly.
+</p>
+
+<p>
+When the box is bound to the computer, and the wires are in place, please launch
+the program expeyes-junior. Figure <a href="#orgparagraph5">5</a> shows two oscilloscope
+tracks, we can see that SQR1 is enabled, with a frequency of 150 Hz.
+</p>
+
+<p>
+The symbols A1 and A2 in the left column of the window have been dragged with
+the mouse and dropped on the symbols CH1 and CH2 respectively.
+</p>
+
+
+<div id="orgparagraph5" class="figure">
+<p><img src="./img/exp-wave00.png" alt="exp-wave00.png" />
+</p>
+<p><span class="figure-number">Figure 5:</span> Two tracks of the oscilloscope are used, the frequency of both signals are quite the same</p>
+</div>
+
+<p>
+In order to get a Fourier transform of the signals, the manipulation is very
+simple: when you drag the symbol CH1 on the neighboring symbol FTR, you get
+a new window with figure <a href="#orgparagraph6">6</a>, and when you drag CH2 on FTR, you get
+another window with figure <a href="#orgparagraph7">7</a>. The fast Fourier transform is done
+quickly by the application. You can notice more peaks in the FFT plot of the
+square wave. The first peak is a frequency 0 (it is due to a non-null DC
+component), and other peaks are at frequencies which build an arithmetic progression.
+</p>
+
+
+<div id="orgparagraph6" class="figure">
+<p><img src="./img/exp-wave01.png" alt="exp-wave01.png" />
+</p>
+<p><span class="figure-number">Figure 6:</span> Fourier transform of the SINE wave</p>
+</div>
+
+<div id="orgparagraph7" class="figure">
+<p><img src="./img/exp-wave02.png" alt="exp-wave02.png" />
+</p>
+<p><span class="figure-number">Figure 7:</span> Fourier transform of SQR1&rsquo;s signal at 150 Hz</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">3.2.2</span> Using the MIC output</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Install a wire (or two wires bound by crocodile clips) between the MIC socket,
+which is the outpout of an amplified microphone, and A1, the first analog input.
+Then, you must provide some &ldquo;musical&rdquo; sound near the microphone, which is placed
+at the left bottom end of the expEYES box. For example, use some whistle, or
+sing a single tune during a few seconds. Adjust the time sweep in order to have
+a few waves in the oscilloscope&rsquo;s display. Begin to drag the symbol CH1 above
+the symbol FTR, and drop it when the oscilloscope&rsquo;s track is well shaped. This
+records data in two files: <code>cro.dat</code>, which contains original data resampled with
+a time step which ensures that a good FFT can be done, and <code>fft.dat</code>, which is the
+fast fourier transform of the same data to give a power <i>vs.</i> frequecy spectrum.
+</p>
+
+<p>
+The figures <a href="#orgparagraph8">8</a> to <a href="#orgparagraph9">11</a> show data recorded,first with
+a voiced &ldquo;AAA&rdquo;, then with a mouth-wistled still tune of higher frequency.
+</p>
+
+
+<div id="orgparagraph8" class="figure">
+<p><img src="./img/exp-wave03.png" alt="exp-wave03.png" />
+</p>
+<p><span class="figure-number">Figure 8:</span> A voiced &ldquo;AAA&rdquo;: the original signal</p>
+</div>
+
+<div id="orgparagraph10" class="figure">
+<p><img src="./img/exp-wave04.png" alt="exp-wave04.png" />
+</p>
+<p><span class="figure-number">Figure 9:</span> A voiced &ldquo;AAA&rdquo;: fast fourier transform</p>
+</div>
+
+
+<div id="orgparagraph11" class="figure">
+<p><img src="./img/exp-wave05.png" alt="exp-wave05.png" />
+</p>
+<p><span class="figure-number">Figure 10:</span> Mouth-whistled still tune: the original signal</p>
+</div>
+
+<div id="orgparagraph9" class="figure">
+<p><img src="./img/exp-wave06.png" alt="exp-wave06.png" />
+</p>
+<p><span class="figure-number">Figure 11:</span> Mouth-whistled still tune: fast fourier transform</p>
+</div>
+
+<p>
+Further is (figure <a href="#orgparagraph12">12</a>) another analysis of a mouth-whistled tune, done
+with the file <code>cro.dat</code> which was imported (as ASCII data) in the application
+<code>qtiplot</code>. You can notice that the abscissa for frequency should be kHz (not Hz),
+because the unit for time exported from <code>expeyes-junior</code> is millisecond, not
+second.
+</p>
+
+
+<div id="orgparagraph12" class="figure">
+<p><img src="./img/exp-wave07.png" alt="exp-wave07.png" />
+</p>
+<p><span class="figure-number">Figure 12:</span> Another mouth-whistled still tune, analyzed by qtiplot.</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><a id="ID-fef7fc86-e6a0-4170-ae48-dad0ffc2e80e"></a><span class="section-number-4">3.2.3</span> A &ldquo;standalone&rdquo; experiment, with the DC motor</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+The expEYES-Junior kit comes with a DC motor (which is ordinarily used to drive
+a CDROM); this DC motor can act as a low voltage motor, but it is also an
+efficient tachymeter, that is, an angular velocity probe: it outputs a voltage
+which is proportional to its angular velocity, and as it has few internal
+friction, it can be used to measure the movement of a pendulum. When the main
+application <code>expeyes-junior</code> is running, click on the &ldquo;EXPERIMENTS&rdquo; button:
+a submenu appears, where you must activate the entry named &ldquo;Pendulum Waveform&rdquo;.
+</p>
+
+<p>
+The window of the main application remains in place, but it looses the control
+of the experiment box, which is given to a specialized application. To enjoy the
+secondary application, you must make the following connections:
+</p>
+
+<ol class="org-ol">
+<li>from inverting amplifier&rsquo;s OUT plug to analog entry A1, with one wire;</li>
+<li>the motor&rsquo;s wires are connected between the ground (GND), and the input (IN)
+of the inverting amplifier.</li>
+</ol>
+
+<p>
+Then, you can check that the second application begins to record voltage data as
+soon as the motor has enough angular velocity.You can stop the record at any
+time with the &ldquo;STOP&rdquo; button.
+</p>
+
+<p>
+Put the motor&rsquo;s axis horizontal, near the edge of a table, and grasp firmly the
+motor&rsquo;s body. Fit the motors&rsquo;s axis to a pendulum; there are many ways to do it,
+all are correct, as long as most of the mass ofthe pendulum is far enough from
+the motor&rsquo;s axis, and that the pendulum remains tightly fixed to the motor&rsquo;s
+axis during oscillations.
+</p>
+
+<p>
+Here are two easy and cheap solutions used by the author:
+</p>
+<ul class="org-ul">
+<li>either a metal pendulum coupled to the motor&rsquo;s axis with a small and strong
+enough magnet,</li>
+<li>or a wood stick fastened to the motor&rsquo;s axis with a screw for wood of diameter
+2 mm, with some relatively heavy clip fastened at the other end of the stick,
+see figure <a href="#orgparagraph13">14</a>.</li>
+</ul>
+
+<p>
+When the motor is int good position, slowly put the pendulum far fromits
+equilibrium position, and let it go freely. The angular velocity probed by the
+motor goes quicly above the threshold which triggers the record&rsquo;s begin. The
+record&rsquo;s duration is 15 seconds by default (but you can change it). When the
+record is finished, you should click on two buttons, first &ldquo;SAVE To&rdquo;, later
+&ldquo;FIT&rdquo;. So, you get a file with the data recorded, for further analysis, and the
+FIT method gives you two interesting coefficients: the oscillation&rsquo;s
+pseudo-frequency, and its damping coefficient; see figure <a href="#orgparagraph14">13</a>.
+</p>
+
+<p>
+The last figure of this section (<a href="#orgparagraph15">15</a>) shows the data from the file
+<code>pendulum.dat</code> reworked with <code>qtiplot</code>&rsquo;s analysis tools (Analysis &rarr; Fit Wizard
+&#x2026; define a user fit). You can see that the choosen formula is
+\(A1 * \exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)\); so, it is a damped sinusoidal
+function, with damping coefficient \(A2\), frequency \(A3\), and phase \(A4\); \(A1\) is an
+arbitrary multiplying factor. Initial values to perform the fit were \(A1=1.5\)
+(the order of magnitude of the initial amplitude), \(A2=10\), as the movement is
+significantly damped within 10 seconds, \(A3=1\) since the pseudo-frequency is
+near \(1\, Hz\), and \(A4=1.5\) (which is near \(\pi/2\)). The fitting algorithm of <code>qtiplot</code>
+yelds a damping factor \(A2=1.2\, s\) and a frequency \(A3=1.069\, Hz\), with an
+excellent correlation factor: \(R^2=0.993\). The precision is greater for the
+frequency than for the damping factor.
+</p>
+
+
+<div id="orgparagraph14" class="figure">
+<p><img src="./img/pendulum00.png" alt="pendulum00.png" />
+</p>
+<p><span class="figure-number">Figure 13:</span> Record of a pendulum&rsquo;s angular velocity</p>
+</div>
+
+<div id="orgparagraph13" class="figure">
+<p><img src="./img/pendulum01.png" alt="pendulum01.png" />
+</p>
+<p><span class="figure-number">Figure 14:</span> Pendulum made with a wood stick, a screw and a clip.</p>
+</div>
+
+<div id="orgparagraph15" class="figure">
+<p><img src="./img/pendulum02.png" alt="pendulum02.png" />
+</p>
+<p><span class="figure-number">Figure 15:</span> Reworking the data with qtiplot.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">4</span> Mastering Python</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Python is an interpreted computer language created by by Guido van Rossum at
+Centrum Wiskunde &amp; Informatica (CWI) in the Netherlands, fifteen years ago
+approximately. Currently thislanguage is considered as excellent for dealing
+with scientific and experimental data, and most important software libraries
+which can be used it that area have been llinked to Python and areexposing
+well-documented Programming Interfaces.
+</p>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">4.1</span> Empowering oneself with Python</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Archimedes said &ldquo;<i>Give me a place to stand and with a lever I will move the whole
+world</i>&rdquo;. He was probably thinking about Python ;).
+</p>
+
+<p>
+Computers come now with unprecedented arithmetic power, and there are clever
+programs which make it usable for calculus also. Of course, students must know
+how to make operations by themselves, but when thousands of calculations are
+necessary, controlling a computer is the solution. Python is one of the shortest
+ways to control this power.
+</p>
+
+<p>
+Incidentally,  the way Python programs must be written makes them often quite
+readable by non-aware people. I could discuss with a teacher of philosophy who
+showed me a source program and pointed one precise part, saying &ldquo;there is an
+error, right there!&rdquo;.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">4.2</span> A guide to learn Python quickly</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">4.2.1</span> Level of difficulty</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+Learning to walk with one&rsquo;s legs is a non-trivial task, most humans achieve it
+in their early youth. Driving a helicopter is also a non-trivial task, but few
+humans achieve it, even if it might give them huge advantages. There are reasons
+why few persons can learn to drive a helicopter: the learning environment is
+very expensive, and also somewhat risky: a beginner can destroy a helicopter and
+herself in the same run with some probability.
+</p>
+
+<p>
+Learning arithmetic operations is also a tough task, which most persons achieve
+in developed countries. Controlling a computer, compared to basic arithmetics,
+is quite like driving a helicopter, compared to walking. However, unlike the
+helicopter example, it is much safer: Python is a free-libre program, you can
+get it gratuitously; accidentally breaking a computer while learning
+computer science with Python is most unlikely.
+</p>
+
+<p>
+In a few words, the best guide to learn Python quickly is your own curiosity,
+as long as you choose a project which makes sense. Good tutorials exist in many
+places, here is the tutorial of the Python Fundation:
+<a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a>.
+</p>
+
+<p>
+Currently, there are two families in the Python language, known as Python2 and
+Python3; the fork between both families has begun a few years ago. If you
+are beginning, you should definitely learn Python3, as it is the only branch
+which will be maintained and developed in the future, even if many efforts are
+still deployed to help the large community of people who are still using Python2.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">4.2.2</span> Examples of small projects which can be used to learn Python</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ol class="org-ol">
+<li>Repeat writing the same line of text many times</li>
+<li>Write lines of text made of some character, for example a star (*), which
+will build some interesting shape when watched from some distance: a ball,
+a robot, a toy, a pet, etc.</li>
+<li>Produce automatically arithmetic tables: for addition, multiplication,
+etc. and why not, logarithms too?</li>
+<li>Create some interactive game: the computer asks a question, the player
+replies, the further exchanges depend on the replies, etc. For instance, the
+computer chooses a random number within a range, and the player has a limited
+number of questions left to know which it is &#x2026;</li>
+<li>Draw an elephant, which will cross the screen, coming from the left and going
+to the right (or the opposite)</li>
+<li>Create a structure which can be used to manage your collection of music
+records, and two different routines to display collection&rsquo;s items, with more
+or less details</li>
+<li>Create an interactive program which allows one to query your collection&rsquo;s
+items, based on search criteria (author, publisher, duration, music style,
+etc.)</li>
+<li>Write a program which quickly solves equations of degree one, two &#x2026; three,
+four (if you dare to go that far)</li>
+<li>Write a program able to say how many different colors there are in a picture</li>
+<li>Write a program which automatically detects a human face in a given picture</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">4.2.3</span> Python and expEYES</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+Your computer does not work in &ldquo;real time&rdquo;: that means that when you begin some
+task, you cannot require with certitude a precise duration for that task to
+complete. For example, if you want your computer to measure a thousand times the
+voltage of a precise pin during one second, you cannot be sure that it will
+perform this operation uninterrupted.
+</p>
+
+<p>
+This is why the physical measurements are done inside expEYES box with
+a separate program designed to work in <i>real time</i>. Then, your computer can ask
+the box to make the thousand measurements, they will be done
+uninterrupted. Later, the results will be given back to your computer, possibly
+with some interruptions, but you are sure that the data were captured on
+a regular time basis. As the computer, despite its many interruptions, works
+very very fast, you experience a rich feedback, not unlike the feeling you can
+have with an oscilloscope. However, because of its calculation capability,
+your computer can go way further than an oscilloscope, and this is why Python is
+used, to enjoy the many libraries which can crunch numbers for us.
+</p>
+
+<p>
+Now, let us begin with Python+expEYES: let us open the application <code>geany</code> (a
+good development environment for programmers&#x2026; Windows users will probably use
+<code>Notepad++</code>), and type the few lines presented in figure <a href="#orgparagraph16">16</a>. Then, save them
+with the filename <code>p1.py</code>. As soon as the name of the file is defined, <code>geany</code> will use
+colors and styles to make the syntax of the source file more evident. For
+example, key words like <code>import</code>, <code>print</code>, are displaid in a particular fashion.
+</p>
+
+
+<div id="orgparagraph16" class="figure">
+<p><img src="./img/ej01.png" alt="ej01.png" />
+</p>
+<p><span class="figure-number">Figure 16:</span> Our first program with Python+expEYES ever.</p>
+</div>
+
+<p>
+When the file is saved, press the &ldquo;F5&rdquo; key (it is a shortcut to launch
+the program which has been edited). You will get a heap of numbers written in
+a <i>Terminal</i>, and you will be prompted to press the &ldquo;Enter&rdquo; key. When you press
+it, the <i>Terminal</i> is closed. The series of numbers were a sequence of voltages
+measured very fast on the analog input A1. If you want more variety inside this
+sequence of numbers, you can connect a wire to this input and act exactly as for
+the previous experiment <a href="#orgheadline12">"Pickup voltage"</a>. The number sequence can be impressive,
+but it not as expressive as a good plot. In order to make a plot, you need three
+more lines in the program. Save the previous program with a new file name, like
+<code>p2.py</code>. So, the first program still exists and can be used as a begin point for
+other variations. Then add three more lines, as showed in figure
+<a href="#orgparagraph17">17</a>. Save the program and type &ldquo;F5&rdquo;. If there is some &ldquo;pickup voltage&rdquo;, you
+should get a plot like in figure <a href="#orgparagraph18">18</a>.
+</p>
+
+
+<div id="orgparagraph17" class="figure">
+<p><img src="./img/ej02.png" alt="ej02.png" />
+</p>
+<p><span class="figure-number">Figure 17:</span> The second program with Python+expEYES.</p>
+</div>
+
+<div id="orgparagraph18" class="figure">
+<p><img src="./img/ej03.png" alt="ej03.png" />
+</p>
+<p><span class="figure-number">Figure 18:</span> The plot given by the second program</p>
+</div>
+
+<p>
+You can notice that the plot comes in a separate window which has its own close
+button, and that you will have to close the <i>Terminal</i> too after the end of the
+program.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">4.2.4</span> Understanding the first programs for Python+expEYES</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<p>
+Let us comment the few lines in the program <code>p1.py</code>:
+</p>
+<dl class="org-dl">
+<dt><code>import expeyes.eyesj</code></dt><dd>this declares that the library which drives
+expEYES-Junior will be used; the library&rsquo;s name is expeyes.eyesj, if we
+want a shorter alias, it is possible to declare it, more about that later &#x2026;</dd>
+<dt>p=expeyes.eyesj.open()</dt><dd>this line calls the function <code>open()</code> from the library
+which drives expEYES-Junior, and the resulting object is stored into the
+<i>variable</i> <code>p</code>; hence, <code>p</code> contains the intialized driver to deal with the
+measurement box.</dd>
+<dt>t, v=p.capture(1,100,2000)</dt><dd>this line calls the method <code>capture()</code> from the
+driver, with three parameters:
+<ol class="org-ol">
+<li><code>1</code> is the number of the input channel; <code>1</code> stands for channel A1</li>
+<li><code>100</code> is the number of samples to collect: a hundred of measurements are
+requested</li>
+<li><code>2000</code> is the duration between two consecutive measurements: measurements
+will be done every \(2000\, ns = 2\, \mu s\); so the total duration of the
+&ldquo;experiment&rdquo; is requested to be \(200\, \mu s\). The results are assigned to
+<i>variables</i> <code>t</code> and <code>v</code>, <code>t</code> is the list of timestamps, <code>v</code> is the liste of measured
+voltages.</li>
+</ol></dd>
+<dt><code>print(v)</code></dt><dd>this line asks to print the hundred values measured in the
+<i>standard output</i> of the program, which is the <i>Terminal</i>, there.</dd>
+</dl>
+
+<p>
+Now let us comment the new lines in the program <code>p2.py</code>:
+</p>
+<dl class="org-dl">
+<dt><code>import expeyes.eyesj as ej</code></dt><dd>exactly the same as in <code>p1.py</code>, but the alias <code>ej</code>
+     will be used to name the library.</dd>
+<dt><code>from pylab import *</code></dt><dd>this line means that every objects and functions of the
+library <code>pylab</code> will be available directly in the program. Such an
+instruction may cause problems if two libraries provide same names for
+different functions. Here there will be no problem because the program is
+very short. The functions which will be used are <code>plot()</code> and <code>show()</code>.</dd>
+<dt>p=ej.open()</dt><dd>exactly the same as in <code>p1.py</code>, you can notice that the alias <code>ej</code>
+     is used there.</dd>
+<dt>plot(t,v)</dt><dd>this is the call to a function provided by the library <code>pylab</code>, it
+builds a very simple plot with the series of values <code>t</code> as abscissa and the
+series of values <code>v</code> as ordinate.</dd>
+<dt><code>show()</code></dt><dd>this call creates a graphic window to contain the plot, and allow
+users to interact with it. This window &ldquo;lives&rdquo; independently of the main
+program.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">4.2.5</span> Proposition of exercises</h4>
+<div class="outline-text-4" id="text-4-2-5">
+<p>
+as you can see, the plot in figure <a href="#orgparagraph17">17</a> is not very precise, and some
+features of the expected waveform are not as detailed as they might be. You can
+make a series of exercises, in order to:
+</p>
+<ul class="org-ul">
+<li>make more measurements, in the same total time</li>
+<li>make a longer measurement, with more samples but same laps of time</li>
+</ul>
+<p>
+You can also try to find the limits of the measurement box:
+</p>
+<ul class="org-ul">
+<li>which is the shortest duration between two consecutive measurements?</li>
+<li>how many measurements can be stored in the box for a one-shot measurement
+series?</li>
+<li>how many different inputs has the box, which numbers are they assigned?</li>
+<li>etc.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">4.3</span> Python libraries for science</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+As we already know, Python exists for fifteen years approximately, and most
+important free and open-sourcelibraries have been made available for Python,
+thanks to a versatile toolset which allows one to link C and C++ libraries to
+Python language.
+</p>
+
+<p>
+You can access a good review about Python Libraries for Science at
+<a href="https://wiki.python.org/moin/NumericAndScientific">https://wiki.python.org/moin/NumericAndScientific</a>. Here are the two first
+entries of this webpage, as captured in August 2016:
+</p>
+<dl class="org-dl">
+<dt>NumPy</dt><dd><a href="http://www.numpy.org/">http://www.numpy.org/</a> &#x2013; Numerical Python adds a fast, compact,
+multidimensional array facility to Python. [&#x2026;]</dd>
+<dt>SciPy</dt><dd><a href="http://www.scipy.org/">http://www.scipy.org/</a> SciPy is an open source library of scientific
+tools for Python. SciPy supplements the popular NumPy module, gathering
+a variety of high level science and engineering modules together as
+a single package. SciPy includes modules for linear algebra, optimization,
+integration, special functions, signal and image processing, statistics,
+genetic algorithms, ODE solvers, and others.</dd>
+</dl>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">4.3.1</span> <code>numpy</code>: the advantage of using arrays vs. plain Python lists</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+When one uses plain Python, she can manipulate series of numbers as so-called
+lists: for example the 10 first even integers are this Python list:
+<code>[0,2,4,6,8,10,12,14,16,18]</code>; such a list can have a memory footprint bigger than
+ten times the place necessary to store an integer, because Python lists can
+contain any type of element (for example, a list can contain another list), and
+such a flexibility requires more memory space and sometimes slower algorithms to
+take in account all the possibilities.
+</p>
+
+<p>
+The module numpy allows you to declare or to construct numeric arrays, which
+contain only numbers, and which can be computed efficiently. The figure <a href="#orgparagraph19">19</a>
+shows the code to get the same numbers as above in an array.
+</p>
+<p>
+<img src="./img/np0.png" alt="np0.png" />
+The <code>arange</code> function allows us to build very easily long arithmetic
+series. For example <code>arange(0,2,1e-3)</code> yelds an array of two thousand numbers.
+</p>
+
+<p>
+Numpy provides also mathematic functions and operators which work directly on
+arrays; here are two example programs, in figures <a href="#orgparagraph20">19</a> and <a href="#orgparagraph21">20</a>.
+</p>
+
+<p>
+Both compute <code>y=2*x</code> and <code>z=sin(x)</code> for any element of an arithmetic series, we can
+notice that <code>numpy</code> allows us to use a more clear programming style!
+</p>
+
+
+<div id="orgparagraph20" class="figure">
+<p><img src="./img/np1.png" alt="np1.png" />
+</p>
+<p><span class="figure-number">Figure 19:</span> some math with number series, without numpy</p>
+</div>
+
+
+<div id="orgparagraph21" class="figure">
+<p><img src="./img/np2.png" alt="np2.png" />
+</p>
+<p><span class="figure-number">Figure 20:</span> some math with number series, and numpy</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">4.4</span> Python libraries for graphic user interfaces</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Some Python modules used for science can provide good tools for user
+interaction: for example, the module <code>pylab</code> provides two functions, <code>plot()</code> and
+<code>show()</code> which are very handy to get a simple plot in an interactive window: users
+can zoom in some part of the plot, and save it in a file, etc.
+</p>
+</div>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">4.4.1</span> General purpose GUI libraries</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+However user interfaces must often contain some controls to let the user trigger
+a physic interaction, or to launch some process on captured data. So, general
+purpose GUI (Graphic User Interface) modules are useful. A good GUI library
+allows one to internationalize easily a program, making it usable by wide
+communities. Additionnally, good GUI libraries inherit knowledge about
+human-machine interaction, and the author of programs can focus her attention
+about things which really matter for the end user: creating an <i>intuitive
+interface</i>, <i>i.e.</i> reusing popular widgets with well-known behaviors, defining
+contextual help phrases, making the current status well understandable, etc.
+</p>
+
+<p>
+One good practice is to develop separately the user interface&rsquo;s layout and the
+program&rsquo;s processes which do the &ldquo;backoffice work&rdquo;.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">4.4.2</span> GUI design programs</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<p>
+Some popular GUI libraries come with a specialized application to design the GUI
+layout. For Gnome Toolkit libraries (Gtk), it is known as <a href="https://glade.gnome.org/"><code>glade</code></a>; we shall
+make some exercises below with <a href="http://doc.qt.io/qt-5/qtdesigner-manual.html"><code>designer</code></a>, which goes with Qt. Both <code>Gtk</code> and <code>Qt</code>
+libraries work well with Python, and they can target a wide list of platforms,
+ranging from desktop and laptop computers with various operating systems, to
+mobile devices.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">4.4.3</span> Our first GUI layout</h4>
+<div class="outline-text-4" id="text-4-4-3">
+<p>
+Let us create our first GUI layout with <code>designer</code>, which will feature:
+</p>
+<ol class="org-ol">
+<li>one area to plot scientific data</li>
+<li>one button to launch a specific process</li>
+<li>one button to quit the application.</li>
+</ol>
+
+<p>
+To begin with, the appplication <code>designer</code> must be launched without any option. So
+it will display a menu and we shall choose the <code>Main Window</code> item. An empty Main
+Window prototype appears in the center of the screen, collections of widgets are
+proposed in a column at the left side.
+</p>
+
+<p>
+Scroll down this column, select the widget known as <code>QwtPlot</code> which is part of the
+&ldquo;Qwt widgets&rdquo; family, and drag its icon to the top of the Main Window prototype.
+</p>
+
+<p>
+Then scroll up the widget column, select a <code>Horizontal layout</code> widget, and drag it
+onto the Main Window, drop it below the <code>QwtPlot</code> footprint. Then, you must drag
+and drop two <code>Push Button</code> widgets onto the <code>Horizontal Layout</code>. The first one is
+easily dropped. In order to get a usable structure, the second one must be
+dropped when a dark blue line appears on the west or on the east border of the
+<code>Horizontal Layout</code>, meaning that the second button will be organized horizontally
+either on the right or on the left of the previous button. If you want the
+buttons to be packed on the right, you can drag and drop a <code>Horizontal Spacer</code>
+widget at the east border of the <code>Horizontal layout</code>. Then, click on some free
+area of the Main Window to select it, and click on the &ldquo;Vertical Layout&rdquo; <span class="underline">tool
+button</span>, in the upper part of the window, just below the menus. This will
+organize all of the Main Window.
+</p>
+
+<p>
+Finally, save your work (File &rarr; Save) with some filename like <code>p1.ui</code>
+</p>
+
+<p>
+It is better to add more attributes to the push buttons. Click on the left push
+button to select it, then browse its attributes in the middle of the right
+column of <code>designer</code>&rsquo;s window. There, you should modify the button&rsquo;s name to
+&ldquo;measureButton&rdquo; (QObject &rarr; objectName) and its label to &ldquo;Measure&rdquo;
+(QAbstractButton &rarr; text). Select the right push button, and make similar
+modifications: its name should be &ldquo;closeButton&rdquo; and its label should be &ldquo;Close&rdquo;.
+</p>
+
+<p>
+Save you work again. It is finished, you can close the application <code>designer</code>.
+</p>
+
+<p>
+The suffix <code>.ui</code> of the saved file means that this a file to describe the layout
+of the GUI in an open format. More than an application is able to read and to
+interpret this format efficiently and to compose a sensible user interface.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">4.4.4</span> Compiling the layout file to a Python program</h4>
+<div class="outline-text-4" id="text-4-4-4">
+<ol class="org-ol">
+<li>Open a Terminal, ensure that the default directory contains the recently made
+<code>p1.ui</code> file, type the command line <code>pyuic4 p1.ui -o UI_p1.py</code>, and hit the Enter
+key. This will create a new file in Python language with the name
+<code>UI_p1.py</code>.</li>
+<li>Open that last file with a source editor, go to the end, and make
+a small change to the last line: instead of <code>from qwt_plot import QwtPlot</code>,
+this line should contain: <code>from qwt import QwtPlot</code>, to comply with the name of
+the module inside a Debian distribution (I assume that we are working with
+the USB live stick). This second operation should not be necessary, it is
+just implied by a small bug in the debian package of <code>pyuic4</code>, the convertor
+from <code>designer</code>&rsquo;s <code>.ui</code> format to Python source.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">4.4.5</span> Our first working program</h4>
+<div class="outline-text-4" id="text-4-4-5">
+<p>
+Here is our first program which will rely upon the just created user
+interface. The series of snapshots (taken from <code>geany</code>&rsquo;s buffers) has a few
+comments.
+</p>
+
+
+<div id="orgparagraph22" class="figure">
+<p><img src="./img/firstgui00.png" alt="firstgui00.png" />
+</p>
+<p><span class="figure-number">Figure 21:</span> Program&rsquo;s header with inclusion of modules and definition of our custom Main Window</p>
+</div>
+
+
+<div id="orgparagraph23" class="figure">
+<p><img src="./img/firstgui01.png" alt="firstgui01.png" />
+</p>
+<p><span class="figure-number">Figure 22:</span> The constructor of our custom window: mandatory part</p>
+</div>
+
+
+<div id="orgparagraph24" class="figure">
+<p><img src="./img/firstgui02.png" alt="firstgui02.png" />
+</p>
+<p><span class="figure-number">Figure 23:</span> The constructor of our custom window: custom part</p>
+</div>
+
+
+<div id="orgparagraph25" class="figure">
+<p><img src="./img/firstgui03.png" alt="firstgui03.png" />
+</p>
+<p><span class="figure-number">Figure 24:</span> our custom window&rsquo;s &ldquo;measure&rdquo; method</p>
+</div>
+
+
+<div id="orgparagraph26" class="figure">
+<p><img src="./img/firstgui04.png" alt="firstgui04.png" />
+</p>
+<p><span class="figure-number">Figure 25:</span> footer of the program: what to do if it is called as a main program</p>
+</div>
+
+<p>
+You cannot copy and paste the screenshots, however the complete program <code>p1.py</code>
+can be downloaded from <a href="https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py">a Github.com repository</a>.
+</p>
+
+<p>
+Download the file (<code>p1.py</code>) and open it in a good editor to check its content. It
+should work easily. For example, you can launch it by typing <code>python3 p1.py</code> and
+hitting the Enter key, provided the default directory of the Terminal contains
+<code>p1.py</code>.
+</p>
+
+<p>
+Don&rsquo;t be afraid by this program! Obviously, seventy lines in a language which
+you do not master currently can be an issue, but they are less an issue if you
+consider that you can freely copy this program source, and that you become
+really productive, just by modifying small details inside its structure. For
+example, take a look at lines 56 -68: they are there like a placeholder, for
+some useful program which you want to write. Plotting a function with random
+values is quite a nonsense, but it will become far from a nonsense if you
+replace those lines by a program to plot captured physical measurements.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">4.4.6</span> Introducing some &ldquo;meat&rdquo; to replace nonsenses of the first program</h4>
+<div class="outline-text-4" id="text-4-4-6">
+<p>
+The two subsequent programs will show you how to make some sense with the
+previous program, by wisely replacing  some of its structure.
+</p>
+
+<p>
+You can download <a href="https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p2.py">here</a> the second program, named <code>p2.py</code>. The modified parts are:
+</p>
+<ol class="org-ol">
+<li>the program&rsquo;s header, to include one more module</li>
+<li>the <code>__init__</code> constructor, which initializes the expEYES Junior box</li>
+<li>the <code>measure</code> method, which captures physical data thanks to the box, and plots
+them</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36"><span class="section-number-4">4.4.7</span> Details of the first modification</h4>
+<div class="outline-text-4" id="text-4-4-7">
+</div><ol class="org-ol"><li><a id="orgheadline33"></a>modifications of the header part<br  /><div class="outline-text-5" id="text-4-4-7-1">
+<p>
+The line  <code>import expeyes.eyesj as ej</code> allows us to control the expEYES Junior
+measurement box from Python.
+</p>
+</div></li>
+<li><a id="orgheadline34"></a>modifications of the constructor<br  /><div class="outline-text-5" id="text-4-4-7-2">
+<p>
+The single line <code>self.p = ej.open()</code> attaches expEYES&rsquo; driver object to the main
+window.
+</p>
+</div></li>
+<li><a id="orgheadline35"></a>modifications of the <code>measure</code> method<br  /><div class="outline-text-5" id="text-4-4-7-3">
+<p>
+Only two lines are used: <code>t,v = self.p.capture(1,1000,200)</code> to request a thousand
+voltage measurements, and <code>self.curve.setData(t,v,len(t))</code> to plot them.
+</p>
+
+<p>
+The conclusion is: that <b>four lines of code</b> are sufficient to turn
+a general-purpose GUI program into a usable scientific tool.
+</p>
+</div></li></ol>
+</div>
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">4.4.8</span> A few more code, to deal with real life problems and exceptions</h4>
+<div class="outline-text-4" id="text-4-4-8">
+<p>
+The program <code>p2.py</code> works very well, with one exception: when no exPEYES Junior
+box is connected to the computer, nothing happens as expected. If the program
+was  launched from a command line in a Terminal, you may notice error messages
+appearing there. But if the program is launched by some other method, chances
+are that it will not work, and the reasons why it doesn&rsquo;t are not obvious for the
+average user.
+</p>
+
+<p>
+The designer of a program which touches physical realities must always keep
+a thought about what can go wrong; the most usual issue is a false connection, or
+no connection at all. Here we have an example: if the expEYES Junior box is not
+connected, the application should provide an a strong enough feedback for
+making the end user aware of the probable failure&rsquo;s reason.
+</p>
+
+<p>
+Fortunately, Python offers a nice structure to deal with exceptions: the
+construct <code>try: {some code which might trigger a failure} except: {someting to
+do if the failure was triggered}</code>. You must write two blocks of code, the first
+one is governed by the keyword <code>try:</code>, and it must raise an error (in the Python
+sense) if anything goes wrong; the second one is governed by the keyword <code>except:</code>
+and contain instructions to process if an error was raised in the previous
+block.
+</p>
+
+<p>
+<a href="https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p3.py">Here you can download</a> a third program, which can deal with mistaken connection to
+expEYES Junior (or any error reason which can fool the detection of the
+hardware)
+</p>
+
+<p>
+The differences between programs <code>p2.py</code> and <code>p3.py</code> are few:
+</p>
+<dl class="org-dl">
+<dt>In the <code>try:</code> clause,</dt><dd>the line <code>self.p = ej.open()</code> is now embeded in the <code>try:</code>
+block. A condition is tested just after this line: <code>assert(self.p.fd)</code> is an
+affirmation that the driver has a working file descriptor; unless this
+descriptor exists, a Python error is raised (you would see it if you write the
+same program line without the <code>try:</code> block); if this descriptor exists, the next
+lines change the title of the Main Window. In most cases, this title will become
+&ldquo;<code>expEYES Junior found on port /dev/ttyACM0</code>&rdquo;</dd>
+<dt>In the <code>except:</code> clause,</dt><dd>there are two lines of code, to manage the exception.
+The first one assigns the
+Main Window&rsquo;s title to &ldquo;<code>ERROR: expEYES Junior NOT FOUND!</code>&rdquo;. The second one
+disables the button &ldquo;<code>Measure</code>&rdquo;, since this button should not be used to
+make measurements.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="section-number-4">4.4.9</span> Exercises: improve our first program</h4>
+<div class="outline-text-4" id="text-4-4-9">
+<p>
+Here are some exercise propositions, which can make you more fluent with GUI
+programming. Some are modifications touching just the user interface&rsquo;s design,
+others touching the way captures are done, or are implementing additional features.
+</p>
+<ol class="org-ol">
+<li>Change the user interface file, replace the label &ldquo;Measure&rdquo; by some other
+label, like &ldquo;Launch a capture&rdquo;, for example</li>
+<li>Add a button to save data into a file named &ldquo;data.csv&rdquo;; verify that this file
+can be readily opened by other programs like LibreOffice Calc.</li>
+<li>Add a text input allowing end users to choose another file name</li>
+<li>Change the capture instruction, in order to get a thousand voltage values,
+separated by time gaps of two milliseconds; the total capture time should be
+two seconds</li>
+<li>Two seconds is quite a long time for our impatient students. Try to implement
+some way to provide a feedback message stating &ldquo;Measuring voltage&#x2026; please
+wait&rdquo; from the click&rsquo;s time until the plot&rsquo;s update.</li>
+<li>Add a text input to let users request a precise number of voltage samples, so
+they can ask for as many samples as they want inside a reasonable range.</li>
+<li>Add text inputs to let users request other input channels than &ldquo;A1&rdquo;, and also
+to change the sample frequency</li>
+<li>Modify the widget used to request the measurement channel; replace it by
+a set of radio buttons, with labels &ldquo;A1&rdquo;, &ldquo;A2&rdquo;, &ldquo;IN1&rdquo;, &ldquo;IN2&rdquo;, &ldquo;SEN&rdquo;, etc.</li>
+<li>Change the set of radio buttons to a set of checkboxes, so users can select
+up to four of them, and up to four channels can be sampled simultaneously</li>
+<li>Provide a second plot widget, which will display the power spectrum of the
+signal (i.e. amplitude vs. frequency) after a Fast Fourier Transform</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-19 Tue&gt;</span></span></p>
+<p class="author">Author: Georges Khaznadar</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

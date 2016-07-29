@@ -1,6 +1,6 @@
-course.html
+#course.html
+#course.pdf
 course.tex
-course.pdf
 *.log
 *.out
 *.toc

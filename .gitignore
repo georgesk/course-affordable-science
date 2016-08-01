@@ -11,3 +11,4 @@ cro.dat
 *.pyc
 __pycache__
 freedb
+free_database.py

@@ -2,6 +2,24 @@
 
 import os, os.path, re
 
+from music_records import MusicRecord
+
+class MyMusicRecord(MusicRecord):
+    def __init__(self, *args):
+        MusicRecord.__init__(self, *args)
+
+    def asSource(self):
+        """
+        @return the source Rvalue which can initialize a MusicRecord
+        """
+        return """MusicRecord({},{},{},{},{},{})""".format(
+            repr(self.disk_id),
+            repr(self.disk_title),
+            repr(self.author),
+            repr(self.title),
+            repr(self.year),
+            repr(self.genre)
+        )
 def getByPattern(regexp, line):
     """
     gets a value prefixed by a regular expression
@@ -15,26 +33,6 @@ def getByPattern(regexp, line):
     else:
         return m.group(1)
 
-
-class MusicRecord(object):
-    def __init__(self, disk_id, disk_title, author, title, year, genre):
-        self.author=author
-        self.title=title
-        self.year=year
-        self.disk_id=disk_id
-        self.disk_title=disk_title
-        self.genre=genre
-        return
-    def __str__(self):
-        return """\
-MusicRecord instance:
-        author     = {author}
-        title      = {title}
-        year       = {year}
-        disk_id    = {disk_id}
-        disk title = {disk_title}
-        genre      = {genre}
-""".format(**self.__dict__)
 
 def recordsFromFile(filename):
     """
@@ -67,11 +65,9 @@ def recordsFromFile(filename):
     result=[]
     for l in lines:
         if waiting < len(keys):
-            print("GRRR searching", keys[waiting])
             found=getByPattern(disk[keys[waiting]],l)
             if found:
                 disk[keys[waiting]]=found
-                print("GRRR found ", keys[waiting], found)
                 if keys[waiting]=="title":
                     authorDtitle=separator.split(found)
                     if len(authorDtitle) > 1:
@@ -89,7 +85,7 @@ def recordsFromFile(filename):
                 author=disk["author_all"]
                 title=found
             if found:
-                m=MusicRecord(
+                m=MyMusicRecord(
                     disk["disk_id"],
                     disk["title"],
                     author,
@@ -101,8 +97,18 @@ def recordsFromFile(filename):
     return result
 
 if __name__=="__main__":
-    for root, dirs, files in os.walk('./freedb'):
-        for f in files:
-            path=os.path.join(root, f)
-            print(path, "==>\n", recordsFromFile(path))
-            break
+    import sys
+    n=0
+    with open("free_database.py","w") as outfile:
+        outfile.write("from music_records import MusicRecord\n\nDatabase=[\n")
+        for root, dirs, files in os.walk('./freedb'):
+            for f in files:
+                path=os.path.join(root, f)
+                records=recordsFromFile(path)
+                for r in records:
+                    outfile.write("  "+r.asSource()+",\n")
+                    n+=1
+                print("{}\r".format(n), end="")
+                sys.stdout.flush()
+        outfile.write("]\n")
+    print("\nWrote {} records to free_database.py".format(n))

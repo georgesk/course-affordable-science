@@ -486,13 +486,15 @@ still deployed to help the large community of people who are still using Python2
    records, and two different routines to display collection's items, with more
    or less details
 7. Create an interactive program which allows one to query your collection's
-   items, based on search criteria (author, publisher, duration, music style,
+   items, based on search criteria (author, some words from the title, music style,
    etc.)
 8. Write a program which quickly solves equations of degree one, two ... three,
    four (if you dare to go that far)
 9. Write a program able to say how many different colors there are in a picture
 10. Write a program which automatically detects a human face in a given picture
 
+Propositions of solutions for this set of exercises are published in the
+"[[https://github.com/georgesk/course-affordable-science/tree/master/sol/generic][repository]]".
 *** Python and expEYES
 Your computer does not work in "real time": that means that when you begin some
 task, you cannot require with certitude a precise duration for that task to

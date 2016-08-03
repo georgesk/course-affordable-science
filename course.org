@@ -861,3 +861,77 @@ others touching the way captures are done, or are implementing additional featur
     signal (i.e. amplitude vs. frequency) after a Fast Fourier Transform
 
 Propositions of solutions for this set of exercises are published in the "[[https://github.com/georgesk/course-affordable-science/tree/master/sol/qtgui][repository]]".
+* Writing the user interface for a new experiment
+** Describing the new experiment
+This experiment is not described in expEYES Junior's handbook, so let us
+consider that it is "new". It is using a liquid potentiometer to record
+oscillations of an elastic pendulum.
+
+*** Schematics
+A massive object is hung under a spring. The top of the spring is tightly fixed,
+and a vertical insulated wire is hung just below the massive object. The end of
+this wire is unwrapped, so it acts as the cursor of a potentiometer. Eventually,
+some light sheet of plastic or of metal is tightened to the massive object in
+order to provide some friction while it moves in the air.
+
+The potentiometer's body is a measuring cylinder filled with copper sulfide
+($concentration = 0.01\, mol\cdot L^{-1}$), which bears two circular electrodes, made
+with one turn of copper: one at the bottom of the cylinder, the other one near
+the top of the copper sulfide solution. Both electrodes are connected through
+insulated wires to a $4.5\, V$ battery. Whenever one connects the battery, she
+should consider which electrode need to gain more copper, and connect the
+negative end of the battery to this electrode (copper deposits on the cathode).
+
+When some current flows between both electrodes, there are quite plane
+equipotential surfaces, regularly spaced vertically between the electrodes. So
+when the height of the vertical wire's tip movesup and down, its potential is
+a linear function of its height. Figure [[fig:liquid_pot]] describes the experiment.
+
+#+CAPTION: An oscillator made with a spring, and its liquid potentiometer
+#+NAME: fig:liquid_pot
+[[./img/liquid_pot.png]]
+*** Features in this experiment which require a special program
+ExpEYES Junior comes with a program named "Data Logger" which can be used to
+monitor any signal captured by the measurement box. However, our experiment has
+a few unique features which call for a more appropriated program:
+- both hands of the person who does the experiment may be busy just at the
+  moment when the capture of data should start, /i.e./ when the pendulum begins
+  its first oscillation. Generally, the person pulls slowly the elastic pendulum
+  far from its equilibrium point, takes care that the start position is well
+  aligned with the axis of the main oscillation, and let it go suddenly. Then,
+  the capture should begin within a fraction of a second.
+- depending on the experiment, one may be interested by more than 1800
+  measurements; 1800 measurements is the maximum number of voltage values which
+  can be stored in the measurement box and sent as a response to a single
+  query. From a didactic point of view, it can be also interesting to plot the
+  signal's curve immediately, without waiting for the measurement series.
+- the program can provide additional facilities, like fitting
+  the results with a predefined model, and emphasizing some calculable results
+  like a friction coefficient.
+** Implementing new features
+Here is a list of wanted features:
+1. a button to wake up the program, so it will try to guess the start of the
+   experiment
+2. a button to stop the experiment at any time
+3. buttons to save sets of data, quit, etc.
+4. when the program is in "/alert mode/", it monitors the voltage input regularly,
+   and triggers the begin of the capture when the voltage changes quicker that
+   a predefined threshold
+5. when the program is no longer in "/alert mode/", the user can launch fitting
+   tools and compare the record to theoritical descriptions.
+6. The curve of position vs. time is plotted inside a big frame, synchronously
+   or asynchronously.
+** Coding the new program
+*** Designing the user interface
+With the program =designer=, let us create something like the structure displaid
+in figure [[fig:oscill_monitor]].
+
+#+CAPTION: the user interface inside the application =designer=
+#+NAME: fig:oscill_monitor
+[[./img/oscill_monitor.png]]
+
+The file is available from our [[][repository]], as =oscill.ui=. You can download
+it, and make a fewmodifications, like
+- changing some part of the layout,
+- changing the help tips associated with some widgets,
+- adding some new widgets (it is better to keep existing widgets).

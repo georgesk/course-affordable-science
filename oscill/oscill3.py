@@ -61,18 +61,14 @@ class MyWindow(QtGui.QMainWindow):
     def wakeUp(self):
         # get the duration of the experiment in s
         duration = float(self.ui.durationEdit.text())
-        if duration < 3.5: # "final" mode is possible
-            samples  = 1800 # maximum sample number with 8 bit precision
-            # ensure that samples * delay will be slightly bigger than duration
-            delay=1+int(duration*1e6/1800)
-            t,v = self.p.capture(1,samples, delay)
-            self.curve.setData(t,v,len(t))
-            # not necessary since the widget has the autoreplot feature
-            # self.ui.qwtPlot.replot()
-        else:
+        if duration < 0.5: # "final" mode is mandatory
+            self.ui.finalButton.setChecked(True)
+            self.isImmediate=False
+        elif duration > 3.5: # "immediate" mode is mandatory
             self.ui.immediateButton.setChecked(True)
             self.isImmediate=True
-            self.ui.qwtPlot.setAxisScale(QwtPlot.xBottom, 0, duration)
+        self.ui.qwtPlot.setAxisScale(QwtPlot.xBottom, 0, duration)
+        if self.isImmediate:
             now=time.time()
             self.t=[]
             self.v=[]
@@ -81,6 +77,13 @@ class MyWindow(QtGui.QMainWindow):
             self.stopTime=now+duration
             # now the curve will grow until time.time >= self.stopTime
             # thanks to self.timer's timeout events
+        else:
+            samples  = 1800 # maximum sample number with 8 bit precision
+            # ensure that samples * delay will be slightly bigger than duration
+            delay=1+int(duration*1e6/1800)
+            t, self.v = self.p.capture(1,samples, delay)
+            self.t=[1e-3*date for date in t] # convert ms to s
+            self.curve.setData(self.t, self.v, len(self.t))
         return
 
     def tick(self):
@@ -91,8 +94,6 @@ class MyWindow(QtGui.QMainWindow):
             self.t.append(time.time()-self.startTime)
             self.v.append(v)
             self.curve.setData(self.t, self.v, len(self.t))
-            # not necessary since the widget has the autoreplot feature
-            # self.ui.qwtPlot.replot()
         return
             
         

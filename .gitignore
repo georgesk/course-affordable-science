@@ -7,6 +7,8 @@ course.tex
 *.aux
 fft.dat
 cro.dat
+oscill.dat
+UI_*
 *~
 *.pyc
 __pycache__

@@ -190,6 +190,30 @@
 </li>
 </ul>
 </li>
+<li><a href="#orgheadline55">5. Writing the user interface for a new experiment</a>
+<ul>
+<li><a href="#orgheadline43">5.1. Description of the new experiment</a>
+<ul>
+<li><a href="#orgheadline41">5.1.1. Schematics</a></li>
+<li><a href="#orgheadline42">5.1.2. Features wanted for the program</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline44">5.2. Implementing new features</a></li>
+<li><a href="#orgheadline54">5.3. Coding the new program</a>
+<ul>
+<li><a href="#orgheadline45">5.3.1. Designing the user interface</a></li>
+<li><a href="#orgheadline46">5.3.2. Exercise:</a></li>
+<li><a href="#orgheadline47">5.3.3. Minimal structure of the main program</a></li>
+<li><a href="#orgheadline48">5.3.4. Adding methods to toggle the way curves will be plotted</a></li>
+<li><a href="#orgheadline49">5.3.5. Implementing naively the capture of data and the plotting routine</a></li>
+<li><a href="#orgheadline50">5.3.6. Less naive implementation for the plotting routine</a></li>
+<li><a href="#orgheadline51">5.3.7. Implementing the callback for the Stop button</a></li>
+<li><a href="#orgheadline52">5.3.8. Implementing the callback for the Save button</a></li>
+<li><a href="#orgheadline53">5.3.9. Implementing the wait for a fast enough slew rate</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1510,6 +1534,441 @@ signal (i.e. amplitude vs. frequency) after a Fast Fourier Transform</li>
 
 <p>
 Propositions of solutions for this set of exercises are published in the &ldquo;<a href="https://github.com/georgesk/course-affordable-science/tree/master/sol/qtgui">repository</a>&rdquo;.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-2">
+<h2 id="orgheadline55"><span class="section-number-2">5</span> Writing the user interface for a new experiment</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">5.1</span> Description of the new experiment</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+This experiment is about oscillations of a pendulum, and in most cases it can
+already be managed by an application distributed with expEYES Junior, known as
+&ldquo;<i>Pendulum Waveform</i>&rdquo;. This application can be launched after a choice between
+expEYES Junior&rsquo;s featured &ldquo;<i>EXPERIMENTS</i>&rdquo; (launch the oscilloscope application,
+click on <i>EXPERIMENTS</i>, choose <i>Pendulum Waveform</i>).
+</p>
+
+<p>
+However, the program which implements currently &ldquo;<i>Pendulum Waveform</i>&rdquo; misses
+some features:
+</p>
+<ul class="org-ul">
+<li>it is built upon the graphic library <i>Tk</i>, which does not support easily
+right-to-left text writing in widgets</li>
+<li>it plots the oscillations of the pendulum in non-real time, i.e. the voltages
+samples are taken when the computer asks for them. In most cases it is not an
+issue, but it may become one when the frequency of the oscillation is
+rising. At higher frequencies, the task scheduler of the computer&rsquo;s operating
+system may prevent getting enough samples during one oscillation, which would
+lead to an odd-shaped curve.</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline41" class="outline-4">
+<h4 id="orgheadline41"><span class="section-number-4">5.1.1</span> Schematics</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+A massive object is hung under a spring. The top of the spring is tightly fixed,
+and a vertical insulated wire is hung just below the massive object. The end of
+this wire is unwrapped, so it acts as the cursor of a potentiometer. Eventually,
+some light sheet of plastic or of metal is tightened to the massive object in
+order to provide some friction while it moves in the air.
+</p>
+
+<p>
+The potentiometer&rsquo;s body is a measuring cylinder filled with copper sulfide
+(\(concentration = 0.01\, mol\cdot L^{-1}\)), which bears two circular electrodes, made
+with one turn of copper: one at the bottom of the cylinder, the other one near
+the top of the copper sulfide solution. Both electrodes are connected through
+insulated wires to a \(4.5\, V\) battery. Whenever one connects the battery, she
+should consider which electrode need to gain more copper, and connect the
+negative end of the battery to this electrode (copper deposits on the cathode).
+</p>
+
+<p>
+When some current flows between both electrodes, there are quite plane
+equipotential surfaces, regularly spaced vertically between the electrodes. So
+when the height of the vertical wire&rsquo;s tip movesup and down, its potential is
+a linear function of its height. Figure <a href="#orgparagraph27">26</a> describes the experiment.
+</p>
+
+
+<div id="orgparagraph27" class="figure">
+<p><img src="./img/liquid_pot.png" alt="liquid_pot.png" />
+</p>
+<p><span class="figure-number">Figure 26:</span> An oscillator made with a spring, and its liquid potentiometer</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-4">
+<h4 id="orgheadline42"><span class="section-number-4">5.1.2</span> Features wanted for the program</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+ExpEYES Junior comes with a program named &ldquo;Data Logger&rdquo; which can be used to
+monitor any signal captured by the measurement box. However, our experiment has
+a few unique features which call for a more appropriated program:
+</p>
+<ul class="org-ul">
+<li>both hands of the person who does the experiment may be busy just at the
+moment when the capture of data should start, <i>i.e.</i> when the pendulum begins
+its first oscillation. Generally, the person pulls slowly the elastic pendulum
+far from its equilibrium point, takes care that the start position is well
+aligned with the axis of the main oscillation, and let it go suddenly. Then,
+the capture should begin within a fraction of a second.</li>
+<li>depending on the experiment, one may be interested by more than 1800
+measurements; 1800 measurements is the maximum number of voltage values which
+can be stored in the measurement box and sent as a response to a single
+query. From a didactic point of view, it can be also interesting to plot the
+signal&rsquo;s curve immediately, without waiting for the measurement series.</li>
+<li>the program can provide additional facilities, like fitting
+the results with a predefined model, and emphasizing some calculable results
+like a friction coefficient.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">5.2</span> Implementing new features</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Here is a list of wanted features:
+</p>
+<ol class="org-ol">
+<li>a button to wake up the program, so it will try to guess the start of the
+experiment</li>
+<li>a button to stop the experiment at any time</li>
+<li>buttons to save sets of data, quit, etc.</li>
+<li>when the program is in &ldquo;<i>alert mode</i>&rdquo;, it monitors the voltage input regularly,
+and triggers the begin of the capture when the voltage changes quicker that
+a predefined threshold</li>
+<li>when the program is no longer in &ldquo;<i>alert mode</i>&rdquo;, the user can launch fitting
+tools and compare the record to theoritical descriptions.</li>
+<li>The curve of position vs. time is plotted inside a big frame, synchronously
+or asynchronously.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">5.3</span> Coding the new program</h3>
+<div class="outline-text-3" id="text-5-3">
+</div><div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45"><span class="section-number-4">5.3.1</span> Designing the user interface</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+With the program <code>designer</code>, let us create something like the structure displaid
+in figure <a href="#orgparagraph28">27</a>.
+</p>
+
+
+<div id="orgparagraph28" class="figure">
+<p><img src="./img/oscill_monitor.png" alt="oscill_monitor.png" />
+</p>
+<p><span class="figure-number">Figure 27:</span> the user interface inside the application <code>designer</code></p>
+</div>
+
+<p>
+The file is available from our <a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill.ui">repository</a>, as <code>oscill.ui</code>. You can download
+it, and make a few modifications, like
+</p>
+<ul class="org-ul">
+<li>changing some part of the layout,</li>
+<li>changing the tooltips associated with some widgets,</li>
+<li>adding some new widgets (it is better to keep existing widgets).</li>
+</ul>
+<p>
+You can notice that every widget which must be connected to the main program was
+named with an easy to remind identifier.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-4">
+<h4 id="orgheadline46"><span class="section-number-4">5.3.2</span> Exercise:</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<ol class="org-ol">
+<li>Modify the user interface in order to have all the control widgets stacked on
+its right. Save the new interface file with a new name. Figure <a href="#orgparagraph29">28</a>
+gives an outlook of a possible layout.</li>
+<li>Modify the user interface to translate &ldquo;manually&rdquo; texts and tooltips to your
+language. Save it under a new name. <i>Please notice that this is not the
+recommended method to translate an applications user interface</i>. <i>There are
+dedicated tools to perform this job more efficiently</i>, <i>and to have it done by
+other people</i>.</li>
+</ol>
+
+
+<div id="orgparagraph29" class="figure">
+<p><img src="./img/oscill_monitor1.png" alt="oscill_monitor1.png" />
+</p>
+<p><span class="figure-number">Figure 28:</span> Control widgets of the application are stacked on the right</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">5.3.3</span> Minimal structure of the main program</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<p>
+The main program must at least:
+</p>
+<ol class="org-ol">
+<li>import necessary modules and the user interface module</li>
+<li>define a custom class for the main window, which will be linked to the user
+interface</li>
+<li>build the user interface upon initialization of the main window</li>
+<li>connect signals managed by the widgets to methods of the main window</li>
+<li>create the application object, instantiate the main window, and let it run.</li>
+</ol>
+
+<p>
+This is done in the program <code>oscill1.py</code> which can be downloaded <a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill1.py">from the
+"repository"</a>; figures <a href="#orgparagraph30">29</a> to <a href="#orgparagraph31">33</a> show how those
+five parts of the minimal program are implemented.
+</p>
+
+
+<div id="orgparagraph30" class="figure">
+<p><img src="./img/prog_oscill1_1.png" alt="prog_oscill1_1.png" />
+</p>
+<p><span class="figure-number">Figure 29:</span> importing modules and classes from modules</p>
+</div>
+
+
+<div id="orgparagraph32" class="figure">
+<p><img src="./img/prog_oscill1_2.png" alt="prog_oscill1_2.png" />
+</p>
+<p><span class="figure-number">Figure 30:</span> the new class for the main window</p>
+</div>
+
+
+<div id="orgparagraph33" class="figure">
+<p><img src="./img/prog_oscill1_3.png" alt="prog_oscill1_3.png" />
+</p>
+<p><span class="figure-number">Figure 31:</span> building the user interface</p>
+</div>
+
+
+<div id="orgparagraph34" class="figure">
+<p><img src="./img/prog_oscill1_4.png" alt="prog_oscill1_4.png" />
+</p>
+<p><span class="figure-number">Figure 32:</span> connecting signals to methods</p>
+</div>
+
+
+<div id="orgparagraph31" class="figure">
+<p><img src="./img/prog_oscill1_5.png" alt="prog_oscill1_5.png" />
+</p>
+<p><span class="figure-number">Figure 33:</span> making it run</p>
+</div>
+
+<p>
+This program can be run, it raises no error. However, it makes nothing useful for
+the end-user so far. When you click buttons or trigger menu actions, a message
+pops up: &ldquo;Sorry, not implemented&rdquo;, except for the method <code>close</code> which is
+inherited from the ancestor <code>QMainWindow</code> class.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="section-number-4">5.3.4</span> Adding methods to toggle the way curves will be plotted</h4>
+<div class="outline-text-4" id="text-5-3-4">
+<p>
+There will be two methods to plot the curves:
+</p>
+<ol class="org-ol">
+<li>immediately, while the pendule is still oscillating</li>
+<li>once, when the scheduled data have been recorded</li>
+</ol>
+
+<p>
+To implement this, a new property, <code>self.isImmediate</code> is initialized to <code>True</code> in the
+main window&rsquo;s constructor, and methods <code>immediate</code> and <code>final</code> are defined to change
+its value; see figure <a href="#orgparagraph35">34</a>. Please notice that the identifiers
+<code>immediate</code> and <code>final</code> are no longer assigned to <code>notImplemented</code>.
+</p>
+
+
+<div id="orgparagraph35" class="figure">
+<p><img src="./img/prog_oscill2_1.png" alt="prog_oscill2_1.png" />
+</p>
+<p><span class="figure-number">Figure 34:</span> managing the plotting mode</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49"><span class="section-number-4">5.3.5</span> Implementing naively the capture of data and the plotting routine</h4>
+<div class="outline-text-4" id="text-5-3-5">
+<p>
+In this non-definitive version, the method <code>wakeUp</code> begins to capture data as soon
+as the button is clicked,and the flag <code>self.isImmediate</code> is disregarded: data are
+captured first, and the plot is refreshed later.
+</p>
+
+<p>
+Most code have been copied from the file <code>p3.py</code> studied <a href="#orgparagraph36">previously</a>. The
+implementation is done in file <code>oscill2.py</code>, which can be downloaded from the
+<a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill2.py">"repository"</a>. Figure <a href="#orgparagraph37">35</a> shows the code of the naive version of
+the method <code>wakeUp</code>.
+</p>
+
+
+<div id="orgparagraph37" class="figure">
+<p><img src="./img/prog_oscill2_2.png" alt="prog_oscill2_2.png" />
+</p>
+<p><span class="figure-number">Figure 35:</span> implementation of the method <code>wakeUp</code></p>
+</div>
+
+<p>
+When we try to launch the program <code>oscill2.py</code>, measurements are well done for
+durations of a few seconds: one, two or three seconds are well managed, but when
+the duration of measurements is four seconds or more, the box replies no longer
+and some error messages are emitted. One must unplug and plug again the USB
+cable to get a working system. The programmer&rsquo;s manual states that too short
+durations are not possible (there must be at least 4 µs between successive
+samples), but issues with counter override are not documented.
+</p>
+
+<p>
+So, we shall estimate that when the duration of the experiment must be longer
+than 3.5 s, the measurements must be done in &ldquo;immediate&rdquo; mode.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50"><span class="section-number-4">5.3.6</span> Less naive implementation for the plotting routine</h4>
+<div class="outline-text-4" id="text-5-3-6">
+<p>
+This implementation can be found in the program <code>oscill3.py</code>, available from the
+<a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill3.py">"repository"</a>.
+The duration is tested: if it is longer than 3.5 s, the &ldquo;immediate&rdquo; mode is
+enforced, and a timer is initialized to measure the signal regularly. As the
+computer does not work in real time, a timestamp must be made as soon as a new
+value is read. If the duration is in the range from 0.5 to 3.5 s, the mode is selected by
+taking in account radio buttons, and if the duration is shorter than 0.5 s, the
+&ldquo;final&rdquo; mode is enforced. The most relevant elements of code are shown in figure
+<a href="#orgparagraph38">36</a>.
+</p>
+
+
+<div id="orgparagraph38" class="figure">
+<p><img src="./img/prog_oscill2_3.png" alt="prog_oscill2_3.png" />
+</p>
+<p><span class="figure-number">Figure 36:</span> the new <code>wakeUp()</code> method</p>
+</div>
+
+<p>
+Figures <a href="#orgparagraph39">37</a> and <a href="#orgparagraph40">38</a> show how the &ldquo;<code>tick</code>&rdquo; method
+implements gathering voltage and time when the application gets a <code>timeout</code>
+signal, every 50 milliseconds, and how this timer was created during the
+construction of the main window.
+</p>
+
+
+<div id="orgparagraph39" class="figure">
+<p><img src="./img/prog_oscill2_4.png" alt="prog_oscill2_4.png" />
+</p>
+<p><span class="figure-number">Figure 37:</span> implementation of <code>tick</code></p>
+</div>
+
+
+<div id="orgparagraph40" class="figure">
+<p><img src="./img/prog_oscill2_5.png" alt="prog_oscill2_5.png" />
+</p>
+<p><span class="figure-number">Figure 38:</span> initializing the application&rsquo;s timer</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><span class="section-number-4">5.3.7</span> Implementing the callback for the Stop button</h4>
+<div class="outline-text-4" id="text-5-3-7">
+<p>
+When one clicks the <i>Stop</i> button, she wants to interrupt an acquisition of
+data. Interrupting this acquisition is not possible in &ldquo;<i>final</i>&rdquo; mode, but during
+the measurement timespan in &ldquo;<i>immediate</i>&rdquo; mode, it can be allowed. Figure
+<a href="#orgparagraph41">39</a> shows the implementation of the <code>stop</code> callback method.
+</p>
+
+
+<div id="orgparagraph41" class="figure">
+<p><img src="./img/prog_oscill4_1.png" alt="prog_oscill4_1.png" />
+</p>
+<p><span class="figure-number">Figure 39:</span> implementing the <code>stop</code> callback method</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-4">
+<h4 id="orgheadline52"><span class="section-number-4">5.3.8</span> Implementing the callback for the Save button</h4>
+<div class="outline-text-4" id="text-5-3-8">
+<p>
+This part is straightforward: relevant data are self.t and self.v, the callback
+method opens a text file and writes formatted data into it. See figure
+<a href="#orgparagraph42">40</a>.
+</p>
+
+
+<div id="orgparagraph42" class="figure">
+<p><img src="./img/prog_oscill4_2.png" alt="prog_oscill4_2.png" />
+</p>
+<p><span class="figure-number">Figure 40:</span> implementing the <code>save</code> callback method</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">5.3.9</span> Implementing the wait for a fast enough slew rate</h4>
+<div class="outline-text-4" id="text-5-3-9">
+<p>
+You remember that one of our concern was to make it easy for a user which has
+both hands in the experiment to launch the measurements. One way to achieve it
+is to begin measurements not when the &ldquo;wake up&rdquo; button is clicked, but later, when
+the voltage begins to swing. Therefore a control widget is designed to choose
+the desired slew rate threshold which will trigger the measurement series. This
+widget is a slider, to select a threshold ranging from zero to some volts per
+second. The precise value of the higher selectable slew rate depends on the
+experiment&rsquo;s scheduled duration. The shorter it is, the higher the threshold
+slew rate should be.
+</p>
+
+<p>
+So, the &ldquo;<code>textChanged</code>&rdquo; signal of the duration edit line is connected to
+a callback function which changes the axis scale, but also changes the slider&rsquo;s
+displaid range.
+</p>
+
+
+<div id="orgparagraph43" class="figure">
+<p><img src="./img/prog_oscill4_3.png" alt="prog_oscill4_3.png" />
+</p>
+<p><span class="figure-number">Figure 41:</span> the <code>durationChanged</code> callback method</p>
+</div>
+
+<p>
+Then, some modifications are applied to the <code>wakeUp</code> method: a few lines are
+prepended just before the measurement routines, to call the <code>waitForThreshold</code>
+method.
+</p>
+
+
+<div id="orgparagraph44" class="figure">
+<p><img src="./img/prog_oscill4_4.png" alt="prog_oscill4_4.png" />
+</p>
+<p><span class="figure-number">Figure 42:</span> a few lines prepended before the measurement calls</p>
+</div>
+
+
+<div id="orgparagraph45" class="figure">
+<p><img src="./img/prog_oscill4_5.png" alt="prog_oscill4_5.png" />
+</p>
+<p><span class="figure-number">Figure 43:</span> the <code>waitForThreshold</code> method</p>
+</div>
+
+<p>
+The <code>waitForThreshold</code> method has a parameter named <code>timeOut</code>, which allows one to
+specify the longest possible wait period.
 </p>
 </div>
 </div>

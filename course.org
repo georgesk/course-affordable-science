@@ -817,6 +817,7 @@ sense) if anything goes wrong; the second one is governed by the keyword =except
 and contain instructions to process if an error was raised in the previous
 block.
 
+#+NAME: prog:p3
 [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p3.py][Here you can download]] a third program, which can deal with mistaken connection to
 expEYES Junior (or any error reason which can fool the detection of the
 hardware)
@@ -862,11 +863,23 @@ others touching the way captures are done, or are implementing additional featur
 
 Propositions of solutions for this set of exercises are published in the "[[https://github.com/georgesk/course-affordable-science/tree/master/sol/qtgui][repository]]".
 * Writing the user interface for a new experiment
-** Describing the new experiment
-This experiment is not described in expEYES Junior's handbook, so let us
-consider that it is "new". It is using a liquid potentiometer to record
-oscillations of an elastic pendulum.
+** Description of the new experiment
+This experiment is about oscillations of a pendulum, and in most cases it can
+already be managed by an application distributed with expEYES Junior, known as
+"/Pendulum Waveform/". This application can be launched after a choice between
+expEYES Junior's featured "/EXPERIMENTS/" (launch the oscilloscope application,
+click on /EXPERIMENTS/, choose /Pendulum Waveform/).
 
+However, the program which implements currently "/Pendulum Waveform/" misses
+some features:
+- it is built upon the graphic library /Tk/, which does not support easily
+  right-to-left text writing in widgets
+- it plots the oscillations of the pendulum in non-real time, i.e. the voltages
+  samples are taken when the computer asks for them. In most cases it is not an
+  issue, but it may become one when the frequency of the oscillation is
+  rising. At higher frequencies, the task scheduler of the computer's operating
+  system may prevent getting enough samples during one oscillation, which would
+  lead to an odd-shaped curve.
 *** Schematics
 A massive object is hung under a spring. The top of the spring is tightly fixed,
 and a vertical insulated wire is hung just below the massive object. The end of
@@ -890,7 +903,7 @@ a linear function of its height. Figure [[fig:liquid_pot]] describes the experim
 #+CAPTION: An oscillator made with a spring, and its liquid potentiometer
 #+NAME: fig:liquid_pot
 [[./img/liquid_pot.png]]
-*** Features in this experiment which require a special program
+*** Features wanted for the program
 ExpEYES Junior comes with a program named "Data Logger" which can be used to
 monitor any signal captured by the measurement box. However, our experiment has
 a few unique features which call for a more appropriated program:
@@ -930,8 +943,177 @@ in figure [[fig:oscill_monitor]].
 #+NAME: fig:oscill_monitor
 [[./img/oscill_monitor.png]]
 
-The file is available from our [[][repository]], as =oscill.ui=. You can download
-it, and make a fewmodifications, like
+The file is available from our [[https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill.ui][repository]], as =oscill.ui=. You can download
+it, and make a few modifications, like
 - changing some part of the layout,
-- changing the help tips associated with some widgets,
+- changing the tooltips associated with some widgets,
 - adding some new widgets (it is better to keep existing widgets).
+You can notice that every widget which must be connected to the main program was
+named with an easy to remind identifier.
+
+*** Exercise:
+1. Modify the user interface in order to have all the control widgets stacked on
+   its right. Save the new interface file with a new name. Figure [[fig:oscill_monitor1]]
+   gives an outlook of a possible layout.
+2. Modify the user interface to translate "manually" texts and tooltips to your
+   language. Save it under a new name. /Please notice that this is not the
+   recommended method to translate an applications user interface/. /There are
+   dedicated tools to perform this job more efficiently/, /and to have it done by
+   other people/.
+
+#+CAPTION: Control widgets of the application are stacked on the right
+#+NAME: fig:oscill_monitor1
+[[./img/oscill_monitor1.png]]
+*** Minimal structure of the main program
+The main program must at least:
+1. import necessary modules and the user interface module
+2. define a custom class for the main window, which will be linked to the user
+   interface
+3. build the user interface upon initialization of the main window
+4. connect signals managed by the widgets to methods of the main window
+5. create the application object, instantiate the main window, and let it run.
+
+This is done in the program =oscill1.py= which can be downloaded [[https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill1.py][from the
+"repository"]]; figures [[fig:prog_oscill1_1]] to [[fig:prog_oscill1_5]] show how those
+five parts of the minimal program are implemented.
+
+#+CAPTION: importing modules and classes from modules
+#+NAME: fig:prog_oscill1_1
+[[./img/prog_oscill1_1.png]]
+
+#+CAPTION: the new class for the main window
+#+NAME: fig:prog_oscill1_2
+[[./img/prog_oscill1_2.png]]
+
+#+CAPTION: building the user interface
+#+NAME: fig:prog_oscill1_3
+[[./img/prog_oscill1_3.png]]
+
+#+CAPTION: connecting signals to methods
+#+NAME: fig:prog_oscill1_4
+[[./img/prog_oscill1_4.png]]
+
+#+CAPTION: making it run
+#+NAME: fig:prog_oscill1_5
+[[./img/prog_oscill1_5.png]]
+
+This program can be run, it raises no error. However, it makes nothing useful for
+the end-user so far. When you click buttons or trigger menu actions, a message
+pops up: "Sorry, not implemented", except for the method =close= which is
+inherited from the ancestor =QMainWindow= class.
+*** Adding methods to toggle the way curves will be plotted
+There will be two methods to plot the curves:
+1. immediately, while the pendule is still oscillating
+2. once, when the scheduled data have been recorded
+
+To implement this, a new property, =self.isImmediate= is initialized to =True= in the
+main window's constructor, and methods =immediate= and =final= are defined to change
+its value; see figure [[fig:prog_oscill2_1]]. Please notice that the identifiers
+=immediate= and =final= are no longer assigned to =notImplemented=.
+
+#+CAPTION: managing the plotting mode
+#+NAME: fig:prog_oscill2_1
+[[./img/prog_oscill2_1.png]]
+
+*** Implementing naively the capture of data and the plotting routine
+In this non-definitive version, the method =wakeUp= begins to capture data as soon
+as the button is clicked,and the flag =self.isImmediate= is disregarded: data are
+captured first, and the plot is refreshed later.
+
+Most code have been copied from the file =p3.py= studied [[prog:p3][previously]]. The
+implementation is done in file =oscill2.py=, which can be downloaded from the
+[[https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill2.py]["repository"]]. Figure [[fig:prog_oscill2_2]] shows the code of the naive version of
+the method =wakeUp=.
+
+#+CAPTION: implementation of the method =wakeUp=
+#+NAME: fig:prog_oscill2_2
+[[./img/prog_oscill2_2.png]]
+
+When we try to launch the program =oscill2.py=, measurements are well done for
+durations of a few seconds: one, two or three seconds are well managed, but when
+the duration of measurements is four seconds or more, the box replies no longer
+and some error messages are emitted. One must unplug and plug again the USB
+cable to get a working system. The programmer's manual states that too short
+durations are not possible (there must be at least 4 µs between successive
+samples), but issues with counter override are not documented.
+
+So, we shall estimate that when the duration of the experiment must be longer
+than 3.5 s, the measurements must be done in "immediate" mode.
+*** Less naive implementation for the plotting routine
+This implementation can be found in the program =oscill3.py=, available from the
+[[https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill3.py]["repository"]].
+The duration is tested: if it is longer than 3.5 s, the "immediate" mode is
+enforced, and a timer is initialized to measure the signal regularly. As the
+computer does not work in real time, a timestamp must be made as soon as a new
+value is read. If the duration is in the range from 0.5 to 3.5 s, the mode is selected by
+taking in account radio buttons, and if the duration is shorter than 0.5 s, the
+"final" mode is enforced. The most relevant elements of code are shown in figure
+[[fig:prog_oscill2_3]].
+
+#+CAPTION: the new =wakeUp()= method
+#+NAME: fig:prog_oscill2_3
+[[./img/prog_oscill2_3.png]]
+
+Figures [[fig:prog_oscill2_4]] and [[fig:prog_oscill2_5]] show how the "=tick=" method
+implements gathering voltage and time when the application gets a =timeout=
+signal, every 50 milliseconds, and how this timer was created during the
+construction of the main window.
+
+#+CAPTION: implementation of =tick=
+#+NAME: fig:prog_oscill2_4
+[[./img/prog_oscill2_4.png]]
+
+#+CAPTION: initializing the application's timer
+#+NAME: fig:prog_oscill2_5
+[[./img/prog_oscill2_5.png]]
+*** Implementing the callback for the Stop button
+When one clicks the /Stop/ button, she wants to interrupt an acquisition of
+data. Interrupting this acquisition is not possible in "/final/" mode, but during
+the measurement timespan in "/immediate/" mode, it can be allowed. Figure
+[[fig:prog_oscill4_1]] shows the implementation of the =stop= callback method.
+
+#+CAPTION: implementing the =stop= callback method
+#+NAME: fig:prog_oscill4_1
+[[./img/prog_oscill4_1.png]]
+
+*** Implementing the callback for the Save button
+This part is straightforward: relevant data are self.t and self.v, the callback
+method opens a text file and writes formatted data into it. See figure
+[[fig:prog_oscill4_2]].
+
+#+CAPTION: implementing the =save= callback method
+#+NAME: fig:prog_oscill4_2
+[[./img/prog_oscill4_2.png]]
+*** Implementing the wait for a fast enough slew rate
+You remember that one of our concern was to make it easy for a user which has
+both hands in the experiment to launch the measurements. One way to achieve it
+is to begin measurements not when the "wake up" button is clicked, but later, when
+the voltage begins to swing. Therefore a control widget is designed to choose
+the desired slew rate threshold which will trigger the measurement series. This
+widget is a slider, to select a threshold ranging from zero to some volts per
+second. The precise value of the higher selectable slew rate depends on the
+experiment's scheduled duration. The shorter it is, the higher the threshold
+slew rate should be.
+
+So, the "=textChanged=" signal of the duration edit line is connected to
+a callback function which changes the axis scale, but also changes the slider's
+displaid range.
+
+#+CAPTION: the =durationChanged= callback method
+#+NAME: fig:prog_oscill4_3
+[[./img/prog_oscill4_3.png]]
+
+Then, some modifications are applied to the =wakeUp= method: a few lines are
+prepended just before the measurement routines, to call the =waitForThreshold=
+method.
+
+#+CAPTION: a few lines prepended before the measurement calls
+#+NAME: fig:prog_oscill4_4
+[[./img/prog_oscill4_4.png]]
+
+#+CAPTION: the =waitForThreshold= method
+#+NAME: fig:prog_oscill4_5
+[[./img/prog_oscill4_5.png]]
+
+The =waitForThreshold= method has a parameter named =timeOut=, which allows one to
+specify the longest possible wait period.

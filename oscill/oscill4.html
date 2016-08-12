@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oscill4.py, a demonstration program</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Georges Khaznadar" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Oscill4.py, a demonstration program</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Purpose</a></li>
+<li><a href="#orgheadline4">2. The experiment</a>
+<ul>
+<li><a href="#orgheadline2">2.1. Schematics</a></li>
+<li><a href="#orgheadline3">2.2. Let us do it</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline17">3. The user interface</a>
+<ul>
+<li><a href="#orgheadline16">3.1. Menus and submenus</a>
+<ul>
+<li><a href="#orgheadline5">3.1.1. File &rarr; Quit</a></li>
+<li><a href="#orgheadline7">3.1.2. File &rarr; Save</a></li>
+<li><a href="#orgheadline8">3.1.3. Help &rarr; Manual</a></li>
+<li><a href="#orgheadline9">3.1.4. Help &rarr; About</a></li>
+<li><a href="#orgheadline10">3.1.5. Button &ldquo;Wake Up&rdquo;</a></li>
+<li><a href="#orgheadline11">3.1.6. Button &ldquo;Stop&rdquo;</a></li>
+<li><a href="#orgheadline12">3.1.7. Text input &ldquo;Duration&rdquo;</a></li>
+<li><a href="#orgheadline6">3.1.8. Button &ldquo;Save&rdquo;</a></li>
+<li><a href="#orgheadline13">3.1.9. Radio buttons: &ldquo;immediate&rdquo; and &ldquo;finally&rdquo;</a></li>
+<li><a href="#orgheadline14">3.1.10. Slider &ldquo;Threshold&rdquo;</a></li>
+<li><a href="#orgheadline15">3.1.11. Button &ldquo;Fit&rdquo;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Purpose</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The program <code>oscill4.py</code> aims to give an example of how to develop a user interface for
+running an experiment with expEYES-Junior (see <a href="http://expeyes.in/">http://expeyes.in/</a>).
+</p>
+
+<p>
+Its source is part of a course named &ldquo;Affordable Science Experiments&rdquo;;
+see:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.schooleducationgateway.eu/en/pub/teacher_academy/catalogue/detail.cfm?id=16346"><a href="http://www.schooleducationgateway.eu/">http://www.schooleducationgateway.eu/</a> &#x2026;</a></li>
+<li><a href="https://github.com/georgesk/course-affordable-science"><a href="https://github.com/georgesk">https://github.com/georgesk</a> &#x2026;</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">2</span> The experiment</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Schematics</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A massive object is hung under a spring. The top of the spring is tightly fixed,
+and a vertical insulated wire is hung just below the massive object. The end of
+this wire is unwrapped, so it acts as the cursor of a potentiometer. Eventually,
+some light sheet of plastic or of metal is tightened to the massive object in
+order to provide some friction while it moves in the air.
+</p>
+
+<p>
+The potentiometer&rsquo;s body is a measuring cylinder filled with copper sulfide
+(\(concentration = 0.01\, mol\cdot L^{-1}\)), which bears two circular electrodes, made
+with one turn of copper: one at the bottom of the cylinder, the other one near
+the top of the copper sulfide solution. Both electrodes are connected through
+insulated wires to a \(4.5\, V\) battery. Whenever one connects the battery, she
+should consider which electrode need to gain more copper, and connect the
+negative end of the battery to this electrode (copper deposits on the cathode).
+</p>
+
+<p>
+When some current flows between both electrodes, there are quite plane
+equipotential surfaces, regularly spaced vertically between the electrodes. So
+when the height of the vertical wire&rsquo;s tip movesup and down, its potential is
+a linear function of its height. Figure <a href="#orgparagraph1">1</a> describes the experiment.
+</p>
+
+
+<div id="orgparagraph1" class="figure">
+<p><img src="../img/liquid_pot.png" alt="liquid_pot.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> An oscillator made with a spring, and its liquid potentiometer</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Let us do it</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The experiment is set up, and two wires are plugged into expEYES&rsquo; slots: the
+liquid cursor is connected to <i>A1</i>, the first bipolar analogic input, and the
+<i>minus</i> wire is connected to <i>GND</i>, ground of the computer.
+</p>
+
+<p>
+We must take care to limit the voltage applied to the cylinder, in order to
+prevent voltages higher than 5 V.
+</p>
+
+<p>
+Then, we launch the application <code>oscill4.py</code> (command line = <code>python3 oscill4.py</code>),
+and we click on the <i>Wake up</i> button. We slowly pull the pendulum far from its
+equilibrium position, and we release it suddenly. Data sampling should begin
+precisely at this moment, and we should see the curve plotted while the pendulum
+keeps oscillating.
+</p>
+
+<p>
+If data sampling starts too quickly, we can lower the sensibility to start
+signal by dragging the <i>Threshold</i> slider to the right.
+</p>
+
+<p>
+When the curve is completely plotted, we can save the data (<i>Save</i> button) or fit
+them against a mathematical model (<i>Fit</i> button).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">3</span> The user interface</h2>
+<div class="outline-text-2" id="text-3">
+
+<div id="orgparagraph2" class="figure">
+<p><img src="../img/oscill_monitor.png" alt="oscill_monitor.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> the user interface of the program <code>oscill4.py</code></p>
+</div>
+
+<p>
+The figure <a href="#orgparagraph2">2</a> displays the user interface as it appears inside
+the authoring program (<code>designer</code>). We shall discuss the methods attached to all
+user-level action widgets.
+</p>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.1</span> Menus and submenus</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">3.1.1</span> File &rarr; Quit</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+To close the main window.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">3.1.2</span> File &rarr; Save</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+To save current data to a text file, whose name can be changed <a href="#orgheadline6">below</a>, ubder the
+plot area.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">3.1.3</span> Help &rarr; Manual</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+To read the present help file.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">3.1.4</span> Help &rarr; About</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+To read license stuff.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">3.1.5</span> Button &ldquo;Wake Up&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+Prepares the program for a new experiment. The data acquisition will begin as
+the input signal&rsquo;s <i>slew rate</i> becomes greater that a given threshold, which can
+be set with the &ldquo;Threshold&rdquo; slider described <a href="#orgparagraph3">below</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">3.1.6</span> Button &ldquo;Stop&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<p>
+This button can be used in the <i>immediate</i> mode described <a href="#orgparagraph4">below</a>. It stops data
+gathering, so the program can be activated for a new experiment after.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">3.1.7</span> Text input &ldquo;Duration&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-7">
+<p>
+You can type a number of seconds, which will be the scheduled duration of the
+next experiment; plots are resized while one is modifying the duration.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">3.1.8</span> Button &ldquo;Save&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-8">
+<p>
+To save current data to a text file, whose name can be modified just near the
+button. The data are written as lines containing a timestamp and a voltage
+value, units are second and volt. Numbers areseparated by plain spaces.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">3.1.9</span> Radio buttons: &ldquo;immediate&rdquo; and &ldquo;finally&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-9">
+<p>
+When the button &ldquo;immediate&rdquo; is checked, the plot will be updated as fast as data
+are coming from the experiment, in near-real time. When the button &ldquo;finally&rdquo; is
+checked, data are first measured and finally their curve is plotted.
+</p>
+
+<p>
+The <i>immediate</i> mode is enforced if the experiment&rsquo;s duration is greater than
+3.5 s; the <i>finally</i> mode is enforced if the experiment&rsquo;s duration is shorter than
+0.5 s.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">3.1.10</span> Slider &ldquo;Threshold&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-10">
+<p>
+This slider provides an opportunity to tune the sensitivity of the detection for
+the start of experiment. When the <i>Wake up</i> button has been clicked, the
+experiment&rsquo;s data will be gathered as soon as they begin to change quick
+enough. If one selects a high slew rate, the start detection is less sensitive;
+on the contrary, if the selected slew rate is zero, the start detection is quite
+inactive, and measurements begin right after the click on the <i>Wake up</i> button.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">3.1.11</span> Button &ldquo;Fit&rdquo;</h4>
+<div class="outline-text-4" id="text-3-1-11">
+<p>
+To compare measurements with a mathematic model for a damped sine wave. Here is
+the formula used to fit data:
+\[A*\sin(2\pi ft+\phi)*e^{-D*t}+C\]
+where \(A\) is the amplitude (V), \(f\) is the frequency (Hz), \(\phi\) is a phase, \(D\)
+is the damping factor (\(s^{-1}\)), and \(C\) is an additive constant value, the DC component
+of the signal.
+</p>
+
+<p>
+Some authors prefer consider \(\tau = \frac{1}{D}\) with unit \(s\), which is the
+&ldquo;relaxation time&rdquo; of the decay. The amplitude of the signal is divided by two
+when \(t\simeq0.69\tau\).
+</p>
+
+<p>
+When the button is clicked, parameters are optimized to make a model as near as
+possible from the measured data; the formula is displaid near the <i>Fit</i> button,
+and curves coming from the model are plotted in addition to the data&rsquo;s plot.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-19 Tue&gt;</span></span></p>
+<p class="author">Author: Georges Khaznadar</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -7,6 +7,8 @@ from qwt import QwtPlotCurve, QwtPlot
 import numpy as np
 # using the right module for expEYES Junior (alias: ej)
 import expeyes.eyesj as ej
+import expeyes.eyemath as em
+from scipy import optimize
 import time
 
 class MyWindow(QtGui.QMainWindow):
@@ -37,8 +39,14 @@ class MyWindow(QtGui.QMainWindow):
         # initialize an empty curve for the plot widget
         self.curve         = QwtPlotCurve()
         self.curve0        = QwtPlotCurve()
+        self.fitCurve1     = QwtPlotCurve()
+        self.fitCurve2     = QwtPlotCurve()
+        self.fitCurve3     = QwtPlotCurve()
         self.curve.attach(self.ui.qwtPlot)
         self.curve0.attach(self.ui.qwtPlot)
+        self.fitCurve1.attach(self.ui.qwtPlot)
+        self.fitCurve2.attach(self.ui.qwtPlot)
+        self.fitCurve3.attach(self.ui.qwtPlot)
         # adjust the axis scales based on duration = 15 s
         self.durationChanged(15, ampl=5)
         # set the maxvalue for the threshold rate (in V/s)
@@ -76,6 +84,10 @@ class MyWindow(QtGui.QMainWindow):
         # update the threshold rate 
         self.maxThreshold=150/duration
         self.ui.thresholdLabel.setText("{} V/s".format(self.maxThreshold))
+        # erase fit curves
+        self.fitCurve1.setData([],[],0)
+        self.fitCurve2.setData([],[],0)
+        self.fitCurve3.setData([],[],0)
         return
         
     def immediate(self):
@@ -167,6 +179,37 @@ class MyWindow(QtGui.QMainWindow):
             self.curve.setData(self.t, self.v, len(self.t))
         return
             
+    
+    def fit(self):
+        """
+        Fitting data in self.t, self.v with a damped oscillation model
+        """
+        # fitting is performed by eyemath (aka em) thanks to
+        # scipy.optimize, and the error function defined by
+        # the module eyemath (line 92):
+        # p[0] * sin(2*pi*p[1]*x+p[2]) * exp(-p[4]*x) - p[3]
+        # so the vector of parameters is:
+        # amplitude, frequency, phase, DC average, damping factor.
+        yfit, plsq = em.fit_dsine(self.t, self.v, mode="Hz")
+        # display the fitting model
+        msg="{0:4.2f}*sin(2*pi*{1:4.2f}*t+({2:3.1f}))*exp(-{4:4.2f}*t)+{3:3.1f}".format(
+            *plsq
+        )
+        self.ui.fitEdit.setText(msg)
+        # display three curves : model and model's envelopes
+        t=np.array(self.t)
+        f1=np.array(yfit)
+        f2=plsq[0]*np.exp(-plsq[4]*t)
+        f3=-1.0*f2
+        average=plsq[3]*np.ones(len(t))
+        red=QtGui.QColor("#ff0000")
+        self.fitCurve1.setPen(red)
+        self.fitCurve2.setPen(red)
+        self.fitCurve3.setPen(red)
+        self.fitCurve1.setData(t, f1, len(t))
+        self.fitCurve2.setData(t, f2+average, len(t))
+        self.fitCurve3.setData(t, f3+average, len(t))
+        return
         
     def notImplemented(self):
         msg=QtGui.QMessageBox(QtGui.QMessageBox.Warning,"Sorry",
@@ -174,7 +217,7 @@ class MyWindow(QtGui.QMainWindow):
         msg.exec_()
         return
 
-    fit=manual=about=notImplemented
+    manual=about=notImplemented
 
 
 if __name__=="__main__":

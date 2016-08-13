@@ -1117,3 +1117,97 @@ method.
 
 The =waitForThreshold= method has a parameter named =timeOut=, which allows one to
 specify the longest possible wait period.
+*** The fit utility
+Thanks to the library =expeyes.eyemayh=, fitting a signal against a damped
+sinusoidal function is quite straightforward. The function =fit_dsine= does all
+the job, in a few steps: first, it guesses the pseudo-frequency of the signal
+thanks to a Fourier transform, then it calls a routine from the module
+=pylab.optimize= to minimize the differences between the signal and a parametric
+equation of a damped sinus. The parameters returned by the modelling routine
+are fed back in a text field (the optimized model equation is displaid), and
+three additional curves are plotted in color: the model, and both positive and
+negative envelopes which encompass its values. Figures [[fig:prog_fit]] and
+[[fig:shot_fit]] show the program's source and a screenshot of the curves.
+
+#+CAPTION: source of the =fit= method
+#+NAME: fig:prog_fit
+[[./img/prog_fit.png]]
+
+#+CAPTION: captured signal and its model
+#+NAME: fig:shot_fit
+[[./img/shot_fit.png]]
+*** The two help methods
+Most of the contextual help for the end user is defined during the design of the
+user interface. The program =designer= allows you to attach a help string to every
+widget, which will appear as tooltip popup when the mouse cursors hovers it
+a few time. Other parts of the contextual help can be fed to the user via the
+status bar, and this can be written also while designing the user interface.
+
+Two additional help methods are provided, respectively for menu items "Help \rightarrow
+About" and "Help \rightarrow Manual". Both raise a browser window, which is fed a web page
+(respectively =license.html= and =oscillo4.html=). The first file is automatically
+made on the fly, based on the =license= variable which the program defines (at
+the begin of the code).
+
+*** Access to the complete source code
+Please visit the "[[https://github.com/georgesk/course-affordable-science/raw/master/oscill/oscill4.py][repository]]". The program is distributed under a GPL v3
+license, hence you can copy it, modify and redistribute it, provided you comply
+with a few rules:
+- redistributed versions must be ruled by the same license;
+- authors must be quoted;
+- if somebody received some /binary/ version of the program, and asks you
+  to provide her its source code, you must give access to it.
+
+This source code can be easily modified, improved, extended, changed to manage
+other experiments, etc. For a beginner, three hundred lines of code are a big
+deal, but they are lighter than many other similar programs written with other
+languages and libraries. Copying and pasting parts of this program can speed up
+drastically the writing of other scientific programs.
+
+For more experimented programmers, some parts of this code can be turned into
+prototype =classes=, which can be derived later into various usable end-user
+programs to control scientific experiments with expEYES. Exactly like the
+=PyQt4= library allowed us to derive a special =class MyWindow= from the base =class
+QtGui.QMainWindow=, one can design a class featuring many widgets and methods
+reusable by various scientific programs, like the plot widget, the timer to
+periodically measure some signal, the detection of a slew rate as
+a synchronization tool, etc.
+
+** Exercises
+Here a a few exercises which can be used to rework the program =oscill4.py=, the
+user interface =oscill4.ui=, the help file =oscill4.html=. To start any exercise,
+you can make a copy of all those files. Some other files like as =Makefile= and
+=oscill4.org= can also be of some help if you are using appropriate tools:
+respectively the command [[https://www.gnu.org/software/make/][make]] and an integrated development environment
+with emacs, org-mode, $\TeX live$.
+
+1. Display a message in the status bar (=self.ui.statusBar=) just after one clicks
+   on the /Wake up/ button, and remove the message when the measurements
+   begin. The message can be "waiting for a signal variation ..."
+2. Make the previous message more interactive: format it with the template "{}
+   seconds left, waiting for a signal variation ..."; the time value at the
+   begin of the message should be refreshed every second while the measurements
+   have not yet begun. The initial time value is the =timeOut= which is
+   a parameter of the =wakeForThreshold= method.
+3. The upper limit of slew rate selectable with the threshold slider is a little
+   too low for many applications, so the synchronization behavior can bee too
+   picky, and one cannot easily start the experiment. Modify the way this number
+   is computed, to make the application more usable.
+4. The menu provides a =Save= item, but no =Load File=. Implement a /Load File/
+   submenu, and make someting useful out of it.
+5. Add a new submenu /Load recent file .../ and make something useful out of
+   it. It should provide a keyboard shortcut, and a quick method to cycle
+   between recently measured series.
+6. Modify the =fit= method. The user should be given a choice, for example,
+   between a pure sinus model (no friction), an exponentially damped sinus model
+   (fluid friction), and why not, a linear damped sinus model (solid friction).
+7. Improve the user manual : for example, add some theory considerations about
+   the damped sinus mode and fluid friction. You can adapt some contents from
+   [[https://en.wikipedia.org/wiki/Damping][Wikipedia]], do not forget to quote the original article and credit its authors
+   if you do so.
+8. Add some widget to comment the measured data, when they are well fitted with
+   a damped sinus: say whether the oscillation is under-damped, critically
+   damped, over-damped.
+9. Modify the user interface, wisely add some funny colors.
+10. Add a dialog to ask the user whether she wants to save data (only if
+    necessary) when she closes the application.

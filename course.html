@@ -190,7 +190,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline55">5. Writing the user interface for a new experiment</a>
+<li><a href="#orgheadline59">5. Writing the user interface for a new experiment</a>
 <ul>
 <li><a href="#orgheadline43">5.1. Description of the new experiment</a>
 <ul>
@@ -199,7 +199,7 @@
 </ul>
 </li>
 <li><a href="#orgheadline44">5.2. Implementing new features</a></li>
-<li><a href="#orgheadline54">5.3. Coding the new program</a>
+<li><a href="#orgheadline57">5.3. Coding the new program</a>
 <ul>
 <li><a href="#orgheadline45">5.3.1. Designing the user interface</a></li>
 <li><a href="#orgheadline46">5.3.2. Exercise:</a></li>
@@ -210,8 +210,12 @@
 <li><a href="#orgheadline51">5.3.7. Implementing the callback for the Stop button</a></li>
 <li><a href="#orgheadline52">5.3.8. Implementing the callback for the Save button</a></li>
 <li><a href="#orgheadline53">5.3.9. Implementing the wait for a fast enough slew rate</a></li>
+<li><a href="#orgheadline54">5.3.10. The fit utility</a></li>
+<li><a href="#orgheadline55">5.3.11. The two help methods</a></li>
+<li><a href="#orgheadline56">5.3.12. Access to the complete source code</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline58">5.4. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -1539,8 +1543,8 @@ Propositions of solutions for this set of exercises are published in the &ldquo;
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline55" class="outline-2">
-<h2 id="orgheadline55"><span class="section-number-2">5</span> Writing the user interface for a new experiment</h2>
+<div id="outline-container-orgheadline59" class="outline-2">
+<h2 id="orgheadline59"><span class="section-number-2">5</span> Writing the user interface for a new experiment</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-orgheadline43" class="outline-3">
 <h3 id="orgheadline43"><span class="section-number-3">5.1</span> Description of the new experiment</h3>
@@ -1652,8 +1656,8 @@ or asynchronously.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline54" class="outline-3">
-<h3 id="orgheadline54"><span class="section-number-3">5.3</span> Coding the new program</h3>
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">5.3</span> Coding the new program</h3>
 <div class="outline-text-3" id="text-5-3">
 </div><div id="outline-container-orgheadline45" class="outline-4">
 <h4 id="orgheadline45"><span class="section-number-4">5.3.1</span> Designing the user interface</h4>
@@ -1971,6 +1975,140 @@ The <code>waitForThreshold</code> method has a parameter named <code>timeOut</co
 specify the longest possible wait period.
 </p>
 </div>
+</div>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">5.3.10</span> The fit utility</h4>
+<div class="outline-text-4" id="text-5-3-10">
+<p>
+Thanks to the library <code>expeyes.eyemayh</code>, fitting a signal against a damped
+sinusoidal function is quite straightforward. The function <code>fit_dsine</code> does all
+the job, in a few steps: first, it guesses the pseudo-frequency of the signal
+thanks to a Fourier transform, then it calls a routine from the module
+<code>pylab.optimize</code> to minimize the differences between the signal and a parametric
+equation of a damped sinus. The parameters returned by the modelling routine
+are fed back in a text field (the optimized model equation is displaid), and
+three additional curves are plotted in color: the model, and both positive and
+negative envelopes which encompass its values. Figures <a href="#orgparagraph46">44</a> and
+<a href="#orgparagraph47">45</a> show the program&rsquo;s source and a screenshot of the curves.
+</p>
+
+
+<div id="orgparagraph46" class="figure">
+<p><img src="./img/prog_fit.png" alt="prog_fit.png" />
+</p>
+<p><span class="figure-number">Figure 44:</span> source of the <code>fit</code> method</p>
+</div>
+
+
+<div id="orgparagraph47" class="figure">
+<p><img src="./img/shot_fit.png" alt="shot_fit.png" />
+</p>
+<p><span class="figure-number">Figure 45:</span> captured signal and its model</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">5.3.11</span> The two help methods</h4>
+<div class="outline-text-4" id="text-5-3-11">
+<p>
+Most of the contextual help for the end user is defined during the design of the
+user interface. The program <code>designer</code> allows you to attach a help string to every
+widget, which will appear as tooltip popup when the mouse cursors hovers it
+a few time. Other parts of the contextual help can be fed to the user via the
+status bar, and this can be written also while designing the user interface.
+</p>
+
+<p>
+Two additional help methods are provided, respectively for menu items &ldquo;Help &rarr;
+About&rdquo; and &ldquo;Help &rarr; Manual&rdquo;. Both raise a browser window, which is fed a web page
+(respectively <code>license.html</code> and <code>oscillo4.html</code>). The first file is automatically
+made on the fly, based on the <code>license</code> variable which the program defines (at
+the begin of the code).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-4">
+<h4 id="orgheadline56"><span class="section-number-4">5.3.12</span> Access to the complete source code</h4>
+<div class="outline-text-4" id="text-5-3-12">
+<p>
+Please visit the &ldquo;<a href="https://github.com/georgesk/course-affordable-science/raw/master/oscill/oscill4.py">repository</a>&rdquo;. The program is distributed under a GPL v3
+license, hence you can copy it, modify and redistribute it, provided you comply
+with a few rules:
+</p>
+<ul class="org-ul">
+<li>redistributed versions must be ruled by the same license;</li>
+<li>authors must be quoted;</li>
+<li>if somebody received some <i>binary</i> version of the program, and asks you
+to provide her its source code, you must give access to it.</li>
+</ul>
+
+<p>
+This source code can be easily modified, improved, extended, changed to manage
+other experiments, etc. For a beginner, three hundred lines of code are a big
+deal, but they are lighter than many other similar programs written with other
+languages and libraries. Copying and pasting parts of this program can speed up
+drastically the writing of other scientific programs.
+</p>
+
+<p>
+For more experimented programmers, some parts of this code can be turned into
+prototype <code>classes</code>, which can be derived later into various usable end-user
+programs to control scientific experiments with expEYES. Exactly like the
+<code>PyQt4</code> library allowed us to derive a special <code>class MyWindow</code> from the base <code>class
+QtGui.QMainWindow</code>, one can design a class featuring many widgets and methods
+reusable by various scientific programs, like the plot widget, the timer to
+periodically measure some signal, the detection of a slew rate as
+a synchronization tool, etc.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline58" class="outline-3">
+<h3 id="orgheadline58"><span class="section-number-3">5.4</span> Exercises</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Here a a few exercises which can be used to rework the program <code>oscill4.py</code>, the
+user interface <code>oscill4.ui</code>, the help file <code>oscill4.html</code>. To start any exercise,
+you can make a copy of all those files. Some other files like as <code>Makefile</code> and
+<code>oscill4.org</code> can also be of some help if you are using appropriate tools:
+respectively the command <a href="https://www.gnu.org/software/make/">make</a> and an integrated development environment
+with emacs, org-mode, \(\TeX live\).
+</p>
+
+<ol class="org-ol">
+<li>Display a message in the status bar (<code>self.ui.statusBar</code>) just after one clicks
+on the <i>Wake up</i> button, and remove the message when the measurements
+begin. The message can be &ldquo;waiting for a signal variation &#x2026;&rdquo;</li>
+<li>Make the previous message more interactive: format it with the template &ldquo;{}
+seconds left, waiting for a signal variation &#x2026;&rdquo;; the time value at the
+begin of the message should be refreshed every second while the measurements
+have not yet begun. The initial time value is the <code>timeOut</code> which is
+a parameter of the <code>wakeForThreshold</code> method.</li>
+<li>The upper limit of slew rate selectable with the threshold slider is a little
+too low for many applications, so the synchronization behavior can bee too
+picky, and one cannot easily start the experiment. Modify the way this number
+is computed, to make the application more usable.</li>
+<li>The menu provides a <code>Save</code> item, but no <code>Load File</code>. Implement a <i>Load File</i>
+   submenu, and make someting useful out of it.</li>
+<li>Add a new submenu <i>Load recent file &#x2026;</i> and make something useful out of
+it. It should provide a keyboard shortcut, and a quick method to cycle
+between recently measured series.</li>
+<li>Modify the <code>fit</code> method. The user should be given a choice, for example,
+between a pure sinus model (no friction), an exponentially damped sinus model
+(fluid friction), and why not, a linear damped sinus model (solid friction).</li>
+<li>Improve the user manual : for example, add some theory considerations about
+the damped sinus mode and fluid friction. You can adapt some contents from
+<a href="https://en.wikipedia.org/wiki/Damping">Wikipedia</a>, do not forget to quote the original article and credit its authors
+if you do so.</li>
+<li>Add some widget to comment the measured data, when they are well fitted with
+a damped sinus: say whether the oscillation is under-damped, critically
+damped, over-damped.</li>
+<li>Modify the user interface, wisely add some funny colors.</li>
+<li>Add a dialog to ask the user whether she wants to save data (only if
+necessary) when she closes the application.</li>
+</ol>
 </div>
 </div>
 </div>

@@ -1211,3 +1211,187 @@ with emacs, org-mode, $\TeX live$.
 9. Modify the user interface, wisely add some funny colors.
 10. Add a dialog to ask the user whether she wants to save data (only if
     necessary) when she closes the application.
+* Writing documentation for the end user
+We shall not talk about writing techniques in this course: they have existed for
+a long time, and they do not depend on technical knowledge. Every author can
+launch a word processor and begin describing experiments. Whether the document
+will be good depends on literary skills which are not the topic of this course.
+
+However we shall talk about methods which allow a community of developers and
+users to interact, to maintain good documentations. The model which all of us
+already know is Wikipedia. One can discuss about the methods used by
+mediawiki, the engine under Wikipedia (strong and weak points of the syntax used
+to write pages), but we must agree upon the success of Wikipedia: it is
+currently the biggest collaborative work ever published. Today, the page
+https://en.wikipedia.org/wiki/Wikipedia states that there are more than 40
+million articles in more than 250 different languages, and as of February 2014,
+it had 18 billion page views and nearly 500 million unique visitors each month.
+
+** Key features of an effective collaboration engine
+The history of Wikipedia demonstrated the advantage of widely open collaborative
+schemes over a hierarchically driven organization: when the project began, it
+was the sister project of Nupedia, which aimed to become an inline web
+encyclopedia, with articles written by experts, and approved by pair-review. On
+January 10, 2001, Sanger proposed on the Nupedia mailing list to create a wiki
+as a "feeder" project for Nupedia.
+
+We know the result: Nupedia was superseeded by Wikipedia, and when one wants to
+get information about Nupedia, she is redirected to an article of Wikipedia
+explaining why this project exists no longer.
+
+*** Separated edition of neighboring sections
+One problem of collaborative work is the risk of collisions when two contributors
+want to modify the same text simultaneously. This problem is partly worked
+around when a document is divided in many sections and subsections. The
+mediawiki engine allows two contributors to edit separate sections of the
+same level concurrently without colliding.
+
+*** Template support
+When more than one person is authoring a book, authors need a mechanism to
+create self-consistent contents. For a traditional book, this is done during
+some regularly scheduled meetings. For Wikipedia, asynchronous procedures are
+preferred. The solution is to define a template for data which need some
+consistency, and report bugs when contributors forget to use the template.
+
+A good example is the set of articles about chemical molecules: every molecule
+can be described by a set of physic properties, like temperatures of melting,
+boiling points, molecular weight, etc.
+
+Let us take a look at [[https://en.wikipedia.org/wiki/Aspirin][Wikipedia's article about Aspirin]]. Here is an excerpt of
+the source code in mediawiki syntax which gives the normalized description of
+the molecule:
+
+#+BEGIN_SRC mediawiki
+  {{Infobox drug
+  <!-- (many missing lines) -->
+  <!--Chemical data-->
+  | C=9 | H=8 | O=4
+  | molecular_weight = 180.157 g/mol
+  | smiles = O=C(Oc1ccccc1C(=O)O)C
+  | StdInChI_Ref = {{stdinchicite|correct|chemspider}}
+  | StdInChI = 1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
+  | StdInChIKey_Ref = {{stdinchicite|correct|chemspider}}
+  | StdInChIKey = BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+  | synonyms = 2-acetoxybenzoic acid<br />acetylsalicylate<br />acetylsalicylic acid<br />O-acetylsalicylic acid
+  | density = 1.40
+  | melting_point = 135
+  | boiling_point = 140
+  | boiling_notes = (decomposes)
+  | solubility = 3
+  }}
+#+END_SRC
+
+#+CAPTION: the info box for Aspirin
+#+NAME: fig:aspirin
+[[./img/aspirin.png]]
+
+This code is rendered as in figure [[fig:aspirin]].
+You can find the source of the template used to deal with /Infobox_drug/ in
+a [[https://en.wikipedia.org/wiki/Template:Chembox_Elements/molecular_formula][special page]] of Wikipedia; this template is rather complicated, and results
+from the work of many contributors. However, templates can be defined with more
+simplicity, and they are still a very powerful tool to enforce consistency in
+a book written by multiple authors.
+
+*** Translation support
+One strong feature of mediawiki is the support of a very versatile engine to
+manage translations of a document.
+
+A first document must be written in a pivot language, usually English (or bad
+English); then this document is marked automatically to allow other people to do
+translations.
+
+Later, translators who log into the service can see the list of
+translatable pages, browse statistics about which of them are already
+translated, which of them deserve proofreading, which of them were modified and
+may be out of date regarding translation, etc.
+
+At any moment, logged in translators can begin to translate a new page, which is
+done section by section.
+
+*** Not WYSIWYG, rather WYSIWYM
+When one wants to author a paper, the first idea is to use a word
+processor. Most of them are /WYSIWYG/, which means "What You See Is What You Get":
+at any time, when one types her text, she can see on the screen quite the result
+she will get upon printing it to the paper.
+
+Strangely enough, the wiki engine, which relies on a non-WYSIWYG input system,
+has taken precedence over papers created with word processors. Its success is
+due to another idea: "What You See Is What You Mean": the syntax used to write
+an article denotes precisely the role of every part of a text. By default, the
+role is /paragraph/, and special markup is used to denote other roles like
+/section/, /subsection/, /subsubsection/ etc., /table/, /table row/, /table cell/, /cross
+reference/, /hyperlink/, etc.
+
+Every wiki engine has its own syntax to express those roles; such syntaxes are
+worth a training, since they enable you to collaborate with great and vivid
+communities of authors, to a great project. Mediawiki's syntax is particularly
+worth your attention, because of the success of this project.
+
+*** Free software, open standards
+The syntax of Mediawiki text is an open standard, whose definition is published
+completely at [[https://www.mediawiki.org/wiki/Markup_spec/BNF][www.mediawiki.org...BNF]]. The engine of Wikipedia is known as
+=mediawiki=, it is published as a free software, distributed under [[https://en.wikipedia.org/wiki/MediaWiki][GPL V2+]].
+
+To create a working server featuring a wiki with this engine, here is the
+simplest recipe: hire a server with a correct bandwidth to Internet, install
+the stable Debian distribution, then add the package =mediawiki=; browse the newly
+created service, reply the questions which will make its particular
+configuration, /et voilà/.
+
+As Mediawiki works with free software and open standards, it can be thought as
+some /eternal/ software: if the organization which develops and maintains it fails
+to keep on doing it properly, anybody with suitable skills can rise and take
+over the project. Another important consequence is that anybody can /rely/ on the
+specification of data formats which come with mediawiki. So, one can author
+independently software which interacts with the mediawiki engine, and enrich
+its features. Many contributions were made by people independently from Wikimedia
+Foundation. Those contributions are sometimes integrated to new versions of the
+main engine, and sometimes not.
+
+*** From a mediawiki to a book
+[[https://en.wikibooks.org/wiki/Main_Page][WikiBooks]] is a website maintained by the Wikimedia Foundation, which allows
+anyone to publish a book based on work published in Wikipedia: you learn to link
+the wiki pages which you want to a book structure, and you ask to create the
+book. A PDF document based on your choice is composed by the web server, and you
+can download it at will. Alternatively, you can place an order to get it
+printed, bound into a book with a suitable cover.
+
+If you prefer, for some reason, to work independently from the Wikimedia
+Foundation, this is still possible! A criterion to say that a software is free
+is the so-called "[[https://wiki.debian.org/DesertIslandTest][Desert Island Test]]":
+
+#+BEGIN_SRC plain_text
+  A good test case for whether a license is free [...]
+  is whether a disconnected group of people on a desert
+  island could distribute the software among themselves.
+  In the vim case, they cannot. (For example, if the vim
+  maintainer flies over the island and drops down a
+  message saying "you must hereby send me your changes",
+  how are the people down below to comply?) The fact that
+  the vim maintainer can send the request does not say
+  anything about whether the people receiving it could
+  reply.
+#+END_SRC
+
+Here is the recipe to create a book from a wiki, in the Desert Island case: you
+hire a computer with a good bandwidth to the local network of the island, you
+install the last stable Debian distribution from a DVD you brought with you when
+you went to the Island, then you install and configure the package =mediawiki=,
+and finally you install (or you distribute to your peers) the package
+=mediawiki2latex= and its dependencies. Then you and every peer having installed
+the package =mediawiki2latex= are able to turn a page of the common wiki into
+a book.
+
+** Exercises: make a small book out of mediawiki pages
+1. first variant: use the service provided at WikiBooks;
+2. second variant: install the package =mediawiki2latex= and make the small book
+   locally, without using WikiBooks' service;
+3. third variant: learn advanced features of =mediawiki2latex= and make a short
+   book with particular styles applied in specific cases. For example, you
+   define a template =Experiment= for your pages, which will be rendered as
+   a header of level 3 inside the service powered by mediawiki, and rendered
+   with special features in the PDF document, like a custom background color,
+   custom fonts, etc.;
+4. Chose some pages from Mediawiki which have currently no translation in your
+   language, and translate them; then create a small book out of them in your
+   language.

@@ -4,7 +4,7 @@
 #+EMAIL:       [[mailto:georges.khaznadar@free.fr&Subject=AMBS Course 2016][<georges.khaznadar@free.fr>]]
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:t toc:t
-#+LATEX_HEADER: \usepackage{lmodern}
+#+exposingLATEX_HEADER: \usepackage{lmodern}
 
 * Booting live USB sticks
 ** We proudly choose an "Insecure" system
@@ -19,7 +19,7 @@ So far, Microsoft company does not provide free/libre operating systems, and
 as we want to distribute live USB sticks which our students will be able to
 duplicate, understand, and even enhance, Microsoft Windows cannot be used.
 To have a more precise idea about the problem, let us take a look at the
-end-user agreement which comes with Windows 10:
+end-user agreement coming with Windows 10:
 
  (excerpt of
  https://www.microsoft.com/en-us/Useterms/OEM/Windows/10/UseTerms_OEM_Windows_10_English.htm)
@@ -34,10 +34,11 @@ end-user agreement which comes with Windows 10:
     (vi)    reverse engineer, decompile, or disassemble the software, or attempt to do so [...]
 
 *** To sum it up:
-- the software is licensed, not sold: /it can be free as *free beer*, but as
- we shall see further, it is not free as in *freedom*./
+- the software is licensed, not sold: /it can be free as *free beer*, but it
+  is not free as in *freedom*./
 - students (and teachers) are not allowed to publish, neither to distribute
- copies of the operating system. Even if this may be technically feasible, one can be sued if she does it.
+  copies of the operating system. Even if this may be technically feasible,
+  one can be sued if she does it.
 - students (and teachers) will never be allowed to understand how the
  operating system works. Its source is not published, and attempts to
  reverse engineer its binaries are forbidden by license.
@@ -45,7 +46,7 @@ end-user agreement which comes with Windows 10:
 *** So to sum up the summary:
 
 |--------------------------------------------------|
-| <c>                                              |
+|                                                  |
 | AS WE WANT OUR STUDENTS TO BE ABLE TO UNDERSTAND |
 | WHAT THEY USE AND WHAT THEY DO,                  |
 | WE MUST DEFINITELY OPT FOR INSECURE SYSTEMS.     |
@@ -53,13 +54,12 @@ end-user agreement which comes with Windows 10:
 
 ** Disabling the "Secure Boot" feature
 
-Until year 2015, vendors who wanted to apply the "Approved by Microsoft"
-sticker on their laptop had to enforce the "Secure Boot" feature by default,
-but they used to let a possibility for the users to disable this feature,
-more or less easily.
+Until year 2015, vendors who wanted to apply the sticker "/Approved by Microsoft/"
+on their laptop had to enforce "/Secure Boot/" by default, but they used to let
+a possibility for the users to disable this feature, more or less easily.
 
 More recently, vendors who want to get this sticker are encouraged to remove
-the possibility of disabling the "Secure Boot" feature. Depending on anti-trust
+the possibility of disabling the "/Secure Boot/" feature. Depending on anti-trust
 law which apply in such or such country, this removal can be considered legal
 or not. However, one can now find laptops which are difficult to boot without
 the "Secure Boot" feature.
@@ -68,7 +68,7 @@ Here are hints provided by Microsoft Company, about disabling the "Secure Boot"
 feature (source: https://msdn.microsoft.com/en-us/windows/hardware/commercialize/manufacture/desktop/disabling-secure-boot)
 
 *** To disable Secure Boot:
-
+#+BEGIN_QUOTE
     Before disabling Secure Boot, consider whether it is necessary. From time to time, your manufacturer may update the list of trusted hardware, drivers, and operating systems for your PC. To check for updates, go to Windows Update, or check your manufacturer's website.
 
     Open the PC BIOS menu. You can often access this menu by pressing a key during the boot-up sequence, such as F1, F2, F12, or Esc.
@@ -86,40 +86,42 @@ feature (source: https://msdn.microsoft.com/en-us/windows/hardware/commercialize
     If you’re using Windows 8.1, you may see a watermark on the desktop alerting
     you that Secure Boot is not configured correctly. Get this update to remove
     the Secure Boot desktop watermark.
+#+END_QUOTE
 
 ** Now our system is ready, let's boot with the USB stick
 
-When possible, alongside with the "Secure Boot" option tweak, you can choose the
-order of bootable devices. If the live USB stick is plugged in, you may reorder
-boot methods so the USB stick is considered as preferred (before the boot on
-hard disk, and before the boot on network interface). If you could define the
-USB stick as a preferred boot medium, just keep it plugged in while booting.
+When possible, alongside with the "/Secure Boot/" option's tweak, you can choose
+the order of precedence of bootable devices. If the live USB stick is plugged
+in, you may reorder boot devices so the USB stick is considered as preferred
+(coming before the boot on hard disk, and before the boot on network
+interface). If you could define the USB stick as the preferred boot device, just
+keep it plugged in while booting.
 
 If you could not define the default boot sequence order, you can choose the boot
-medium on the fly: on most laptops, the key "F8" (or F9, or F12) is dedicated at
+device on the fly: on most laptops, the key "F8" (or F9, or F12) is dedicated at
 this purpose. If the key is activated during the early boot process, you are
-given the choice between a few boot options in the so-called "boot menu". Choose
-your USB stick, and press "Enter".
+given the choice between a few devices in the so-called "boot menu". Choose
+your USB stick, and press "Enter". Depending on the computer, it can be called
+/USB disk/, /Removable media/, or be part of a sublist of "/hard drives/".
 
 When the system can boot from the USB stick, and if the graphic card of the
-laptop is VESA compatible, you will see a welcome splash screen provided by GRUB
-(GRand UNified Bootloader), with a few options selectable by keyboard's arrow
-keys. Usually, you just need to wait a few seconds, or you can type "Enter" to
-select the first entry. Then the boot process begins, and you can see a few
-messages on the screen, during the hardware check-up. One minute later, the
-graphic desktop should be usable.
+laptop is VESA compatible, you will see a welcome splash screen provided by
+/SYSLINUX/, and a few options selectable with keyboard's arrow keys. Usually, you
+just need to wait a few seconds, or you can type "Enter" to select the first
+entry in advance. Then the boot process begins, and you can see a few messages
+on the screen, during the hardware check-up. One minute later, the graphic
+desktop should be usable.
 
 The main menu (applications, settings, etc.) lies in the left bottom corner, you
-can begin exploring it. When an Ethernet cable is plugged in, the automatic
-configuration of network access is attempted, and chances are that you begin
-with a usable network configuration. There is also a possibility to get network
-access thanks to WIFI hotspots if any.
+can begin exploring it. When an Ethernet cable is already plugged in, the
+automatic configuration of network access is attempted, and chances are that you
+begin with a usable network configuration. There is also a possibility to get
+network access thanks to WIFI hotspots if any.
 
- # this is a comment
 * Why should I use a live USB stick with free software?
 ** Ten reasons why live USB sticks are /good/:
 The following set of reasons is non-exhaustive!
-1. I can get an efficient system with a USB stick weighing 8GB. This is
+1. I can get an efficient system with a USB stick weighing 8 GB. This is
  quite affordable. About one half of the storage space is used for the
  operating system and programs; the second half is available for the "payload";
 2. When I am travelling, or just going from place to place, all I need can
@@ -132,9 +134,9 @@ The following set of reasons is non-exhaustive!
   system and the programs without disclosing private data;
 6. When used in an educational context, USB live sticks provide an interesting
  feature: students can replay an exercise, or finish it outside the classroom,
- with exactly the same software environment they were using previously;
-7. A live USB stick can be used to boot a computer when it cannot boot
- on its hard disk for any reason; it is a valuable rescue system;
+ with exactly the same software environment which they were using previously;
+7. A live USB stick can be used to boot a computer even when it cannot boot
+ on its hard disk, for any reason; it is a valuable rescue system;
 8. A live USB stick can survive in a washing machine; a computer cannot;
 9. A live USB stick can survive strong accelerations, like falling downstairs; a
  computer cannot;
@@ -154,51 +156,59 @@ The following set of reasons is non-exhaustive!
    d. the freedom to copy and distribute the software, either in its original
     form or as a derivative work;
 2. As, with the definition above, there is no limitation of use (the software
-   does not need to be shared free of charge), people can earn their life when
-   working with free software;
+   /can/ be commercial), people can earn their life when working with free
+   software;
 3. As the source of the software must be delivered with it, fair interactions
    can be organized between competitors; every company can access specifications
-   about open formats being used; however, competitors cannot build their wealth
+   about open formats being used; hence competitors cannot build their wealth
    upon secrecy; the cost of the software must be justified by its quality;
 4. As the source of the software must be transmitted along, the software becomes
-   "eternal", in the sense that you can always hire a skilled person to adapt
-   the software and maintain it if a previous author or vendor fails to do it;
+   quite /eternal/, in the sense that you can always hire a skilled person to
+   adapt the software and maintain it if a previous author or vendor fails to do
+   it;
 5. Free software can be audited for security issues by specialists, who can know
    details of its design by studying its source; if a security issue is
    detected, it can be fixed by the same people;
-6. When the source of the software is written in a "human readable" form, one
-   can check that there is no spyware included;
+6. When the source of the software is written in a /human readable/ format, one
+   can check that there is no malware included;
 7. When the software is used to make science (or to teach science), it is not
    a "black box"; everyone may watch its internals, and experiments can be
-   readily reproduced;
+   readily reproduced worldwide;
 8. When there is no constraint on copies or instances of a running software,
-   license management is way cheaper;
+   the management of licenses is way cheaper;
 9. The ability for everyone to access the source of the software is a strong
    incentive for progress and software quality;
-10. Most non-free software from the last ten years is now dead; on the contrary,
+10. Most non-free software from the last ten years are now dead; on the contrary,
     free software, even when it is old, can be revived with some work; the same
-    is true with data which were saved in non-open formats, if nobody took the
-    opportunity to convert them to a new format when it was still possible.
+    obsolescence is true with data which were saved in non-open formats, if
+    nobody took the opportunity to convert them to a new format when that was
+    still possible.
+
 ** Why would my students like to use copies of my live USB stick?
 Here are a few "irrational reasons" why my students like my system based on
 a live USB stick:
-- Thanks to [[https://en.wikipedia.org/wiki/Klaus_Knopper][Klaus Knopper]]'s efforts, every derivative of KNOPPIX comes with an
-  excellent support of accelerated graphic cards, and the desktop is managed by
-  Compiz. If you do not know what Compiz provides, you cannot understand why
-  your students are playing with dozens of applications open in separate
-  windows, like jugglers with their balls.
+- Thanks to [[https://en.wikipedia.org/wiki/Klaus_Knopper][Klaus Knopper]]'s efforts, every derivative of KNOPPIX, like our USB
+  sticks, comes with an excellent support of accelerated graphic cards, and the
+  desktop is managed by =Compiz=. If you do not know what =Compiz= provides, you
+  cannot understand why your students are playing with dozens of applications
+  open in separate windows, like jugglers with their balls.
 - Creating awesome graphics is a matter of seconds; open Gimp, then
   File \rightarrow Create \rightarrow Logos \rightarrow (choose a style) \rightarrow (type your logo's text)  \rightarrow click,
   /et voilà/!
-- They can cheat when preparing their homework! For example, the application
-  wxMaxima allows them to find immediately the roots of most equations. Of
-  course, when students "begin to cheat", the teacher just needs to propose them
+- They can /cheat when preparing their homework/! For example, the application
+  =wxMaxima= allows them to find immediately the roots of most equations. Of
+  course, when students "/begin to cheat/", the teacher just needs to propose them
   more creative assignments: they become able to solve problems which are
-  usually thought as out of their reach at their education level.
-And now, here here is at least one "rational reason" why my students do use my
+  usually considered out of their reach, at their education level.
+
+And now, here is at least *one* "rational reason" why my students do use my
 system based on a live USB stick:
-- They are assigned homework which can precisely be done with the help of
-  that live USB stick.
+- They are assigned *homework* which can precisely be done with the help of
+  that live USB stick!
+Of course, the assignments can be done with other software environments, but
+just gathering the right tools can be a time consuming task: the USB stick
+concentrates a lot of teaching resources.
+
 * First use of the expEYES box
 ** Pickup voltage: where does it come from?
 #+CAPTION: Main window of expEYES-Jr features an oscilloscope screen
@@ -214,7 +224,7 @@ Channel CRO+ found expEYES-Junior on =/dev/ttyACM0=", which means that the
 application "CRO+" (an enhanced Cathode-Ray Oscilloscope) has detected the box
 named expEYES-Junior, via the serial port known as =/dev/ttyACM0=.
 
-Take an insulated wired in your hand (do not touch directly the metal), and
+Take an insulated wire in your hand (do not touch directly the metal), and
 touch the analogical input A1 with the bare end of the wire. The track on the
 oscilloscope screen should change a little. Then change the duration of the
 sampled data set, by dragging the slider "ms/div" to the right (this slider is
@@ -229,12 +239,12 @@ oscilloscope's screen.
 Click the "Save Traces to" button: a file named =cro.txt= (or some other name if you
 change the default) will be written. You can take a look at this file, with
 various tools. Try to open the file with the following applications:
-1. inside a Terminal, type the command =cat cro.txt= (and type "Enter"): you will
+1. inside a Terminal, type the command =cat cro.txt= (and type /Enter/): you will
    be provided many lines of text, which you can scroll up and down with the
    vertical slider of the terminal. The command =cat= is a very simple command: it
    opens one or more files given as arguments, and concatenates their contents
    to the standard output, which is the terminal's display in that case.
-2. inside the same terminal, type the command =less cro.txt= (and type "Enter"):
+2. inside the same terminal, type the command =less cro.txt= (and type /Enter/):
    you will be provided the same set of lines, but you are using a so-called
    "pager" (the command =less= calls the default pager of the system). You can
    access previous and following lines by using vertical arrow keys, or Page-Up
@@ -244,7 +254,7 @@ various tools. Try to open the file with the following applications:
    \rightarrow Science). Then, import data from the file =cro.txt=: Window's Menu \rightarrow File \rightarrow
    Import \rightarrow import an ASCII file, or quicker with the graphic button which does
    the same (an icon with "123" written above), or else with the keyboard
-   shortcut Ctrl+K. Chose the right file, import it. If numbers are not well
+   shortcut Ctrl+K. Choose the right file, import it. If numbers are not well
    imported, you may want to change some import options, like the number's input
    format. The values from the file =cro.txt= will be displayed in a data
    grid. You can select both columns with the mouse, then plot the data easily
@@ -261,39 +271,43 @@ various tools. Try to open the file with the following applications:
 While maintaining the right sampling settings, use the left mouse button
 to drag the symbol "CH1" to the symbol "FIT" in the left part of the screen. The
 application will begin to fit the sampled data with a template function based on
-a sinus. The amplitude and the frequency should appear in "real time" near the
+a sinus. The amplitude and the frequency should appear in "/real time/" near the
 oscilloscope's screen.
 
 In order to reply to the title's question, while maintaining the wire connected
-to the A1 input, one hand on the insulating part of the wire, move your body, or
-just a member, nearer or further from areas where you know that power lines are
-embedded. If the "FIT" feature is enabled, you may notice that the amplitude
-depends tightly on the proximity between your body and power lines, while the
-frequency remains mostly unchanged. One can read "A1: 0.19 V, 50.8 Hz"
-in the middle of the right part of the window, in figure [[fig:expeyes01]].
+to /A1/, one hand on the insulating part of the wire, move your body, or
+just a member, nearer or further from areas where power lines are visible or
+hidden. If the "FIT" feature is enabled, you may notice that the amplitude
+depends strongly on the proximity between your body and power lines, while the
+frequency remains quite unchanged. One can read "A1: 0.19 V, 50.8 Hz" in the
+middle of the right part of the window, in figure [[fig:expeyes01]].
 
-Another question which is worth a short
-documentation search for students is "why precisely 50 Hz?". Wikipedia's web
-site gives valuable information about the history of that frequency standard.
+Another question which is worth a quick search for documentation by students is
+"/why precisely 50 Hz?/". Wikipedia's web site gives valuable information about
+the history of that frequency standard.
+
 ** experimenting with a few wires only
 ExpEYES-Junior is a measurement box, but not only that: it is enhanced by
-numerous generators. By the way, the program =expeyes-junior= comes with some
+numerous generators. Additionally, the program =expeyes-junior= comes with some
 powerful features, like one-click Fourier transform.
+
 *** Fourier transform, page 30 of the manual
-As a first try, let us open the /User Manual/, page 30.
+For a first try, let us open the /User Manual/, page 30.
+
 It is a simple manipulation about Fourier transforms, for a sinusoidal and for
 a square wave.
 
-The manual says to use two wires, one from SINE to A1, the second from SQR1 to
-A2. I rather use four short wires with crocodile clips, and do the same by
-joining clips accordingly.
+The manual tells to connect two wires, one from /SINE/ to /A1/, the second from /SQR1/
+to /A2/. You can also use four short wires with crocodile clips, and do the same
+by joining clips accordingly.
 
 When the box is bound to the computer, and the wires are in place, please launch
-the program expeyes-junior. Figure [[fig:exp-wave00]] shows two oscilloscope
-tracks, we can see that SQR1 is enabled, with a frequency of 150 Hz.
+the program expeyes-junior, set a frequency $f=1500\, Hz$ for /SQR1/ and enable
+the second track /CH2/. Figure [[fig:exp-wave00]] shows two oscilloscope tracks, we
+can see that /SQR1/ is enabled, with a frequency of 150 Hz.
 
-The symbols A1 and A2 in the left column of the window have been dragged with
-the mouse and dropped on the symbols CH1 and CH2 respectively.
+The symbols /A1/ and /A2/ in the left column of the window have been dragged with
+the mouse and dropped on the symbols /CH1/ and /CH2/ respectively.
 
 #+CAPTION: Two tracks of the oscilloscope are used, the frequency of both signals are quite the same
 #+NAME:   fig:exp-wave00
@@ -301,11 +315,13 @@ the mouse and dropped on the symbols CH1 and CH2 respectively.
 
 In order to get a Fourier transform of the signals, the manipulation is very
 simple: when you drag the symbol CH1 on the neighboring symbol FTR, you get
-a new window with figure [[fig:exp-wave01]], and when you drag CH2 on FTR, you get
-another window with figure [[fig:exp-wave02]]. The fast Fourier transform is done
+a new window like figure [[fig:exp-wave01]], and when you drag CH2 on FTR, you get
+another window like figure [[fig:exp-wave02]]. The Fourier transform is done
 quickly by the application. You can notice more peaks in the FFT plot of the
-square wave. The first peak is a frequency 0 (it is due to a non-null DC
-component), and other peaks are at frequencies which build an arithmetic progression.
+square wave. The first peak is at frequency zero (it is due to the non-null DC
+component), and other peaks are at frequencies which build an arithmetic
+progression ($450,\, 750,\, 1050,\, 1350\, Hz$). You may notice that /even/
+harmonics of the signal do not appear.
 
 #+CAPTION: Fourier transform of the SINE wave
 #+NAME:   fig:exp-wave01
@@ -313,100 +329,103 @@ component), and other peaks are at frequencies which build an arithmetic progres
 #+CAPTION: Fourier transform of SQR1's signal at 150 Hz
 #+NAME:   fig:exp-wave02
 [[./img/exp-wave02.png]]
+
 *** Using the MIC output
-Install a wire (or two wires bound by crocodile clips) between the MIC socket,
-which is the outpout of an amplified microphone, and A1, the first analog input.
+Connect a wire (or two wires bound by crocodile clips) between the /MIC/ socket,
+which is the outpout of an amplified microphone, and /A1/, the first analog input.
 Then, you must provide some "musical" sound near the microphone, which is placed
-at the left bottom end of the expEYES box. For example, use some whistle, or
+at the left bottom of the expEYES box. For example, use some whistle, or
 sing a single tune during a few seconds. Adjust the time sweep in order to have
-a few waves in the oscilloscope's display. Begin to drag the symbol CH1 above
+a few waves in the oscilloscope's display. Begin to drag the symbol /CH1/ above
 the symbol FTR, and drop it when the oscilloscope's track is well shaped. This
 records data in two files: =cro.dat=, which contains original data re-sampled with
-a time step which ensures that a good FFT can be done, and =fft.dat=, which is the
-fast Fourier transform of the same data to give a power /vs./ frequency spectrum.
+a time step ensuring a nice Fourier transform, and =fft.dat=, which is the
+Fourier transform of the same data, to give a spectrum (amplitude /vs./ frequency).
 
-The figures [[fig:exp-wave03]] to [[fig:exp-wave06]] show data recorded,first with
-a voiced "AAA", then with a mouth-wistled still tune of higher frequency.
+The figures [[fig:exp-wave03]] to [[fig:exp-wave06]] show the data recorded,first with
+a voiced "AAA", then with a mouth-whistled still tune of a higher frequency.
 
 #+CAPTION: A voiced "AAA": the original signal
 #+NAME:   fig:exp-wave03
 [[./img/exp-wave03.png]]
-#+CAPTION: A voiced "AAA": fast Fourier transform
+#+CAPTION: A voiced "AAA": Fourier transform
 #+NAME:   fig:exp-wave04
 [[./img/exp-wave04.png]]
 
 #+CAPTION: Mouth-whistled still tune: the original signal
 #+NAME:   fig:exp-wave05
 [[./img/exp-wave05.png]]
-#+CAPTION: Mouth-whistled still tune: fast Fourier transform
+#+CAPTION: Mouth-whistled still tune: Fourier transform
 #+NAME:   fig:exp-wave06
 [[./img/exp-wave06.png]]
 
-Further is (figure [[fig:exp-wave07]]) another analysis of a mouth-whistled tune, done
-with the file =cro.dat= which was imported (as ASCII data) in the application
-=qtiplot=. You can notice that the abscissa for frequency should be kHz (not Hz),
-because the unit for time exported from =expeyes-junior= is millisecond, not
-second.
+Further is another analysis of a mouth-whistled tune (figure [[fig:exp-wave07]]),
+done with the file =cro.dat= which was imported (as ASCII data) in the application
+=qtiplot=. You can notice that the abscissa for frequency should be /kHz/ (not /Hz/),
+because the unit for time exported from =expeyes-junior= is /millisecond/, not
+/second/.
 
 #+CAPTION: Another mouth-whistled still tune, analyzed by qtiplot.
 #+NAME:   fig:exp-wave07
 [[./img/exp-wave07.png]]
 
 *** A "standalone" experiment, with the DC motor
-The expEYES-Junior kit comes with a DC motor (which is ordinarily used to drive
-a CD-ROM); this DC motor can act as a low voltage motor, but it is also an
-efficient tachometer, that is, an angular velocity probe: it outputs a voltage
-which is proportional to its angular velocity, and as it has few internal
+The expEYES-Junior kit comes with a DC motor (this model is ordinarily used to
+drive a CD-ROM); this DC motor can act as a low voltage motor, but it is also an
+efficient tachometer, that is, an angular velocity probe: its output voltage
+is proportional to its angular velocity, and as it has little internal
 friction, it can be used to measure the movement of a pendulum. When the main
-application =expeyes-junior= is running, click on the "EXPERIMENTS" button:
-a submenu appears, where you must activate the entry named "Pendulum Waveform".
+application =expeyes-junior= is running, click on the "/EXPERIMENTS/" button:
+a submenu appears, where you must activate the entry named "/Pendulum Waveform/".
 
 The window of the main application remains in place, but it looses the control
 of the experiment box, which is given to a specialized application. To enjoy the
 secondary application, you must make the following connections:
 
-1. from inverting amplifier's OUT plug to analog entry A1, with one wire;
-2. the motor's wires are connected between the ground (GND), and the input (IN)
+1. from inverting amplifier's /OUT/ plug to analog entry /A1/, with one wire;
+2. the motor's wires are connected between the ground (/GND/), and the input (/IN/)
    of the inverting amplifier.
 
 Then, you can check that the second application begins to record voltage data as
-soon as the motor has enough angular velocity.You can stop the record at any
-time with the "STOP" button.
+soon as the motor has enough angular velocity. You can stop the record at any
+time with the "/STOP/" button.
 
-Put the motor's axis horizontal, near the edge of a table, and grasp firmly the
-motor's body. Fit the motor's axis to a pendulum; there are many ways to do it,
-all are correct, as long as most of the mass of the pendulum is far enough from
-the motor's axis, and that the pendulum remains tightly fixed to the motor's
-axis during oscillations.
+Put the motor's axis horizontal, above the edge of a table, and grasp firmly the
+motor's body put on the table top. Fit the motor's axis to a pendulum; there are
+many ways to do it, all are correct, as long as most of the mass of the pendulum
+is far enough from the motor's axis, and that the pendulum remains tightly fixed
+to the motor's axis during oscillations.
 
 Here are two easy and cheap solutions used by the author:
-- either a metal pendulum coupled to the motor's axis with a small and strong
-  enough magnet,
+- either a steel pendulum coupled to the motor's axis with a small and strong
+  magnet,
 - or a wood stick fastened to the motor's axis with a screw for wood of diameter
-  2 mm, with some relatively heavy clip fastened at the other end of the stick,
-  see figure [[fig:pendulum01]].
+  $2\, mm$, with some relatively heavy clip fastened at the other end of the
+  stick, see figure [[fig:pendulum01]].
 
-When the motor is int good position, slowly put the pendulum far fromits
-equilibrium position, and let it go freely. The angular velocity probed by the
-motor goes quickly above the threshold which triggers the record's begin. The
-record's duration is 15 seconds by default (but you can change it). When the
-record is finished, you should click on two buttons, first "SAVE To", later
-"FIT". So, you get a file with the data recorded, for further analysis, and the
-FIT method gives you two interesting coefficients: the oscillation's
-pseudo-frequency, and its damping coefficient; see figure [[fig:pendulum00]].
+While the motor is firmly grasped, slowly put the pendulum far from its
+equilibrium position, and let it swing freely. The angular velocity probed by
+the motor goes quickly above the threshold which triggers the record's
+begin. The record's duration is /15 seconds/ by default (but you can change
+it). When the record is finished, you should click on two buttons, first "/SAVE
+To/", later "/FIT/". So, you get a file with the data recorded, for further
+analysis, and the /FIT method/ gives you two interesting coefficients: the
+oscillation's pseudo-frequency, and its damping coefficient; see figure
+[[fig:pendulum00]].
 
-The last figure of this section ([[fig:pendulum02]]) shows the data from the file
-=pendulum.dat= reworked with =qtiplot='s analysis tools (Analysis \rightarrow Fit Wizard
-... define a user fit). You can see that the chosen formula is
-$A1 * \exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)$; so, it is a damped sinusoidal
-function, with damping coefficient $A2$, frequency $A3$, and phase $A4$; $A1$ is an
-arbitrary multiplying factor. Initial values to perform the fit were $A1=1.5$
-(the order of magnitude of the initial amplitude), $A2=10$, as the movement is
-significantly damped within 10 seconds, $A3=1$ since the pseudo-frequency is
-near $1\, Hz$, and $A4=1.5$ (which is near $\pi/2$). The fitting algorithm of =qtiplot=
-yields a damping factor $A2=1.2\, s$ and a frequency $A3=1.069\, Hz$, with an
-excellent correlation factor: $R^2=0.993$. The precision is greater for the
-frequency than for the damping factor.
+The last figure of this section (figure [[fig:pendulum02]]) shows the data from the
+file =pendulum.dat= reworked with =qtiplot='s analysis tools (Analysis \rightarrow Fit Wizard
+... /define a user fit/). You can see that the chosen formula is $A1 *
+\exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)$; so, it is a damped sinusoidal
+function, with damping coefficient $A2$, frequency $A3$, and phase $A4$; $A1$ is
+a multiplying factor. To perform the fit, their values were initialized like:
+$A1=1.5$ (the order of magnitude of the initial amplitude), $A2=10$, as the
+movement is significantly damped within 10 seconds, $A3=1$ since the
+pseudo-frequency is near $1\, Hz$, and $A4=1.5$ (which is near $\pi/2$). The
+fitting algorithm of =qtiplot= yields a damping factor $A2=1.2\, s$ and
+a frequency $A3=1.069\, Hz$, with an excellent correlation factor:
+$R^2=0.993$. The precision is greater for the frequency than for the damping
+factor.
 
 #+CAPTION: Record of a pendulum's angular velocity
 #+NAME:   fig:pendulum00
@@ -417,22 +436,27 @@ frequency than for the damping factor.
 #+CAPTION: Reworking the data with qtiplot.
 #+NAME:   fig:pendulum02
 [[./img/pendulum02.png]]
+
 * Mastering Python
-Python is an interpreted computer language created by by Guido van Rossum at
-Centrum Wiskunde & Informatica (CWI) in the Netherlands, fifteen years ago
-approximately. Currently thislanguage is considered as excellent for dealing
+Python is an interpreted computer language created by /Guido van Rossum/ at
+/Centrum Wiskunde & Informatica (CWI)/ in the Netherlands, fifteen years ago
+approximately. Currently this language is considered as excellent for dealing
 with scientific and experimental data, and most important software libraries
-which can be used it that area have been linked to Python and areexposing
+which can be used it that area have been linked to Python and are providing
 well-documented Programming Interfaces.
 
 ** Empowering oneself with Python
-Archimedes said "/Give me a place to stand and with a lever I will move the whole
-world/". He was probably thinking about Python ;).
+Archimedes said:
+#+BEGIN_QUOTE
+/Give me a place to stand and with a lever I will move the whole
+world/.
+#+END_QUOTE
+He was probably thinking about Python ;).
 
 Computers come now with unprecedented arithmetic power, and there are clever
 programs which make it usable for calculus also. Of course, students must know
 how to make operations by themselves, but when thousands of calculations are
-necessary, controlling a computer is the solution. Python is one of the shortest
+necessary, controlling a computer is /the solution/. Python is one of the shortest
 ways to control this power.
 
 Incidentally,  the way Python programs must be written makes them often quite
@@ -441,16 +465,16 @@ showed me a source program and pointed one precise part, saying "there is an
 error, right there!".
 ** A guide to learn Python quickly
 *** Level of difficulty
-Learning to walk with one's legs is a non-trivial task, most humans achieve it
-in their early youth. Driving a helicopter is also a non-trivial task, but few
-humans achieve it, even if it might give them huge advantages. There are reasons
-why few persons can learn to drive a helicopter: the learning environment is
-very expensive, and also somewhat risky: a beginner can destroy a helicopter and
-herself in the same run with some probability.
+Learning to walk with one's own legs is a non-trivial task, most humans achieve
+it in their early youth. Driving a helicopter is also a non-trivial task, but
+few humans achieve it, even if it might give them huge advantages. There are
+reasons why few persons can learn to drive a helicopter: the learning
+environment is very expensive, and also somewhat risky: a beginner can destroy
+a helicopter and herself in the same run, with some probability.
 
 Learning arithmetic operations is also a tough task, which most persons achieve
 in developed countries. Controlling a computer, compared to basic arithmetic,
-is quite like driving a helicopter, compared to walking. However, unlike the
+is more than like driving a helicopter, compared to walking. However, unlike the
 helicopter example, it is much safer: Python is a free-libre program, you can
 get it gratuitously; accidentally breaking a computer while learning
 computer science with Python is most unlikely.
@@ -458,15 +482,18 @@ computer science with Python is most unlikely.
 In a few words, the best guide to learn Python quickly is your own curiosity,
 as long as you choose a project which makes sense. Good tutorials exist in many
 places, here is the tutorial of the Python Foundation:
-https://docs.python.org/3/tutorial/index.html.
+https://docs.python.org/3/tutorial/index.html. Begin with your own project, and
+schedule reasonable milestones. At every stage of the project, you can access
+many examples, and valuable explanations if you use research engines in
+Internet.
 
-Currently, there are two families in the Python language, known as Python2 and
-Python3; the fork between both families has begun a few years ago. If you
-are beginning, you should definitely learn Python3, as it is the only branch
-which will be maintained and developed in the future, even if many efforts are
-still deployed to help the large community of people who are still using Python2.
+Today, there are two families in the Python language, known as Python2 and
+Python3; the fork between both families has begun a few years ago. If you are
+beginning, you should definitely learn Python3, as it is the only branch which
+will be maintained and developed in the future, even if many efforts are still
+deployed to help the large community of people who are still using Python2.
 
-*** Examples of small projects which can be used to learn Python
+*** Examples of small projects to learn Python
 1. Repeat writing the same line of text many times
 2. Write lines of text made of some character, for example a star (*), which
    will build some interesting shape when watched from some distance: a ball,
@@ -500,31 +527,31 @@ voltage of a precise pin during one second, you cannot be sure that it will
 perform this operation uninterrupted.
 
 This is why the physical measurements are done inside expEYES box with
-a separate program designed to work in /real time/. Then, your computer can ask
-the box to make the thousand measurements, they will be done
-uninterrupted. Later, the results will be given back to your computer, possibly
+a separate micro-program designed to work in /real time/. Then, your computer can
+ask the box to make the thousand measurements, they will be done
+/uninterrupted/. Later, the results will be given back to your computer, possibly
 with some interruptions, but you are sure that the data were captured on
 a regular time basis. As the computer, despite its many interruptions, works
 very very fast, you experience a rich feedback, not unlike the feeling you can
-have with an oscilloscope. However, because of its calculation capability,
-your computer can go way further than an oscilloscope, and this is why Python is
-used, to enjoy the many libraries which can crunch numbers for us.
+have with an oscilloscope. However, because of its calculation capability, your
+computer can go much further than an oscilloscope, and this is why Python is
+used, to enjoy the many libraries able to crunch numbers for us.
 
 Now, let us begin with Python+expEYES: let us open the application =geany= (a
 good development environment for programmers... Windows users will probably use
 =Notepad++=), and type the few lines presented in figure [[fig:ej01]]. Then, save them
-with the filename =p1.py=. As soon as the name of the file is defined, =geany= will use
-colors and styles to make the syntax of the source file more evident. For
-example, key words like =import=, =print=, are displaid in a particular fashion.
+with the filename =p1.py=. As soon as the name of the file is defined, =geany= will
+use colors and styles to make the syntax of the source file more evident. For
+example, keywords like =import=, =print=, are displayed in a particular fashion.
 
 #+CAPTION: Our first program with Python+expEYES ever.
 #+NAME:   fig:ej01
 [[./img/ej01.png]]
 
-When the file is saved, press the "F5" key (it is a shortcut to launch
-the program which has been edited). You will get a heap of numbers written in
+When the file is saved, press the "/F5/" key (it is a shortcut to launch
+the program under edition). You will get a heap of numbers written in
 a /Terminal/, and you will be prompted to press the "Enter" key. When you press
-it, the /Terminal/ is closed. The series of numbers were a sequence of voltages
+it, the /Terminal/ is closed. The series of numbers are a sequence of voltages
 measured very fast on the analog input A1. If you want more variety inside this
 sequence of numbers, you can connect a wire to this input and act exactly as for
 the previous experiment [[Pickup voltage: where does it come from?]["Pickup voltage"]]. The number sequence can be impressive,
@@ -548,16 +575,16 @@ program.
 
 *** Understanding the first programs for Python+expEYES
 Let us comment the few lines in the program =p1.py=:
-- =import expeyes.eyesj= :: this declares that the library which drives
+- =import expeyes.eyesj:= :: this declares that the library which drives
      expEYES-Junior will be used; the library's name is expeyes.eyesj, if we
      want a shorter alias, it is possible to declare it, more about that later ...
-- p=expeyes.eyesj.open() :: this line calls the function =open()= from the library
+- p=expeyes.eyesj.open(): :: this line calls the function =open()= from the library
      which drives expEYES-Junior, and the resulting object is stored into the
      /variable/ =p=; hence, =p= contains the initialized driver to deal with the
      measurement box.
-- t, v=p.capture(1,100,2000) :: this line calls the method =capture()= from the
+- t, v=p.capture(1,100,2000): :: this line calls the method =capture()= from the
      driver, with three parameters:
-  1. =1= is the number of the input channel; =1= stands for channel A1
+  1. =1= is the number of the input channel; =1= stands for channel /A1/
   2. =100= is the number of samples to collect: a hundred of measurements are
      requested
   3. =2000= is the duration between two consecutive measurements: measurements
@@ -565,31 +592,35 @@ Let us comment the few lines in the program =p1.py=:
      "experiment" is requested to be $200\, \mu s$. The results are assigned to
      /variables/ =t= and =v=, =t= is the list of timestamps, =v= is the list of measured
      voltages.
-- =print(v)= :: this line asks to print the hundred values measured in the
+- =print(v):= :: this line asks to print the hundred values measured in the
      /standard output/ of the program, which is the /Terminal/, there.
 
 Now let us comment the new lines in the program =p2.py=:
-- =import expeyes.eyesj as ej= :: exactly the same as in =p1.py=, but the alias =ej=
+- =import expeyes.eyesj as ej:= :: exactly the same as in =p1.py=, but the alias =ej=
      will be used to name the library.
-- =from pylab import *= :: this line means that every objects and functions of the
+- =from pylab import *=: :: this line means that all objects and functions of the
      library =pylab= will be available directly in the program. Such an
-     instruction may cause problems if two libraries provide same names for
+     instruction may cause collisions if two libraries provide a same name for
      different functions. Here there will be no problem because the program is
-     very short. The functions which will be used are =plot()= and =show()=.
-- p=ej.open() :: exactly the same as in =p1.py=, you can notice that the alias =ej=
+     very short. The functions of interest are =plot()= and =show()=.
+- p=ej.open(): :: exactly the same as in =p1.py=, you can notice that the alias =ej=
      is used there.
-- plot(t,v) :: this is the call to a function provided by the library =pylab=, it
-     builds a very simple plot with the series of values =t= as abscissa and the
+- plot(t,v): :: this is the call to a function provided by the library =pylab=, it
+     builds a simple plot with the series of values =t= as abscissa and the
      series of values =v= as ordinate.
-- =show()= :: this call creates a graphic window to contain the plot, and allow
-     users to interact with it. This window "lives" independently of the main
-     program.
+- =show()=: :: this call displays the graphic window which contains the plot, and
+     allow users to interact with it. This window "lives" independently of the
+     main program.
+
 *** Proposition of exercises
-as you can see, the plot in figure [[fig:ej02]] is not very precise, and some
-features of the expected waveform are not as detailed as they might be. You can
-make a series of exercises, in order to:
+As you can see, the plot in figure [[fig:ej02]] misses details, and some
+features of the expected waveform are not as precisely rendered as they might
+be.
+
+You can make a series of exercises, in order to:
 - make more measurements, in the same total time
 - make a longer measurement, with more samples but same laps of time
+
 You can also try to find the limits of the measurement box:
 - which is the shortest duration between two consecutive measurements?
 - how many measurements can be stored in the box for a one-shot measurement
@@ -599,26 +630,27 @@ You can also try to find the limits of the measurement box:
 
 Propositions of solutions for this set of exercises are published in the
 "[[https://github.com/georgesk/course-affordable-science/tree/master/sol/basics][repository]]".
+
 ** Python libraries for science
 As we already know, Python exists for fifteen years approximately, and most
-important free and open-sourcelibraries have been made available for Python,
+important free and open-source libraries have been made available for Python,
 thanks to a versatile toolset which allows one to link C and C++ libraries to
 Python language.
 
 You can access a good review about Python Libraries for Science at
 https://wiki.python.org/moin/NumericAndScientific. Here are the two first
 entries of this webpage, as captured in August 2016:
-- NumPy :: http://www.numpy.org/ -- Numerical Python adds a fast, compact,
+- NumPy: :: http://www.numpy.org/ -- Numerical Python adds a fast, compact,
      multidimensional array facility to Python. [...]
-- SciPy :: http://www.scipy.org/ SciPy is an open source library of scientific
-     tools for Python. SciPy supplements the popular NumPy module, gathering
-     a variety of high level science and engineering modules together as
-     a single package. SciPy includes modules for linear algebra, optimization,
-     integration, special functions, signal and image processing, statistics,
-     genetic algorithms, ODE solvers, and others.
+- SciPy: :: http://www.scipy.org/ -- SciPy is an open source library of
+     scientific tools for Python. SciPy supplements the popular NumPy module,
+     gathering a variety of high level science and engineering modules together
+     as a single package. SciPy includes modules for linear algebra,
+     optimization, integration, special functions, signal and image processing,
+     statistics, genetic algorithms, ODE solvers, and others.
 *** =numpy=: the advantage of using arrays vs. plain Python lists
 When one uses plain Python, she can manipulate series of numbers as so-called
-lists: for example the 10 first even integers are this Python list:
+/lists/: for example the 10 first even integers are this Python list:
 =[0,2,4,6,8,10,12,14,16,18]=; such a list can have a memory footprint bigger than
 ten times the place necessary to store an integer, because Python lists can
 contain any type of element (for example, a list can contain another list), and
@@ -631,7 +663,8 @@ shows the code to get the same numbers as above in an array.
 #+CAPTION: ten first even numbers, with numpy: source code, and output
 #+NAME: fig:np0
 [[./img/np0.png]]
-The =arange= function allows us to build very easily long arithmetic
+
+The function =arange= allows us to build very easily long arithmetic
 series. For example =arange(0,2,1e-3)= yields an array of two thousand numbers.
 
 Numpy provides also mathematical functions and operators which work directly on
@@ -648,11 +681,12 @@ notice that =numpy= allows us to use a more clear programming style!
 #+NAME: fig:np2
 [[./img/np2.png]]
 
-** Python libraries for graphic user interfaces
+** Python libraries for graphic user interfaces (GUIs)
 Some Python modules used for science can provide good tools for user
 interaction: for example, the module =pylab= provides two functions, =plot()= and
 =show()= which are very handy to get a simple plot in an interactive window: users
 can zoom in some part of the plot, and save it in a file, etc.
+
 *** General purpose GUI libraries
 However user interfaces must often contain some controls to let the user trigger
 a physic interaction, or to launch some process on captured data. So, general
@@ -669,10 +703,10 @@ program's processes which do the "backoffice work".
 *** GUI design programs
 Some popular GUI libraries come with a specialized application to design the GUI
 layout. For Gnome Toolkit libraries (Gtk), it is known as [[https://glade.gnome.org/][=glade=]]; we shall
-make some exercises below with [[http://doc.qt.io/qt-5/qtdesigner-manual.html][=designer=]], which goes with Qt. Both =Gtk= and =Qt=
-libraries work well with Python, and they can target a wide list of platforms,
-ranging from desktop and laptop computers with various operating systems, to
-mobile devices.
+make some exercises below with [[http://doc.qt.io/qt-5/qtdesigner-manual.html][=designer=]], which comes with Qt libraries. Both
+=Gtk= and =Qt= libraries work well with Python, and they can target a wide list of
+platforms, ranging from desktop and laptop computers with various operating
+systems, to mobile devices.
 
 *** Our first GUI layout
 Let us create our first GUI layout with =designer=, which will feature:
@@ -686,7 +720,7 @@ Window prototype appears in the center of the screen, collections of widgets are
 proposed in a column at the left side.
 
 Scroll down this column, select the widget known as =QwtPlot= which is part of the
-"Qwt widgets" family, and drag its icon to the top of the Main Window prototype.
+"/Qwt widgets/" family, and drag its icon to the top of the Main Window prototype.
 
 Then scroll up the widget column, select a =Horizontal layout= widget, and drag it
 onto the Main Window, drop it below the =QwtPlot= footprint. Then, you must drag
@@ -725,14 +759,15 @@ interpret this format efficiently and to compose a sensible user interface.
    a small change to the last line: instead of =from qwt_plot import QwtPlot=,
    this line should contain: =from qwt import QwtPlot=, to comply with the name of
    the module inside a Debian distribution (I assume that we are working with
-   the USB live stick). This second operation should not be necessary, it is
-   just implied by a small bug in the Debian package of =pyuic4=, the converter
-   from =designer='s =.ui= format to Python source.
+   the USB live stick). This second operation should not be necessary, but
+   a small bug in the Debian package of =pyuic4=, the converter from =designer='s
+   =.ui= format to Python source, makes this little modification mandatory (for
+   now).
 
 *** Our first working program
 Here is our first program which will rely upon the just created user
-interface. The series of snapshots (taken from =geany='s buffers) has a few
-comments.
+interface. The series of snapshots (taken from =geany='s buffers)  come with some
+additional comments in the captions.
 
 #+CAPTION: Program's header with inclusion of modules and definition of our custom Main Window
 #+NAME:   fig:firstgui00
@@ -750,55 +785,57 @@ comments.
 #+NAME:   fig:firstgui03
 [[./img/firstgui03.png]]
 
-#+CAPTION: footer of the program: what to do if it is called as a main program
+#+CAPTION: footer of the program: what to do if the file is called as a main program
 #+NAME:   fig:firstgui04
 [[./img/firstgui04.png]]
 
 You cannot copy and paste the screenshots, however the complete program =p1.py=
-can be downloaded from [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py][a Github.com repository]].
+can be downloaded from [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p1.py][our repository at github.com]].
 
 Download the file (=p1.py=) and open it in a good editor to check its content. It
-should work easily. For example, you can launch it by typing =python3 p1.py= and
-hitting the Enter key, provided the default directory of the Terminal contains
-=p1.py=.
+should work easily. For example, you can launch it as a main program by typing
+=python3 p1.py= and hitting the /Enter/ key, provided the default directory of the
+Terminal contains =p1.py=.
 
 Don't be afraid by this program! Obviously, seventy lines in a language which
-you do not master currently can be an issue, but they are less an issue if you
+you do not yet master can be an issue, but they are less an issue if you
 consider that you can freely copy this program source, and that you become
-really productive, just by modifying small details inside its structure. For
-example, take a look at lines 56 -68: they are there like a placeholder, for
+really productive, just by modifying small details inside its structure.
+
+For example, take a look at lines 56-68: they are there like a /placeholder/, for
 some useful program which you want to write. Plotting a function with random
 values is quite a nonsense, but it will become far from a nonsense if you
 replace those lines by a program to plot captured physical measurements.
+
 *** Introducing some "meat" to replace nonsenses of the first program
 The two subsequent programs will show you how to make some sense with the
 previous program, by wisely replacing  some of its structure.
 
 You can download [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p2.py][here]] the second program, named =p2.py=. The modified parts are:
-1. the program's header, to include one more module
+1. the program's header, to include one module for expEYES
 2. the =__init__= constructor, which initializes the expEYES Junior box
 3. the =measure= method, which captures physical data thanks to the box, and plots
    them
-*** Details of the first modification
-**** modifications of the header part
-The line  =import expeyes.eyesj as ej= allows us to control the expEYES Junior
-measurement box from Python.
-**** modifications of the constructor
-The single line =self.p = ej.open()= attaches expEYES' driver object to the main
-window.
-**** modifications of the =measure= method
-Only two lines are used: =t,v = self.p.capture(1,1000,200)= to request a thousand
-voltage measurements, and =self.curve.setData(t,v,len(t))= to plot them.
 
-The conclusion is: that *four lines of code* are sufficient to turn
+*** Details of the first modification
+- modifications of the header part: :: The line  =import expeyes.eyesj as ej=
+     allows us to control the expEYES Junior measurement box from Python.
+- modifications of the constructor: :: The single line =self.p = ej.open()=
+     attaches expEYES' driver object to the main window.
+- modifications of the =measure= method: :: Only two lines are used: =t,v =
+     self.p.capture(1,1000,200)= to request a thousand voltage measurements, and
+     =self.curve.setData(t,v,len(t))= to plot them.
+
+The conclusion is, that *four lines of code* are sufficient to turn
 a general-purpose GUI program into a usable scientific tool.
+
 *** A few more code, to deal with real life problems and exceptions
 The program =p2.py= works very well, with one exception: when no expEYES Junior
 box is connected to the computer, nothing happens as expected. If the program
 was  launched from a command line in a Terminal, you may notice error messages
 appearing there. But if the program is launched by some other method, chances
-are that it will not work, and the reasons why it doesn't are not obvious for the
-average user.
+are that it will not work, and the reasons why it doesn't, are not obvious for
+the average user.
 
 The designer of a program which touches physical realities must always keep
 a thought about what can go wrong; the most usual issue is a false connection, or
@@ -806,7 +843,7 @@ no connection at all. Here we have an example: if the expEYES Junior box is not
 connected, the application should provide an a strong enough feedback for
 making the end user aware of the probable failure's reason.
 
-Fortunately, Python offers a nice structure to deal with exceptions: the
+Fortunately, Python offers a nice structure to deal with exceptions, the
 construct =try: {some code which might trigger a failure} except: {someting to
 do if the failure was triggered}=. You must write two blocks of code, the first
 one is governed by the keyword =try:=, and it must raise an error (in the Python
@@ -836,7 +873,7 @@ The differences between programs =p2.py= and =p3.py= are few:
 *** Exercises: improve our first program
 Here are some exercise propositions, which can make you more fluent with GUI
 programming. Some are modifications touching just the user interface's design,
-others touching the way captures are done, or are implementing additional features.
+others touching the way captures are done, or implementing additional features.
 1. Change the user interface file, replace the label "Measure" by some other
    label, like "Launch a capture", for example
 2. Add a button to save data into a file named "data.csv"; verify that this file
@@ -846,14 +883,14 @@ others touching the way captures are done, or are implementing additional featur
    separated by time gaps of two milliseconds; the total capture time should be
    two seconds
 5. Two seconds is quite a long time for our impatient students. Try to implement
-   some way to provide a feedback message stating "Measuring voltage... please
+   some mean to provide a feedback message stating "Measuring voltage... please
    wait" from the click's time until the plot's update.
 6. Add a text input to let users request a precise number of voltage samples, so
    they can ask for as many samples as they want inside a reasonable range.
-7. Add text inputs to let users request other input channels than "A1", and also
+7. Add text inputs to let users request other input channels than "/A1/", and also
    to change the sample frequency
 8. Modify the widget used to request the measurement channel; replace it by
-   a set of radio buttons, with labels "A1", "A2", "IN1", "IN2", "SEN", etc.
+   a set of radio buttons, with labels "/A1/", "/A2/", "/IN1/", "/IN2/", "/SEN/", etc.
 9. Change the set of radio buttons to a set of checkboxes, so users can select
    up to four of them, and up to four channels can be sampled simultaneously
 10. Provide a second plot widget, which will display the power spectrum of the
@@ -864,77 +901,89 @@ Propositions of solutions for this set of exercises are published in the "[[http
 ** Description of the new experiment
 This experiment is about oscillations of a pendulum, and in most cases it can
 already be managed by an application distributed with expEYES Junior, known as
-"/Pendulum Waveform/". This application can be launched after a choice between
-expEYES Junior's featured "/EXPERIMENTS/" (launch the oscilloscope application,
-click on /EXPERIMENTS/, choose /Pendulum Waveform/).
+"/Pendulum Waveform/". You can launch the application already distributed within
+the package =expeyes=: while the *CRO+* application is running, click on the button
+"/EXPERIMENTS/", then choose: /Pendulum Waveform/.
 
 However, the program which implements currently "/Pendulum Waveform/" misses
 some features:
 - it is built upon the graphic library /Tk/, which does not support easily
-  right-to-left text writing in widgets
-- it plots the oscillations of the pendulum in non-real time, i.e. the voltages
-  samples are taken when the computer asks for them. In most cases it is not an
-  issue, but it may become one when the frequency of the oscillation is
-  rising. At higher frequencies, the task scheduler of the computer's operating
-  system may prevent getting enough samples during one oscillation, which would
-  lead to an odd-shaped curve.
+  right-to-left text writing in widgets, and has old-fashioned widgets
+- it always plots the oscillations of the pendulum in non-real time, /i.e./ the
+  voltages samples are taken when the computer asks for them. In most cases it
+  is not an issue, but it may become one when the frequency of the oscillation
+  is rising. At higher frequencies, the task scheduler of the computer's
+  operating system may prevent getting enough samples during one oscillation,
+  which would lead to an odd-shaped curve.
+
 *** Schematics
 A massive object is hung under a spring. The top of the spring is tightly fixed,
 and a vertical insulated wire is hung just below the massive object. The end of
 this wire is unwrapped, so it acts as the cursor of a potentiometer. Eventually,
 some light sheet of plastic or of metal is tightened to the massive object in
-order to provide some friction while it moves in the air.
+order to provide friction while it moves in the air. More friction can be added
+if a copper disk can be fixed along the vertical insulated wire underwater.
 
 The potentiometer's body is a measuring cylinder filled with copper sulfide
-($concentration = 0.01\, mol\cdot L^{-1}$), which bears two circular electrodes, made
-with one turn of copper: one at the bottom of the cylinder, the other one near
-the top of the copper sulfide solution. Both electrodes are connected through
-insulated wires to a $4.5\, V$ battery. Whenever one connects the battery, she
-should consider which electrode need to gain more copper, and connect the
-negative end of the battery to this electrode (copper deposits on the cathode).
+($concentration = 0.01\, mol\cdot L^{-1} \simeq 1.6\, g\cdot L^{-1}$), which bears two
+circular electrodes, made with one turn of copper wire: one at the bottom of the
+cylinder, the other one near the top of the copper sulfide solution.
 
-When some current flows between both electrodes, there are quite plane
+Both electrodes are connected through insulated wires to a $4.5\, V$
+battery. They can also be connected to two sockets of /expEYES Junior/: /GND/ for
+$0\, V$ and /OD1/ for $+5\, V$; in order to have the right voltage at /OD1/, the
+program must contain a line of code like =self.p.set_state(10,1)=, to enforce the
+logical /HIGH/ state at /OD1/. Whenever one connects the battery, or sets power
+through the output /OD1/, she should consider which electrode needs to gain more
+copper, and connect the negative end of the battery to this electrode (copper is
+deposited on the cathode, while it is consumed at the anode).
+
+When some current flows between both electrodes, it creates quite plane
 equipotential surfaces, regularly spaced vertically between the electrodes. So
-when the height of the vertical wire's tip movesup and down, its potential is
-a linear function of its height. Figure [[fig:liquid_pot]] describes the experiment.
+when the height of the vertical wire's tip swings up and down, its potential is
+a linear function of its height. Figure [[fig:liquid_pot]] summarizes the
+schematics.
 
 #+CAPTION: An oscillator made with a spring, and its liquid potentiometer
 #+NAME: fig:liquid_pot
 [[./img/liquid_pot.png]]
+
 *** Features wanted for the program
 ExpEYES Junior comes with a program named "Data Logger" which can be used to
 monitor any signal captured by the measurement box. However, our experiment has
 a few unique features which call for a more appropriated program:
-- both hands of the person who does the experiment may be busy just at the
-  moment when the capture of data should start, /i.e./ when the pendulum begins
-  its first oscillation. Generally, the person pulls slowly the elastic pendulum
-  far from its equilibrium point, takes care that the start position is well
-  aligned with the axis of the main oscillation, and let it go suddenly. Then,
-  the capture should begin within a fraction of a second.
+- both hands of the person who does the experiment may be busy just when the
+  capture of data should start, /i.e./ when the pendulum begins its first
+  oscillation. Generally, the person pulls slowly the elastic pendulum off
+  its equilibrium point, takes care that the start position is well aligned with
+  the axis of the main oscillation, and let it go suddenly. Then, the capture
+  should begin instantly.
 - depending on the experiment, one may be interested by more than 1800
   measurements; 1800 measurements is the maximum number of voltage values which
   can be stored in the measurement box and sent as a response to a single
-  query. From a didactic point of view, it can be also interesting to plot the
-  signal's curve immediately, without waiting for the measurement series.
+  query. From a didactic point of view, it is also interesting to plot the
+  signal's curve immediately, without waiting the end of the measurement series.
 - the program can provide additional facilities, like fitting
-  the results with a predefined model, and emphasizing some calculable results
+  the results with a predefined model, emphasizing some calculable results
   like a friction coefficient.
+
 ** Implementing new features
-Here is a list of wanted features:
+Here is a reminder of wanted features:
 1. a button to wake up the program, so it will try to guess the start of the
    experiment
-2. a button to stop the experiment at any time
+2. a button to stop recording the experiment
 3. buttons to save sets of data, quit, etc.
 4. when the program is in "/alert mode/", it monitors the voltage input regularly,
-   and triggers the begin of the capture when the voltage changes quicker that
+   and begins to record data when the voltage changes quicker that
    a predefined threshold
 5. when the program is no longer in "/alert mode/", the user can launch fitting
    tools and compare the record to theoretical descriptions.
 6. The curve of position vs. time is plotted inside a big frame, synchronously
    or asynchronously.
+
 ** Coding the new program
 *** Designing the user interface
-With the program =designer=, let us create something like the structure displaid
+With the program =designer=, let us create something like the structure displayed
 in figure [[fig:oscill_monitor]].
 
 #+CAPTION: the user interface inside the application =designer=
@@ -955,7 +1004,7 @@ named with an easy to remind identifier.
    gives an outlook of a possible layout.
 2. Modify the user interface to translate "manually" texts and tooltips to your
    language. Save it under a new name. /Please notice that this is not the
-   recommended method to translate an applications user interface/. /There are
+   recommended method to translate an application's user interface/. /There are
    dedicated tools to perform this job more efficiently/, /and to have it done by
    other people/.
 
@@ -1015,7 +1064,7 @@ its value; see figure [[fig:prog_oscill2_1]]. Please notice that the identifiers
 
 *** Implementing naively the capture of data and the plotting routine
 In this non-definitive version, the method =wakeUp= begins to capture data as soon
-as the button is clicked,and the flag =self.isImmediate= is disregarded: data are
+as the button is clicked, and the flag =self.isImmediate= is disregarded: data are
 captured first, and the plot is refreshed later.
 
 Most code have been copied from the file =p3.py= studied [[A few more code, to deal with real life problems and exceptions][previously]]. The
@@ -1082,7 +1131,7 @@ method opens a text file and writes formatted data into it. See figure
 #+CAPTION: implementing the =save= callback method
 #+NAME: fig:prog_oscill4_2
 [[./img/prog_oscill4_2.png]]
-*** Implementing the wait for a fast enough slew rate
+*** Implementing the expectation of a rise in the slew rate
 You remember that one of our concern was to make it easy for a user which has
 both hands in the experiment to launch the measurements. One way to achieve it
 is to begin measurements not when the "wake up" button is clicked, but later, when
@@ -1093,9 +1142,9 @@ second. The precise value of the higher selectable slew rate depends on the
 experiment's scheduled duration. The shorter it is, the higher the threshold
 slew rate should be.
 
-So, the "=textChanged=" signal of the duration edit line is connected to
+Therefore, the "=textChanged=" signal of the duration edit line is connected to
 a callback function which changes the axis scale, but also changes the slider's
-displaid range.
+displayed range.
 
 #+CAPTION: the =durationChanged= callback method
 #+NAME: fig:prog_oscill4_3
@@ -1122,7 +1171,7 @@ the job, in a few steps: first, it guesses the pseudo-frequency of the signal
 thanks to a Fourier transform, then it calls a routine from the module
 =pylab.optimize= to minimize the differences between the signal and a parametric
 equation of a damped sinus. The parameters returned by the modelling routine
-are fed back in a text field (the optimized model equation is displaid), and
+are fed back in a text field (the optimized model equation is displayed), and
 three additional curves are plotted in color: the model, and both positive and
 negative envelopes which encompass its values. Figures [[fig:prog_fit]] and
 [[fig:shot_fit]] show the program's source and a screenshot of the curves.
@@ -1144,7 +1193,7 @@ status bar, and this can be written also while designing the user interface.
 Two additional help methods are provided, respectively for menu items "Help \rightarrow
 About" and "Help \rightarrow Manual". Both raise a browser window, which is fed a web page
 (respectively =license.html= and =oscillo4.html=). The first file is automatically
-made on the fly, based on the =license= variable which the program defines (at
+made on the fly, based on the =license= variable defined in the program (at
 the begin of the code).
 
 *** Access to the complete source code
@@ -1198,17 +1247,18 @@ with emacs, org-mode, \TeX live.
    between recently measured series.
 6. Modify the =fit= method. The user should be given a choice, for example,
    between a pure sinus model (no friction), an exponentially damped sinus model
-   (fluid friction), and why not, a linear damped sinus model (solid friction).
-7. Improve the user manual : for example, add some theory considerations about
-   the damped sinus mode and fluid friction. You can adapt some contents from
-   [[https://en.wikipedia.org/wiki/Damping][Wikipedia]], do not forget to quote the original article and credit its authors
-   if you do so.
+   (fluid friction), and why not, a linearly damped sinus model (solid friction).
+7. Improve the user manual : for example, add some theoritical considerations
+   about the damped sinus mode and fluid friction. You can adapt some contents
+   from [[https://en.wikipedia.org/wiki/Damping][Wikipedia]], do not forget to quote the original article and credit its
+   authors if you do so.
 8. Add some widget to comment the measured data, when they are well fitted with
    a damped sinus: say whether the oscillation is under-damped, critically
    damped, over-damped.
 9. Modify the user interface, wisely add some funny colors.
 10. Add a dialog to ask the user whether she wants to save data (only if
     necessary) when she closes the application.
+
 * Writing documentation for the end user
 We shall not talk about writing techniques in this course: they have existed for
 a long time, and they do not depend on technical knowledge. Every author can
@@ -1216,7 +1266,7 @@ launch a word processor and begin describing experiments. Whether the document
 will be good depends on literary skills which are not the topic of this course.
 
 However we shall talk about methods which allow a community of developers and
-users to interact, to maintain good documentations. The model which all of us
+users to interact, to maintain good documentation. The model which all of us
 already know is Wikipedia. One can discuss about the methods used by
 mediawiki, the engine under Wikipedia (strong and weak points of the syntax used
 to write pages), but we must agree upon the success of Wikipedia: it is
@@ -1238,27 +1288,28 @@ get information about Nupedia, she is redirected to an article of Wikipedia
 explaining why this project exists no longer.
 
 *** Separated edition of neighboring sections
-One problem of collaborative work is the risk of collisions when two contributors
-want to modify the same text simultaneously. This problem is partly worked
-around when a document is divided in many sections and subsections. The
-mediawiki engine allows two contributors to edit separate sections of the
-same level concurrently without colliding.
+One problem of collaborative work is the risk of collisions when two
+contributors want to modify the same text simultaneously. This problem is partly
+worked around when a document is divided in many sections and subsections. The
+mediawiki engine allows two contributors to edit separate sections of the same
+level concurrently without colliding.
 
 *** Template support
 When more than one person is authoring a book, authors need a mechanism to
 create self-consistent contents. For a traditional book, this is done during
 some regularly scheduled meetings. For Wikipedia, asynchronous procedures are
 preferred. The solution is to define a template for data which need some
-consistency, and report bugs when contributors forget to use the template.
+consistency, and to report bugs when contributors forget to use the template.
 
 A good example is the set of articles about chemical molecules: every molecule
-can be described by a set of physic properties, like temperatures of melting,
-boiling points, molecular weight, etc.
+can be described by a set of physic properties, like temperature of melting,
+boiling point, molecular weight, etc.
 
 Let us take a look at [[https://en.wikipedia.org/wiki/Aspirin][Wikipedia's article about Aspirin]]. Here is an excerpt of
 the source code in mediawiki syntax which gives the normalized description of
 the molecule:
 
+# sh is not the right language for the following data but the color scheme is OK
 #+BEGIN_SRC sh
   {{Infobox drug
   <!-- (many missing lines) -->
@@ -1267,10 +1318,12 @@ the molecule:
   | molecular_weight = 180.157 g/mol
   | smiles = O=C(Oc1ccccc1C(=O)O)C
   | StdInChI_Ref = {{stdinchicite|correct|chemspider}}
-  | StdInChI = 1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
+  | StdInChI = 1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/
+h2-5H,1H3,(H,11,12)
   | StdInChIKey_Ref = {{stdinchicite|correct|chemspider}}
   | StdInChIKey = BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-  | synonyms = 2-acetoxybenzoic acid<br />acetylsalicylate<br />acetylsalicylic acid<br />O-acetylsalicylic acid
+  | synonyms = 2-acetoxybenzoic acid<br />acetylsalicylate
+<br />acetylsalicylic acid<br />O-acetylsalicylic acid
   | density = 1.40
   | melting_point = 135
   | boiling_point = 140
@@ -1310,7 +1363,7 @@ done section by section.
 When one wants to author a paper, the first idea is to use a word
 processor. Most of them are /WYSIWYG/, which means "What You See Is What You Get":
 at any time, when one types her text, she can see on the screen quite the result
-she will get upon printing it to the paper.
+she will get upon printing it to paper.
 
 Strangely enough, the wiki engine, which relies on a non-WYSIWYG input system,
 has taken precedence over papers created with word processors. Its success is
@@ -1338,11 +1391,11 @@ configuration, /et voilà/.
 
 As Mediawiki works with free software and open standards, it can be thought as
 some /eternal/ software: if the organization which develops and maintains it fails
-to keep on doing it properly, anybody with suitable skills can rise and take
-over the project. Another important consequence is that anybody can /rely/ on the
-specification of data formats which come with mediawiki. So, one can author
-independently software which interacts with the mediawiki engine, and enrich
-its features. Many contributions were made by people independently from Wikimedia
+to keep on doing it properly, anybody with suitable skills can step forward and
+take over the project. Another important consequence is that anybody can /rely/ on
+the specification of data formats which come with mediawiki. So, one can author
+independently software which interacts with the mediawiki engine, and enrich its
+features. Many contributions were made by people independently from Wikimedia
 Foundation. Those contributions are sometimes integrated to new versions of the
 main engine, and sometimes not.
 
@@ -1393,6 +1446,7 @@ a book.
 4. Chose some pages from Mediawiki which have currently no translation in your
    language, and translate them; then create a small book out of them in your
    language.
+
 * ExpEYES as a common good
 The expEYES box is Open Hardware, its design is published under the [[https://github.com/expeyes/expeyes-programs/blob/master/EJun/LICENSE.txt][Open
 Hardware License]]. It implies that in foreseeable future, this measurement box
@@ -1402,6 +1456,7 @@ electronics manufacturing company to make new boxes with the same features.
 So, being part of the community of users of expEYES makes some sense. Currently,
 this community has few visible activities. Most people using expEYES are living
 in India, and the communication through Internet is in English language.
+
 ** Mailing list
 There is a mailing list owned by this community, named after the previous name
 of the project: [[http://www.freelists.org/list/phoenix-project][PHOENIX-PROJECT]] where /PHOENIX/ stands for
@@ -1412,6 +1467,7 @@ messages are invitations to propose a talk at free software meetings, and most
 of the traffic is about technical questions.
 
 You can freely subscribe to this mailing list.
+
 ** Software repositories
 The latest versions of source code for expEYES are available at github.com, in
 the repositories named [[https://github.com/expeyes/expeyes-programs][expeyes-programs]] and [[https://github.com/expeyes/expeyes-doc][expeyes-doc]], which contain
@@ -1420,25 +1476,29 @@ respectively source code and schematics for the first one, /User Manual/ and
 of the software are available in English and French language. If we want to
 extend the community of users, new localizations of of these documents and
 messages can be done to comply with languages used in schools.
+
 ** Contributing to the software
 Previous parts of this course were about mastering Python and writing a minimal
 application for expEYES. So far, there have been few authors contributing to
 this software. However, as this is free software, you can step forward as soon
 as you want, any help is appreciated.
+
 *** Reporting bugs and feature requests
 Few people know that Free Software can progress significantly when end-users
 write bug reports and send wishes for new features. Of course, as long as
 software developers are not hired by some company to maintain the software, they
 decide finally what they will do. However, while this interaction seems to be
-very loose, it has proven to be better than the support which many companies
-provide to end-users when they try to ask for help they have paid for.
+very loose, it has proven to be faster and better than the support got by
+individual end-users when they try to ask for the help promised on the card box
+sold by some companies.
 
 The software package for expEYES is primarily distributed as a Debian package,
-so the right way to report bug sand wishes is [[https://www.debian.org/Bugs/Reporting][the bug reporting system]] of Debian.
+so the right way to report bugs and wishes is [[https://www.debian.org/Bugs/Reporting][the bug reporting system]] of Debian.
 
 If you are using =expeyes-junior=, you are inside a Debian GNU-Linux system
 (unless other packages have been created), for example during a session
 initiated by a Live USB stick.
+
 *** =reportbug= utility, with an email-enabled system
 If your Linux system is fully enabled to send e-mails, the best way for sending
 bugreports is the =reportbug= utility. To file a bug, launch the command
@@ -1472,8 +1532,9 @@ bugreports is the =reportbug= utility. To file a bug, launch the command
 *** Reports when you are unsure that your system can send e-mails
 In the last step previously described, just under the button /Submit the bug .../,
 there is another button to save the bug report into a file. Choose this button,
-save the report in some text file. Then you can sign in your preferred webmail
+save the report in some text file. Then you can sign into your preferred webmail
 site, and paste relevant parts of the text file to send the bug report.
+
 *** Translating software into your language
 As =expeyes= is a software which follows good practices defined by [[https://www.gnu.org/software/gettext/gettext.html][GNU Gettext]],
 you can translate the software without having programming skills. All you need
@@ -1491,7 +1552,7 @@ last prerequisite skill. Here is the complete method:
 3. For every =msgid= instance, you must define the =msgstr= translation. See [[tr_po][below]]
    for an example.
 4. Send the new file to the maintainer, so he can rebuild the package with the
-   new translation, and get the new package when it is ready, install it.
+   new translation, finally get the new package when it is ready, install it.
 5. Enjoy.
 
 #+NAME: tr_po
@@ -1508,8 +1569,8 @@ provided by the Mozilla Foundation:
    file =messages.pot= in its main text area (figure [[etherpad02]]).
 4. The URL of the working pad must be sent to teammates to allow them to access
    it (see figure [[etherpad03]])
-5. As soon as teammates access this URL, their names (which can be customized
-   by each other) appear in the top right area, associated with a background
+5. As soon as teammates access this URL, their nicknames (everyone ca customize
+   its own) appear in the top right area, associated with a specific background
    color.
 6. Everybody can begin working of the document which is shared inside the main
    area. A /chat/ area is available in the bottom right corner of the window, and
@@ -1541,6 +1602,7 @@ to another text editor, save it in a local file, etc.
    your language.
 4. Try to reopen a /PO/ file is some specialized editor, like Kbabel, Linguist,
    PoEdit, or Emacs with the po-mode. Have a look at the additional features.
+
 * Conclusion, License
 This very course is as free as are the programs and the hardware of expEYES. So
 you can distribute it, modify it (the source of the course is the file
@@ -1549,18 +1611,20 @@ thanks to Emacs and org-mode.)
 
 Do not hesitate to improve it, to translate it. Its license is Creative
 Commons-BY-SA version 3.0 ([[https://creativecommons.org/licenses/by-sa/3.0/][CC-BY-SA 3.0]]). So, here are your legal rights and
-obligations:
+obligations (summarized, see the full legal text when you want more details):
 
-|------------------------------------------------------------------------------------|
-| You are free to:                                                                   |
-|                                                                                    |
-| - *Share* — copy and redistribute the material in any medium or format               |
-| - *Adapt* — remix, transform, and build upon the material                            |
-| for any purpose, even commercially.                                                |
-|                                                                                    |
-| The licensor cannot revoke these freedoms as long as you follow the license terms. |
-|                                                                                    |
-|------------------------------------------------------------------------------------|
+#+ATTR_LATEX: :width .8\textwidth :thickness 0.8pt
+-----
+
+ You are free to:
+
+ - *Share* — copy and redistribute the material in any medium or format
+ - *Adapt* — remix, transform, and build upon the material for any purpose, even
+   commercially.
+
+ The licensor cannot revoke these freedoms as long as you follow the license terms.
+#+ATTR_LATEX: :width .8\textwidth :thickness 0.8pt
+-----
 
 
 The author's e-mail address is: [[mailto:georges.khaznadar@free.fr?Subject=Course+2016+affordable][<georges.khaznadar@free.fr>]]

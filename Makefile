@@ -7,9 +7,9 @@ clean:
 
 
 %.pdf: %.tex
-	pdflatex $<
+	pdflatex -interaction=nonstopmode $<
 	while grep -q $(WARN_LABELS) $$(echo $< | sed 's/.tex/.log/'); do \
-		pdflatex $<; \
+	  pdflatex -interaction=nonstopmode $<; \
 	done
 
 .PHONY = all clean

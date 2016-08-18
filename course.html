@@ -125,7 +125,7 @@
 <ul>
 <li><a href="#orgheadline7">1. Booting live USB sticks</a>
 <ul>
-<li><a href="#orgheadline3">1.1. We proudly choose an &ldquo;Unsecure&rdquo; system</a>
+<li><a href="#orgheadline3">1.1. We proudly choose an &ldquo;Insecure&rdquo; system</a>
 <ul>
 <li><a href="#orgheadline1">1.1.1. To sum it up:</a></li>
 <li><a href="#orgheadline2">1.1.2. So to sum up the summary:</a></li>
@@ -233,6 +233,23 @@
 <li><a href="#orgheadline67">6.2. Exercises: make a small book out of mediawiki pages</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline78">7. ExpEYES as a common good</a>
+<ul>
+<li><a href="#orgheadline69">7.1. Mailing list</a></li>
+<li><a href="#orgheadline70">7.2. Software repositories</a></li>
+<li><a href="#orgheadline76">7.3. Contributing to the software</a>
+<ul>
+<li><a href="#orgheadline71">7.3.1. Reporting bugs and feature requests</a></li>
+<li><a href="#orgheadline72">7.3.2. <code>reportbug</code> utility, with an email-enabled system</a></li>
+<li><a href="#orgheadline73">7.3.3. Reports when you are unsure that your system can send e-mails</a></li>
+<li><a href="#orgheadline74">7.3.4. Translating software into your language</a></li>
+<li><a href="#orgheadline75">7.3.5. Translating within a collaborative environment</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline77">7.4. Exercises</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline79">8. Conclusion, License</a></li>
 </ul>
 </div>
 </div>
@@ -241,13 +258,13 @@
 <h2 id="orgheadline7"><span class="section-number-2">1</span> Booting live USB sticks</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">1.1</span> We proudly choose an &ldquo;Unsecure&rdquo; system</h3>
+<h3 id="orgheadline3"><span class="section-number-3">1.1</span> We proudly choose an &ldquo;Insecure&rdquo; system</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Some laptop manufacturers are applying a new policy proposed by Microsoft:
 disallow users to boot freely their operating systems, verify that the system
 loaded during the boot process bears a cryptographic signature approved by
-Microsoft. This feature is known as &ldquo;Secure Boot&rdquo;, as presumabily operating
+Microsoft. This feature is known as &ldquo;Secure Boot&rdquo;, as presumably operating
 systems can be considered as secure, only if they are made by Microsoft company.
 </p>
 
@@ -312,7 +329,7 @@ reverse engineer its binaries are forbidden by license.</li>
 </tr>
 
 <tr>
-<td class="org-center">WE MUST DEFINITELY OPT FOR UNSECURE SYSTEMS.</td>
+<td class="org-center">WE MUST DEFINITELY OPT FOR INSECURE SYSTEMS.</td>
 </tr>
 </tbody>
 </table>
@@ -352,7 +369,7 @@ Before disabling Secure Boot, consider whether it is necessary. From time to tim
 </p>
 
 <p>
-Open the PC BIOS menu. You can often access this menu by pressing a key during the bootup sequence, such as F1, F2, F12, or Esc.
+Open the PC BIOS menu. You can often access this menu by pressing a key during the boot-up sequence, such as F1, F2, F12, or Esc.
 </p>
 
 <p>
@@ -390,9 +407,9 @@ the Secure Boot desktop watermark.
 <p>
 When possible, alongside with the &ldquo;Secure Boot&rdquo; option tweak, you can choose the
 order of bootable devices. If the live USB stick is plugged in, you may reorder
-boot methods so the USB stick is considered as prioritary (before the boot on
+boot methods so the USB stick is considered as preferred (before the boot on
 hard disk, and before the boot on network interface). If you could define the
-USB stick as a prioritary boot medium, just keep it plugged in while booting.
+USB stick as a preferred boot medium, just keep it plugged in while booting.
 </p>
 
 <p>
@@ -480,7 +497,7 @@ its source code;</li>
 form or as a derivative work;</li>
 </ol></li>
 <li>As, with the definition above, there is no limitation of use (the software
-does not need to be shared costlessly), people can earn their life when
+does not need to be shared free of charge), people can earn their life when
 working with free software;</li>
 <li>As the source of the software must be delivered with it, fair interactions
 can be organized between competitors; every company can access specifications
@@ -522,7 +539,7 @@ Compiz. If you do not know what Compiz provides, you cannot understand why
 your students are playing with dozens of applications open in separate
 windows, like jugglers with their balls.</li>
 <li>Creating awesome graphics is a matter of seconds; open Gimp, then
-File &rarr; Create &rarr; Logos &rarr; (choose a style) &rarr; (type your logos&rsquo;s text)  &rarr; click,
+File &rarr; Create &rarr; Logos &rarr; (choose a style) &rarr; (type your logo&rsquo;s text)  &rarr; click,
 <i>et voilà</i>!</li>
 <li>They can cheat when preparing their homework! For example, the application
 wxMaxima allows them to find immediately the roots of most equations. Of
@@ -567,7 +584,7 @@ named expEYES-Junior, via the serial port known as <code>/dev/ttyACM0</code>.
 
 <p>
 Take an insulated wired in your hand (do not touch directly the metal), and
-touch the analogic input A1 with the bare end of the wire. The track on the
+touch the analogical input A1 with the bare end of the wire. The track on the
 oscilloscope screen should change a little. Then change the duration of the
 sampled data set, by dragging the slider &ldquo;ms/div&rdquo; to the right (this slider is
 on the left of the window, just below the list of channels CH1 &#x2026; CH4). When
@@ -605,13 +622,13 @@ Import &rarr; import an ASCII file, or quicker with the graphic button which doe
 the same (an icon with &ldquo;123&rdquo; written above), or else with the keyboard
 shortcut Ctrl+K. Chose the right file, import it. If numbers are not well
 imported, you may want to change some import options, like the number&rsquo;s input
-format. The values from the file <code>cro.txt</code> will be displaied in a data
+format. The values from the file <code>cro.txt</code> will be displayed in a data
 grid. You can select both columns with the mouse, then plot the data easily
 (either by calling a contextual menu by a right click, or by using the
 &ldquo;Plot&rdquo; window&rsquo;s menu). The application Qtiplot has many features to analyze
 data series, which deserve a detailed study.</li>
 <li>you can also import the data with LibreOffice&rsquo;s spreadsheet program, known as
-<code>calc</code>. When data are there, other features of the spreadsheet can be enjoied.</li>
+<code>Calc</code>. When data are there, other features of the spreadsheet can be enjoyed.</li>
 </ol>
 
 
@@ -723,9 +740,9 @@ at the left bottom end of the expEYES box. For example, use some whistle, or
 sing a single tune during a few seconds. Adjust the time sweep in order to have
 a few waves in the oscilloscope&rsquo;s display. Begin to drag the symbol CH1 above
 the symbol FTR, and drop it when the oscilloscope&rsquo;s track is well shaped. This
-records data in two files: <code>cro.dat</code>, which contains original data resampled with
+records data in two files: <code>cro.dat</code>, which contains original data re-sampled with
 a time step which ensures that a good FFT can be done, and <code>fft.dat</code>, which is the
-fast fourier transform of the same data to give a power <i>vs.</i> frequecy spectrum.
+fast Fourier transform of the same data to give a power <i>vs.</i> frequency spectrum.
 </p>
 
 <p>
@@ -743,7 +760,7 @@ a voiced &ldquo;AAA&rdquo;, then with a mouth-wistled still tune of higher frequ
 <div id="orgparagraph10" class="figure">
 <p><img src="./img/exp-wave04.png" alt="exp-wave04.png" />
 </p>
-<p><span class="figure-number">Figure 9:</span> A voiced &ldquo;AAA&rdquo;: fast fourier transform</p>
+<p><span class="figure-number">Figure 9:</span> A voiced &ldquo;AAA&rdquo;: fast Fourier transform</p>
 </div>
 
 
@@ -756,7 +773,7 @@ a voiced &ldquo;AAA&rdquo;, then with a mouth-wistled still tune of higher frequ
 <div id="orgparagraph9" class="figure">
 <p><img src="./img/exp-wave06.png" alt="exp-wave06.png" />
 </p>
-<p><span class="figure-number">Figure 11:</span> Mouth-whistled still tune: fast fourier transform</p>
+<p><span class="figure-number">Figure 11:</span> Mouth-whistled still tune: fast Fourier transform</p>
 </div>
 
 <p>
@@ -777,12 +794,12 @@ second.
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><a id="ID-fef7fc86-e6a0-4170-ae48-dad0ffc2e80e"></a><span class="section-number-4">3.2.3</span> A &ldquo;standalone&rdquo; experiment, with the DC motor</h4>
+<h4 id="orgheadline15"><span class="section-number-4">3.2.3</span> A &ldquo;standalone&rdquo; experiment, with the DC motor</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 The expEYES-Junior kit comes with a DC motor (which is ordinarily used to drive
-a CDROM); this DC motor can act as a low voltage motor, but it is also an
-efficient tachymeter, that is, an angular velocity probe: it outputs a voltage
+a CD-ROM); this DC motor can act as a low voltage motor, but it is also an
+efficient tachometer, that is, an angular velocity probe: it outputs a voltage
 which is proportional to its angular velocity, and as it has few internal
 friction, it can be used to measure the movement of a pendulum. When the main
 application <code>expeyes-junior</code> is running, click on the &ldquo;EXPERIMENTS&rdquo; button:
@@ -809,8 +826,8 @@ time with the &ldquo;STOP&rdquo; button.
 
 <p>
 Put the motor&rsquo;s axis horizontal, near the edge of a table, and grasp firmly the
-motor&rsquo;s body. Fit the motors&rsquo;s axis to a pendulum; there are many ways to do it,
-all are correct, as long as most of the mass ofthe pendulum is far enough from
+motor&rsquo;s body. Fit the motor&rsquo;s axis to a pendulum; there are many ways to do it,
+all are correct, as long as most of the mass of the pendulum is far enough from
 the motor&rsquo;s axis, and that the pendulum remains tightly fixed to the motor&rsquo;s
 axis during oscillations.
 </p>
@@ -829,7 +846,7 @@ see figure <a href="#orgparagraph13">14</a>.</li>
 <p>
 When the motor is int good position, slowly put the pendulum far fromits
 equilibrium position, and let it go freely. The angular velocity probed by the
-motor goes quicly above the threshold which triggers the record&rsquo;s begin. The
+motor goes quickly above the threshold which triggers the record&rsquo;s begin. The
 record&rsquo;s duration is 15 seconds by default (but you can change it). When the
 record is finished, you should click on two buttons, first &ldquo;SAVE To&rdquo;, later
 &ldquo;FIT&rdquo;. So, you get a file with the data recorded, for further analysis, and the
@@ -840,14 +857,14 @@ pseudo-frequency, and its damping coefficient; see figure <a href="#orgparagraph
 <p>
 The last figure of this section (<a href="#orgparagraph15">15</a>) shows the data from the file
 <code>pendulum.dat</code> reworked with <code>qtiplot</code>&rsquo;s analysis tools (Analysis &rarr; Fit Wizard
-&#x2026; define a user fit). You can see that the choosen formula is
+&#x2026; define a user fit). You can see that the chosen formula is
 \(A1 * \exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)\); so, it is a damped sinusoidal
 function, with damping coefficient \(A2\), frequency \(A3\), and phase \(A4\); \(A1\) is an
 arbitrary multiplying factor. Initial values to perform the fit were \(A1=1.5\)
 (the order of magnitude of the initial amplitude), \(A2=10\), as the movement is
 significantly damped within 10 seconds, \(A3=1\) since the pseudo-frequency is
 near \(1\, Hz\), and \(A4=1.5\) (which is near \(\pi/2\)). The fitting algorithm of <code>qtiplot</code>
-yelds a damping factor \(A2=1.2\, s\) and a frequency \(A3=1.069\, Hz\), with an
+yields a damping factor \(A2=1.2\, s\) and a frequency \(A3=1.069\, Hz\), with an
 excellent correlation factor: \(R^2=0.993\). The precision is greater for the
 frequency than for the damping factor.
 </p>
@@ -882,7 +899,7 @@ Python is an interpreted computer language created by by Guido van Rossum at
 Centrum Wiskunde &amp; Informatica (CWI) in the Netherlands, fifteen years ago
 approximately. Currently thislanguage is considered as excellent for dealing
 with scientific and experimental data, and most important software libraries
-which can be used it that area have been llinked to Python and areexposing
+which can be used it that area have been linked to Python and areexposing
 well-documented Programming Interfaces.
 </p>
 </div>
@@ -928,7 +945,7 @@ herself in the same run with some probability.
 
 <p>
 Learning arithmetic operations is also a tough task, which most persons achieve
-in developed countries. Controlling a computer, compared to basic arithmetics,
+in developed countries. Controlling a computer, compared to basic arithmetic,
 is quite like driving a helicopter, compared to walking. However, unlike the
 helicopter example, it is much safer: Python is a free-libre program, you can
 get it gratuitously; accidentally breaking a computer while learning
@@ -938,7 +955,7 @@ computer science with Python is most unlikely.
 <p>
 In a few words, the best guide to learn Python quickly is your own curiosity,
 as long as you choose a project which makes sense. Good tutorials exist in many
-places, here is the tutorial of the Python Fundation:
+places, here is the tutorial of the Python Foundation:
 <a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a>.
 </p>
 
@@ -1075,7 +1092,7 @@ expEYES-Junior will be used; the library&rsquo;s name is expeyes.eyesj, if we
 want a shorter alias, it is possible to declare it, more about that later &#x2026;</dd>
 <dt>p=expeyes.eyesj.open()</dt><dd>this line calls the function <code>open()</code> from the library
 which drives expEYES-Junior, and the resulting object is stored into the
-<i>variable</i> <code>p</code>; hence, <code>p</code> contains the intialized driver to deal with the
+<i>variable</i> <code>p</code>; hence, <code>p</code> contains the initialized driver to deal with the
 measurement box.</dd>
 <dt>t, v=p.capture(1,100,2000)</dt><dd>this line calls the method <code>capture()</code> from the
 driver, with three parameters:
@@ -1086,7 +1103,7 @@ requested</li>
 <li><code>2000</code> is the duration between two consecutive measurements: measurements
 will be done every \(2000\, ns = 2\, \mu s\); so the total duration of the
 &ldquo;experiment&rdquo; is requested to be \(200\, \mu s\). The results are assigned to
-<i>variables</i> <code>t</code> and <code>v</code>, <code>t</code> is the list of timestamps, <code>v</code> is the liste of measured
+<i>variables</i> <code>t</code> and <code>v</code>, <code>t</code> is the list of timestamps, <code>v</code> is the list of measured
 voltages.</li>
 </ol></dd>
 <dt><code>print(v)</code></dt><dd>this line asks to print the hundred values measured in the
@@ -1192,11 +1209,11 @@ shows the code to get the same numbers as above in an array.
 <p>
 <img src="./img/np0.png" alt="np0.png" />
 The <code>arange</code> function allows us to build very easily long arithmetic
-series. For example <code>arange(0,2,1e-3)</code> yelds an array of two thousand numbers.
+series. For example <code>arange(0,2,1e-3)</code> yields an array of two thousand numbers.
 </p>
 
 <p>
-Numpy provides also mathematic functions and operators which work directly on
+Numpy provides also mathematical functions and operators which work directly on
 arrays; here are two example programs, in figures <a href="#orgparagraph20">19</a> and <a href="#orgparagraph21">20</a>.
 </p>
 
@@ -1240,7 +1257,7 @@ However user interfaces must often contain some controls to let the user trigger
 a physic interaction, or to launch some process on captured data. So, general
 purpose GUI (Graphic User Interface) modules are useful. A good GUI library
 allows one to internationalize easily a program, making it usable by wide
-communities. Additionnally, good GUI libraries inherit knowledge about
+communities. Additionally, good GUI libraries inherit knowledge about
 human-machine interaction, and the author of programs can focus her attention
 about things which really matter for the end user: creating an <i>intuitive
 interface</i>, <i>i.e.</i> reusing popular widgets with well-known behaviors, defining
@@ -1280,7 +1297,7 @@ Let us create our first GUI layout with <code>designer</code>, which will featur
 </ol>
 
 <p>
-To begin with, the appplication <code>designer</code> must be launched without any option. So
+To begin with, the application <code>designer</code> must be launched without any option. So
 it will display a menu and we shall choose the <code>Main Window</code> item. An empty Main
 Window prototype appears in the center of the screen, collections of widgets are
 proposed in a column at the left side.
@@ -1344,7 +1361,7 @@ a small change to the last line: instead of <code>from qwt_plot import QwtPlot</
 this line should contain: <code>from qwt import QwtPlot</code>, to comply with the name of
 the module inside a Debian distribution (I assume that we are working with
 the USB live stick). This second operation should not be necessary, it is
-just implied by a small bug in the debian package of <code>pyuic4</code>, the convertor
+just implied by a small bug in the Debian package of <code>pyuic4</code>, the converter
 from <code>designer</code>&rsquo;s <code>.ui</code> format to Python source.</li>
 </ol>
 </div>
@@ -1468,7 +1485,7 @@ a general-purpose GUI program into a usable scientific tool.
 <h4 id="orgheadline37"><span class="section-number-4">4.4.8</span> A few more code, to deal with real life problems and exceptions</h4>
 <div class="outline-text-4" id="text-4-4-8">
 <p>
-The program <code>p2.py</code> works very well, with one exception: when no exPEYES Junior
+The program <code>p2.py</code> works very well, with one exception: when no expEYES Junior
 box is connected to the computer, nothing happens as expected. If the program
 was  launched from a command line in a Terminal, you may notice error messages
 appearing there. But if the program is launched by some other method, chances
@@ -1504,7 +1521,7 @@ hardware)
 The differences between programs <code>p2.py</code> and <code>p3.py</code> are few:
 </p>
 <dl class="org-dl">
-<dt>In the <code>try:</code> clause,</dt><dd>the line <code>self.p = ej.open()</code> is now embeded in the <code>try:</code>
+<dt>In the <code>try:</code> clause,</dt><dd>the line <code>self.p = ej.open()</code> is now embedded in the <code>try:</code>
 block. A condition is tested just after this line: <code>assert(self.p.fd)</code> is an
 affirmation that the driver has a working file descriptor; unless this
 descriptor exists, a Python error is raised (you would see it if you write the
@@ -1665,7 +1682,7 @@ experiment</li>
 and triggers the begin of the capture when the voltage changes quicker that
 a predefined threshold</li>
 <li>when the program is no longer in &ldquo;<i>alert mode</i>&rdquo;, the user can launch fitting
-tools and compare the record to theoritical descriptions.</li>
+tools and compare the record to theoretical descriptions.</li>
 <li>The curve of position vs. time is plotted inside a big frame, synchronously
 or asynchronously.</li>
 </ol>
@@ -1798,7 +1815,7 @@ inherited from the ancestor <code>QMainWindow</code> class.
 There will be two methods to plot the curves:
 </p>
 <ol class="org-ol">
-<li>immediately, while the pendule is still oscillating</li>
+<li>immediately, while the pendulum is still oscillating</li>
 <li>once, when the scheduled data have been recorded</li>
 </ol>
 
@@ -1828,14 +1845,14 @@ captured first, and the plot is refreshed later.
 </p>
 
 <p>
-Most code have been copied from the file <code>p3.py</code> studied <a href="#orgparagraph36">previously</a>. The
+Most code have been copied from the file <code>p3.py</code> studied <a href="#orgheadline37">previously</a>. The
 implementation is done in file <code>oscill2.py</code>, which can be downloaded from the
-<a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill2.py">"repository"</a>. Figure <a href="#orgparagraph37">35</a> shows the code of the naive version of
+<a href="https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill2.py">"repository"</a>. Figure <a href="#orgparagraph36">35</a> shows the code of the naive version of
 the method <code>wakeUp</code>.
 </p>
 
 
-<div id="orgparagraph37" class="figure">
+<div id="orgparagraph36" class="figure">
 <p><img src="./img/prog_oscill2_2.png" alt="prog_oscill2_2.png" />
 </p>
 <p><span class="figure-number">Figure 35:</span> implementation of the method <code>wakeUp</code></p>
@@ -1869,32 +1886,32 @@ computer does not work in real time, a timestamp must be made as soon as a new
 value is read. If the duration is in the range from 0.5 to 3.5 s, the mode is selected by
 taking in account radio buttons, and if the duration is shorter than 0.5 s, the
 &ldquo;final&rdquo; mode is enforced. The most relevant elements of code are shown in figure
-<a href="#orgparagraph38">36</a>.
+<a href="#orgparagraph37">36</a>.
 </p>
 
 
-<div id="orgparagraph38" class="figure">
+<div id="orgparagraph37" class="figure">
 <p><img src="./img/prog_oscill2_3.png" alt="prog_oscill2_3.png" />
 </p>
 <p><span class="figure-number">Figure 36:</span> the new <code>wakeUp()</code> method</p>
 </div>
 
 <p>
-Figures <a href="#orgparagraph39">37</a> and <a href="#orgparagraph40">38</a> show how the &ldquo;<code>tick</code>&rdquo; method
+Figures <a href="#orgparagraph38">37</a> and <a href="#orgparagraph39">38</a> show how the &ldquo;<code>tick</code>&rdquo; method
 implements gathering voltage and time when the application gets a <code>timeout</code>
 signal, every 50 milliseconds, and how this timer was created during the
 construction of the main window.
 </p>
 
 
-<div id="orgparagraph39" class="figure">
+<div id="orgparagraph38" class="figure">
 <p><img src="./img/prog_oscill2_4.png" alt="prog_oscill2_4.png" />
 </p>
 <p><span class="figure-number">Figure 37:</span> implementation of <code>tick</code></p>
 </div>
 
 
-<div id="orgparagraph40" class="figure">
+<div id="orgparagraph39" class="figure">
 <p><img src="./img/prog_oscill2_5.png" alt="prog_oscill2_5.png" />
 </p>
 <p><span class="figure-number">Figure 38:</span> initializing the application&rsquo;s timer</p>
@@ -1908,11 +1925,11 @@ construction of the main window.
 When one clicks the <i>Stop</i> button, she wants to interrupt an acquisition of
 data. Interrupting this acquisition is not possible in &ldquo;<i>final</i>&rdquo; mode, but during
 the measurement timespan in &ldquo;<i>immediate</i>&rdquo; mode, it can be allowed. Figure
-<a href="#orgparagraph41">39</a> shows the implementation of the <code>stop</code> callback method.
+<a href="#orgparagraph40">39</a> shows the implementation of the <code>stop</code> callback method.
 </p>
 
 
-<div id="orgparagraph41" class="figure">
+<div id="orgparagraph40" class="figure">
 <p><img src="./img/prog_oscill4_1.png" alt="prog_oscill4_1.png" />
 </p>
 <p><span class="figure-number">Figure 39:</span> implementing the <code>stop</code> callback method</p>
@@ -1926,11 +1943,11 @@ the measurement timespan in &ldquo;<i>immediate</i>&rdquo; mode, it can be allow
 <p>
 This part is straightforward: relevant data are self.t and self.v, the callback
 method opens a text file and writes formatted data into it. See figure
-<a href="#orgparagraph42">40</a>.
+<a href="#orgparagraph41">40</a>.
 </p>
 
 
-<div id="orgparagraph42" class="figure">
+<div id="orgparagraph41" class="figure">
 <p><img src="./img/prog_oscill4_2.png" alt="prog_oscill4_2.png" />
 </p>
 <p><span class="figure-number">Figure 40:</span> implementing the <code>save</code> callback method</p>
@@ -1959,7 +1976,7 @@ displaid range.
 </p>
 
 
-<div id="orgparagraph43" class="figure">
+<div id="orgparagraph42" class="figure">
 <p><img src="./img/prog_oscill4_3.png" alt="prog_oscill4_3.png" />
 </p>
 <p><span class="figure-number">Figure 41:</span> the <code>durationChanged</code> callback method</p>
@@ -1972,14 +1989,14 @@ method.
 </p>
 
 
-<div id="orgparagraph44" class="figure">
+<div id="orgparagraph43" class="figure">
 <p><img src="./img/prog_oscill4_4.png" alt="prog_oscill4_4.png" />
 </p>
 <p><span class="figure-number">Figure 42:</span> a few lines prepended before the measurement calls</p>
 </div>
 
 
-<div id="orgparagraph45" class="figure">
+<div id="orgparagraph44" class="figure">
 <p><img src="./img/prog_oscill4_5.png" alt="prog_oscill4_5.png" />
 </p>
 <p><span class="figure-number">Figure 43:</span> the <code>waitForThreshold</code> method</p>
@@ -1995,7 +2012,7 @@ specify the longest possible wait period.
 <h4 id="orgheadline54"><span class="section-number-4">5.3.10</span> The fit utility</h4>
 <div class="outline-text-4" id="text-5-3-10">
 <p>
-Thanks to the library <code>expeyes.eyemayh</code>, fitting a signal against a damped
+Thanks to the library <code>expeyes.eyemath</code>, fitting a signal against a damped
 sinusoidal function is quite straightforward. The function <code>fit_dsine</code> does all
 the job, in a few steps: first, it guesses the pseudo-frequency of the signal
 thanks to a Fourier transform, then it calls a routine from the module
@@ -2003,19 +2020,19 @@ thanks to a Fourier transform, then it calls a routine from the module
 equation of a damped sinus. The parameters returned by the modelling routine
 are fed back in a text field (the optimized model equation is displaid), and
 three additional curves are plotted in color: the model, and both positive and
-negative envelopes which encompass its values. Figures <a href="#orgparagraph46">44</a> and
-<a href="#orgparagraph47">45</a> show the program&rsquo;s source and a screenshot of the curves.
+negative envelopes which encompass its values. Figures <a href="#orgparagraph45">44</a> and
+<a href="#orgparagraph46">45</a> show the program&rsquo;s source and a screenshot of the curves.
 </p>
 
 
-<div id="orgparagraph46" class="figure">
+<div id="orgparagraph45" class="figure">
 <p><img src="./img/prog_fit.png" alt="prog_fit.png" />
 </p>
 <p><span class="figure-number">Figure 44:</span> source of the <code>fit</code> method</p>
 </div>
 
 
-<div id="orgparagraph47" class="figure">
+<div id="orgparagraph46" class="figure">
 <p><img src="./img/shot_fit.png" alt="shot_fit.png" />
 </p>
 <p><span class="figure-number">Figure 45:</span> captured signal and its model</p>
@@ -2089,7 +2106,7 @@ user interface <code>oscill4.ui</code>, the help file <code>oscill4.html</code>.
 you can make a copy of all those files. Some other files like as <code>Makefile</code> and
 <code>oscill4.org</code> can also be of some help if you are using appropriate tools:
 respectively the command <a href="https://www.gnu.org/software/make/">make</a> and an integrated development environment
-with emacs, org-mode, \(\TeX live\).
+with emacs, org-mode, \TeX live.
 </p>
 
 <ol class="org-ol">
@@ -2207,12 +2224,12 @@ the molecule:
 
 <div class="org-src-container">
 
-<pre class="src src-mediawiki">  {{Infobox drug
+<pre class="src src-sh">  {{Infobox drug
   &lt;!-- (many missing lines) --&gt;
   &lt;!--Chemical data--&gt;
-  | C=9 | H=8 | O=4
+  | <span class="org-variable-name">C</span>=9 | <span class="org-variable-name">H</span>=8 | <span class="org-variable-name">O</span>=4
   | molecular_weight = 180.157 g/mol
-  | smiles = O=C(Oc1ccccc1C(=O)O)C
+  | smiles = <span class="org-variable-name">O</span>=C(Oc1ccccc1C(=O)O)C
   | StdInChI_Ref = {{stdinchicite|correct|chemspider}}
   | StdInChI = 1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
   | StdInChIKey_Ref = {{stdinchicite|correct|chemspider}}
@@ -2228,14 +2245,14 @@ the molecule:
 </div>
 
 
-<div id="orgparagraph48" class="figure">
+<div id="orgparagraph47" class="figure">
 <p><img src="./img/aspirin.png" alt="aspirin.png" />
 </p>
 <p><span class="figure-number">Figure 46:</span> the info box for Aspirin</p>
 </div>
 
 <p>
-This code is rendered as in figure <a href="#orgparagraph48">46</a>.
+This code is rendered as in figure <a href="#orgparagraph47">46</a>.
 You can find the source of the template used to deal with <i>Infobox_drug</i> in
 a <a href="https://en.wikipedia.org/wiki/Template:Chembox_Elements/molecular_formula">special page</a> of Wikipedia; this template is rather complicated, and results
 from the work of many contributors. However, templates can be defined with more
@@ -2353,12 +2370,12 @@ is the so-called &ldquo;<a href="https://wiki.debian.org/DesertIslandTest">Deser
 
 <div class="org-src-container">
 
-<pre class="src src-plain_text">  A good test case for whether a license is free [...]
+<pre class="src src-sh">  A good test case for whether a license is free [...]
   is whether a disconnected group of people on a desert
   island could distribute the software among themselves.
   In the vim case, they cannot. (For example, if the vim
   maintainer flies over the island and drops down a
-  message saying "you must hereby send me your changes",
+  message saying <span class="org-string">"you must hereby send me your changes"</span>,
   how are the people down below to comply?) The fact that
   the vim maintainer can send the request does not say
   anything about whether the people receiving it could
@@ -2400,9 +2417,320 @@ language.</li>
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline78" class="outline-2">
+<h2 id="orgheadline78"><span class="section-number-2">7</span> ExpEYES as a common good</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+The expEYES box is Open Hardware, its design is published under the <a href="https://github.com/expeyes/expeyes-programs/blob/master/EJun/LICENSE.txt">Open
+Hardware License</a>. It implies that in foreseeable future, this measurement box
+will always exist. If current suppliers cease to sell it now, we can hire any
+electronics manufacturing company to make new boxes with the same features.
+</p>
+
+<p>
+So, being part of the community of users of expEYES makes some sense. Currently,
+this community has few visible activities. Most people using expEYES are living
+in India, and the communication through Internet is in English language.
+</p>
+</div>
+<div id="outline-container-orgheadline69" class="outline-3">
+<h3 id="orgheadline69"><span class="section-number-3">7.1</span> Mailing list</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+There is a mailing list owned by this community, named after the previous name
+of the project: <a href="http://www.freelists.org/list/phoenix-project">PHOENIX-PROJECT</a> where <i>PHOENIX</i> stands for
+<a href="http://www.iuac.res.in/~elab/phoenix/docs/phoenix_report.pdf">Physics with Home-made Equipment and Innovative Experiments</a>, a project initiated
+more than ten years ago by <i>Ajith Kumar</i> in <i>Inter University Accelerator Centre,
+New Delhi</i>. In this mailing list, training sessions are announced regularly. Some
+messages are invitations to propose a talk at free software meetings, and most
+of the traffic is about technical questions.
+</p>
+
+<p>
+You can freely subscribe to this mailing list.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">7.2</span> Software repositories</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+The latest versions of source code for expEYES are available at github.com, in
+the repositories named <a href="https://github.com/expeyes/expeyes-programs">expeyes-programs</a> and <a href="https://github.com/expeyes/expeyes-doc">expeyes-doc</a>, which contain
+respectively source code and schematics for the first one, <i>User Manual</i> and
+<i>Programmer Manual</i> for the second one. Currently, manuals and the message strings
+of the software are available in English and French language. If we want to
+extend the community of users, new localizations of of these documents and
+messages can be done to comply with languages used in schools.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">7.3</span> Contributing to the software</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Previous parts of this course were about mastering Python and writing a minimal
+application for expEYES. So far, there have been few authors contributing to
+this software. However, as this is free software, you can step forward as soon
+as you want, any help is appreciated.
+</p>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">7.3.1</span> Reporting bugs and feature requests</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<p>
+Few people know that Free Software can progress significantly when end-users
+write bug reports and send wishes for new features. Of course, as long as
+software developers are not hired by some company to maintain the software, they
+decide finally what they will do. However, while this interaction seems to be
+very loose, it has proven to be better than the support which many companies
+provide to end-users when they try to ask for help they have paid for.
+</p>
+
+<p>
+The software package for expEYES is primarily distributed as a Debian package,
+so the right way to report bug sand wishes is <a href="https://www.debian.org/Bugs/Reporting">the bug reporting system</a> of Debian.
+</p>
+
+<p>
+If you are using <code>expeyes-junior</code>, you are inside a Debian GNU-Linux system
+(unless other packages have been created), for example during a session
+initiated by a Live USB stick.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72"><span class="section-number-4">7.3.2</span> <code>reportbug</code> utility, with an email-enabled system</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<p>
+If your Linux system is fully enabled to send e-mails, the best way for sending
+bugreports is the <code>reportbug</code> utility. To file a bug, launch the command
+<code>reportbug</code>, then go through the successive steps (figures <a href="#orgparagraph48">47</a> to
+<a href="#orgparagraph49">50</a>).
+</p>
+
+<ol class="org-ol">
+<li>giving the name of the package: <code>expeyes</code></li>
+<li>you can have a look at previous bug reports targetting this package; if your
+report is new, go to the next step, giving a short title to your report;</li>
+<li>write the full bug report, with the help of the template which is given;</li>
+<li>choose the severity of your report in the range Important &rarr; Wishlist;</li>
+<li>send the bug report.</li>
+</ol>
+
+
+
+<div id="orgparagraph48" class="figure">
+<p><img src="./img/reportbug01.png" alt="reportbug01.png" />
+</p>
+<p><span class="figure-number">Figure 47:</span> reportbug &#x2013; giving the package&rsquo;s name</p>
+</div>
+
+
+<div id="orgparagraph50" class="figure">
+<p><img src="./img/reportbug02.png" alt="reportbug02.png" />
+</p>
+<p><span class="figure-number">Figure 48:</span> reportbug &#x2013; writing a very short title</p>
+</div>
+
+
+<div id="orgparagraph51" class="figure">
+<p><img src="./img/reportbug03.png" alt="reportbug03.png" />
+</p>
+<p><span class="figure-number">Figure 49:</span> reportbug &#x2013; choosing the severity</p>
+</div>
+
+
+<div id="orgparagraph49" class="figure">
+<p><img src="./img/reportbug04.png" alt="reportbug04.png" />
+</p>
+<p><span class="figure-number">Figure 50:</span> reportbug &#x2013; final step</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73"><span class="section-number-4">7.3.3</span> Reports when you are unsure that your system can send e-mails</h4>
+<div class="outline-text-4" id="text-7-3-3">
+<p>
+In the last step previously described, just under the button <i>Submit the bug &#x2026;</i>,
+there is another button to save the bug report into a file. Choose this button,
+save the report in some text file. Then you can sign in your preferred webmail
+site, and paste relevant parts of the text file to send the bug report.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74"><span class="section-number-4">7.3.4</span> Translating software into your language</h4>
+<div class="outline-text-4" id="text-7-3-4">
+<p>
+As <code>expeyes</code> is a software which follows good practices defined by <a href="https://www.gnu.org/software/gettext/gettext.html">GNU Gettext</a>,
+you can translate the software without having programming skills. All you need
+is to know your language and the topics covered by <code>expeyes</code>, <i>i.e.</i> physic
+experiments. If you are reading this course in English, you already have the
+last prerequisite skill. Here is the complete method:
+</p>
+<ol class="org-ol">
+<li>Download the file <code>messages.pot</code>, available <a href="https://raw.githubusercontent.com/expeyes/expeyes-programs/master/po/messages.pot">here</a>.</li>
+<li>Open the file in a text editor, like Notepad++ or Geany, and save it under
+a new name, which accounts for the new language. For example, to make
+a Spanish translation, the name should be <code>es_ES.po</code> or <code>es.po</code>; <code>es_ES</code> means
+Spanish as spoken in Spain, likewise <code>es_AR</code> would mean Spanish as spoken in
+Argentina. If you want to make a Turkish translation, the name <code>tr.po</code> should
+be correct. The suffix <code>.po</code> must be used for <i>PO</i> files, which are translation
+files in the most suitable format for GNU Gettext.</li>
+<li>For every <code>msgid</code> instance, you must define the <code>msgstr</code> translation. See <a href="#orgparagraph52">below</a>
+   for an example.</li>
+<li>Send the new file to the maintainer, so he can rebuild the package with the
+new translation, and get the new package when it is ready, install it.</li>
+<li>Enjoy.</li>
+</ol>
+
+
+<div id="orgparagraph52" class="figure">
+<p><img src="./img/po_excerpt.png" alt="po_excerpt.png" />
+</p>
+<p><span class="figure-number">Figure 51:</span> Example translation en &rarr; tr.</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline75" class="outline-4">
+<h4 id="orgheadline75"><span class="section-number-4">7.3.5</span> Translating within a collaborative environment</h4>
+<div class="outline-text-4" id="text-7-3-5">
+<p>
+The best collaborative environment for such a work is a so-called
+&ldquo;Etherpad&rdquo;. Here is a method to create an Etherpad inside the free web service
+provided by the Mozilla Foundation:
+</p>
+<ol class="org-ol">
+<li>Open the URL <a href="https://public.etherpad-mozilla.org/">https://public.etherpad-mozilla.org/</a></li>
+<li>Click on the <i>New Pad</i> button (figure <a href="#orgparagraph53">52</a>)</li>
+<li>We are provided a newly created Etherpad. We can paste the contents of the
+file <code>messages.pot</code> in its main text area (figure <a href="#orgparagraph54">53</a>).</li>
+<li>The URL of the working pad must be sent to teammates to allow them to access
+it (see figure <a href="#orgparagraph55">54</a>)</li>
+<li>As soon as teammates access this URL, their names (which can be customized
+by each other) appear in the top right area, associated with a background
+color.</li>
+<li>Everybody can begin working of the document which is shared inside the main
+area. A <i>chat</i> area is available in the bottom right corner of the window, and
+we can enjoy it to share messages within the team.</li>
+</ol>
+
+<p>
+When the collaborative work is finished in the pad, one can copy it and paste it
+to another text editor, save it in a local file, etc.
+</p>
+
+
+<div id="orgparagraph53" class="figure">
+<p><img src="./img/etherpad01.png" alt="etherpad01.png" />
+</p>
+<p><span class="figure-number">Figure 52:</span> Creation of a new pad.</p>
+</div>
+
+
+<div id="orgparagraph54" class="figure">
+<p><img src="./img/etherpad02.png" alt="etherpad02.png" />
+</p>
+<p><span class="figure-number">Figure 53:</span> A newly created pad, with a welcome message (to be erased)</p>
+</div>
+
+
+<div id="orgparagraph55" class="figure">
+<p><img src="./img/etherpad03.png" alt="etherpad03.png" />
+</p>
+<p><span class="figure-number">Figure 54:</span> The pad&rsquo;s URL which must be shared</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline77" class="outline-3">
+<h3 id="orgheadline77"><span class="section-number-3">7.4</span> Exercises</h3>
+<div class="outline-text-3" id="text-7-4">
+<ol class="org-ol">
+<li>Send a bugreport with severity <i>Wishlist</i> for the package <code>expeyes</code>. As the
+author of the course is also the maintainer of the package, you will soon be
+able to watch how this bug report is managed. Do not hesitate to tell about
+feature requests.</li>
+<li>Create a new Etherpad, for example in  <a href="https://public.etherpad-mozilla.org/">https://public.etherpad-mozilla.org/</a>
+   and edit collaboratively a wishlist for possible continuations of this course.</li>
+<li>Create a new etherpad and begin editing a <i>PO</i> file containing translations for
+your language.</li>
+<li>Try to reopen a <i>PO</i> file is some specialized editor, like Kbabel, Linguist,
+PoEdit, or Emacs with the po-mode. Have a look at the additional features.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline79" class="outline-2">
+<h2 id="orgheadline79"><span class="section-number-2">8</span> Conclusion, License</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+This very course is as free as are the programs and the hardware of expEYES. So
+you can distribute it, modify it (the source of the course is the file
+<code>course.org</code>, available in the github repositorymentioned above, it is modifiable
+thanks to Emacs and org-mode.)
+</p>
+
+<p>
+Do not hesitate to improve it, to translate it. Its license is Creative
+Commons-BY-SA version 3.0 (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>). So, here are your legal rights and
+obligations:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">You are free to:</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">- <b>Share</b> — copy and redistribute the material in any medium or format</td>
+</tr>
+
+<tr>
+<td class="org-left">- <b>Adapt</b> — remix, transform, and build upon the material</td>
+</tr>
+
+<tr>
+<td class="org-left">for any purpose, even commercially.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">The licensor cannot revoke these freedoms as long as you follow the license terms.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+The author&rsquo;s e-mail address is: <a href="mailto:georges.khaznadar@free.fr?Subject=Course+2016+affordable">&lt;georges.khaznadar@free.fr&gt;</a>
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-19 Tue&gt;</span></span></p>
+<p class="date">Date: Wed Aug 17 2016</p>
 <p class="author">Author: Georges Khaznadar</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

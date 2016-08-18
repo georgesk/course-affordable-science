@@ -1,18 +1,18 @@
 #+TITLE:       Affordable Measurement Box for Science
 #+AUTHOR:      Georges Khaznadar
-#+DATE:        <2016-07-19 Tue>
-#+EMAIL:       <georges.khaznadar@free.fr>
+#+DATE:        Wed Aug 17 2016
+#+EMAIL:       [[mailto:georges.khaznadar@free.fr&Subject=AMBS Course 2016][<georges.khaznadar@free.fr>]]
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:t toc:t
 #+LATEX_HEADER: \usepackage{lmodern}
 
 * Booting live USB sticks
-** We proudly choose an "Unsecure" system
+** We proudly choose an "Insecure" system
 
 Some laptop manufacturers are applying a new policy proposed by Microsoft:
 disallow users to boot freely their operating systems, verify that the system
 loaded during the boot process bears a cryptographic signature approved by
-Microsoft. This feature is known as "Secure Boot", as presumabily operating
+Microsoft. This feature is known as "Secure Boot", as presumably operating
 systems can be considered as secure, only if they are made by Microsoft company.
 
 So far, Microsoft company does not provide free/libre operating systems, and
@@ -48,7 +48,7 @@ end-user agreement which comes with Windows 10:
 | <c>                                              |
 | AS WE WANT OUR STUDENTS TO BE ABLE TO UNDERSTAND |
 | WHAT THEY USE AND WHAT THEY DO,                  |
-| WE MUST DEFINITELY OPT FOR UNSECURE SYSTEMS.     |
+| WE MUST DEFINITELY OPT FOR INSECURE SYSTEMS.     |
 |--------------------------------------------------|
 
 ** Disabling the "Secure Boot" feature
@@ -71,7 +71,7 @@ feature (source: https://msdn.microsoft.com/en-us/windows/hardware/commercialize
 
     Before disabling Secure Boot, consider whether it is necessary. From time to time, your manufacturer may update the list of trusted hardware, drivers, and operating systems for your PC. To check for updates, go to Windows Update, or check your manufacturer's website.
 
-    Open the PC BIOS menu. You can often access this menu by pressing a key during the bootup sequence, such as F1, F2, F12, or Esc.
+    Open the PC BIOS menu. You can often access this menu by pressing a key during the boot-up sequence, such as F1, F2, F12, or Esc.
 
     Or, from Windows, hold the Shift key while selecting Restart. Go to Troubleshoot > Advanced Options: UEFI Firmware Settings.
 
@@ -91,9 +91,9 @@ feature (source: https://msdn.microsoft.com/en-us/windows/hardware/commercialize
 
 When possible, alongside with the "Secure Boot" option tweak, you can choose the
 order of bootable devices. If the live USB stick is plugged in, you may reorder
-boot methods so the USB stick is considered as prioritary (before the boot on
+boot methods so the USB stick is considered as preferred (before the boot on
 hard disk, and before the boot on network interface). If you could define the
-USB stick as a prioritary boot medium, just keep it plugged in while booting.
+USB stick as a preferred boot medium, just keep it plugged in while booting.
 
 If you could not define the default boot sequence order, you can choose the boot
 medium on the fly: on most laptops, the key "F8" (or F9, or F12) is dedicated at
@@ -154,7 +154,7 @@ The following set of reasons is non-exhaustive!
    d. the freedom to copy and distribute the software, either in its original
     form or as a derivative work;
 2. As, with the definition above, there is no limitation of use (the software
-   does not need to be shared costlessly), people can earn their life when
+   does not need to be shared free of charge), people can earn their life when
    working with free software;
 3. As the source of the software must be delivered with it, fair interactions
    can be organized between competitors; every company can access specifications
@@ -188,7 +188,7 @@ a live USB stick:
   your students are playing with dozens of applications open in separate
   windows, like jugglers with their balls.
 - Creating awesome graphics is a matter of seconds; open Gimp, then
-  File \rightarrow Create \rightarrow Logos \rightarrow (choose a style) \rightarrow (type your logos's text)  \rightarrow click,
+  File \rightarrow Create \rightarrow Logos \rightarrow (choose a style) \rightarrow (type your logo's text)  \rightarrow click,
   /et voilà/!
 - They can cheat when preparing their homework! For example, the application
   wxMaxima allows them to find immediately the roots of most equations. Of
@@ -215,7 +215,7 @@ application "CRO+" (an enhanced Cathode-Ray Oscilloscope) has detected the box
 named expEYES-Junior, via the serial port known as =/dev/ttyACM0=.
 
 Take an insulated wired in your hand (do not touch directly the metal), and
-touch the analogic input A1 with the bare end of the wire. The track on the
+touch the analogical input A1 with the bare end of the wire. The track on the
 oscilloscope screen should change a little. Then change the duration of the
 sampled data set, by dragging the slider "ms/div" to the right (this slider is
 on the left of the window, just below the list of channels CH1 ... CH4). When
@@ -246,13 +246,13 @@ various tools. Try to open the file with the following applications:
    the same (an icon with "123" written above), or else with the keyboard
    shortcut Ctrl+K. Chose the right file, import it. If numbers are not well
    imported, you may want to change some import options, like the number's input
-   format. The values from the file =cro.txt= will be displaied in a data
+   format. The values from the file =cro.txt= will be displayed in a data
    grid. You can select both columns with the mouse, then plot the data easily
    (either by calling a contextual menu by a right click, or by using the
    "Plot" window's menu). The application Qtiplot has many features to analyze
    data series, which deserve a detailed study.
 4. you can also import the data with LibreOffice's spreadsheet program, known as
-   =calc=. When data are there, other features of the spreadsheet can be enjoied.
+   =Calc=. When data are there, other features of the spreadsheet can be enjoyed.
 
 #+CAPTION: The same data, accessed by "cat", "less" and "qtiplot"
 #+NAME:   fig:cat-less-qtiplot
@@ -321,9 +321,9 @@ at the left bottom end of the expEYES box. For example, use some whistle, or
 sing a single tune during a few seconds. Adjust the time sweep in order to have
 a few waves in the oscilloscope's display. Begin to drag the symbol CH1 above
 the symbol FTR, and drop it when the oscilloscope's track is well shaped. This
-records data in two files: =cro.dat=, which contains original data resampled with
+records data in two files: =cro.dat=, which contains original data re-sampled with
 a time step which ensures that a good FFT can be done, and =fft.dat=, which is the
-fast fourier transform of the same data to give a power /vs./ frequecy spectrum.
+fast Fourier transform of the same data to give a power /vs./ frequency spectrum.
 
 The figures [[fig:exp-wave03]] to [[fig:exp-wave06]] show data recorded,first with
 a voiced "AAA", then with a mouth-wistled still tune of higher frequency.
@@ -331,14 +331,14 @@ a voiced "AAA", then with a mouth-wistled still tune of higher frequency.
 #+CAPTION: A voiced "AAA": the original signal
 #+NAME:   fig:exp-wave03
 [[./img/exp-wave03.png]]
-#+CAPTION: A voiced "AAA": fast fourier transform
+#+CAPTION: A voiced "AAA": fast Fourier transform
 #+NAME:   fig:exp-wave04
 [[./img/exp-wave04.png]]
 
 #+CAPTION: Mouth-whistled still tune: the original signal
 #+NAME:   fig:exp-wave05
 [[./img/exp-wave05.png]]
-#+CAPTION: Mouth-whistled still tune: fast fourier transform
+#+CAPTION: Mouth-whistled still tune: fast Fourier transform
 #+NAME:   fig:exp-wave06
 [[./img/exp-wave06.png]]
 
@@ -353,12 +353,9 @@ second.
 [[./img/exp-wave07.png]]
 
 *** A "standalone" experiment, with the DC motor
-:PROPERTIES:
-:ID:       fef7fc86-e6a0-4170-ae48-dad0ffc2e80e
-:END:
 The expEYES-Junior kit comes with a DC motor (which is ordinarily used to drive
-a CDROM); this DC motor can act as a low voltage motor, but it is also an
-efficient tachymeter, that is, an angular velocity probe: it outputs a voltage
+a CD-ROM); this DC motor can act as a low voltage motor, but it is also an
+efficient tachometer, that is, an angular velocity probe: it outputs a voltage
 which is proportional to its angular velocity, and as it has few internal
 friction, it can be used to measure the movement of a pendulum. When the main
 application =expeyes-junior= is running, click on the "EXPERIMENTS" button:
@@ -377,8 +374,8 @@ soon as the motor has enough angular velocity.You can stop the record at any
 time with the "STOP" button.
 
 Put the motor's axis horizontal, near the edge of a table, and grasp firmly the
-motor's body. Fit the motors's axis to a pendulum; there are many ways to do it,
-all are correct, as long as most of the mass ofthe pendulum is far enough from
+motor's body. Fit the motor's axis to a pendulum; there are many ways to do it,
+all are correct, as long as most of the mass of the pendulum is far enough from
 the motor's axis, and that the pendulum remains tightly fixed to the motor's
 axis during oscillations.
 
@@ -391,7 +388,7 @@ Here are two easy and cheap solutions used by the author:
 
 When the motor is int good position, slowly put the pendulum far fromits
 equilibrium position, and let it go freely. The angular velocity probed by the
-motor goes quicly above the threshold which triggers the record's begin. The
+motor goes quickly above the threshold which triggers the record's begin. The
 record's duration is 15 seconds by default (but you can change it). When the
 record is finished, you should click on two buttons, first "SAVE To", later
 "FIT". So, you get a file with the data recorded, for further analysis, and the
@@ -400,14 +397,14 @@ pseudo-frequency, and its damping coefficient; see figure [[fig:pendulum00]].
 
 The last figure of this section ([[fig:pendulum02]]) shows the data from the file
 =pendulum.dat= reworked with =qtiplot='s analysis tools (Analysis \rightarrow Fit Wizard
-... define a user fit). You can see that the choosen formula is
+... define a user fit). You can see that the chosen formula is
 $A1 * \exp(-x/A2) * \sin(2 * \pi * A3 * x + A4)$; so, it is a damped sinusoidal
 function, with damping coefficient $A2$, frequency $A3$, and phase $A4$; $A1$ is an
 arbitrary multiplying factor. Initial values to perform the fit were $A1=1.5$
 (the order of magnitude of the initial amplitude), $A2=10$, as the movement is
 significantly damped within 10 seconds, $A3=1$ since the pseudo-frequency is
 near $1\, Hz$, and $A4=1.5$ (which is near $\pi/2$). The fitting algorithm of =qtiplot=
-yelds a damping factor $A2=1.2\, s$ and a frequency $A3=1.069\, Hz$, with an
+yields a damping factor $A2=1.2\, s$ and a frequency $A3=1.069\, Hz$, with an
 excellent correlation factor: $R^2=0.993$. The precision is greater for the
 frequency than for the damping factor.
 
@@ -425,7 +422,7 @@ Python is an interpreted computer language created by by Guido van Rossum at
 Centrum Wiskunde & Informatica (CWI) in the Netherlands, fifteen years ago
 approximately. Currently thislanguage is considered as excellent for dealing
 with scientific and experimental data, and most important software libraries
-which can be used it that area have been llinked to Python and areexposing
+which can be used it that area have been linked to Python and areexposing
 well-documented Programming Interfaces.
 
 ** Empowering oneself with Python
@@ -452,7 +449,7 @@ very expensive, and also somewhat risky: a beginner can destroy a helicopter and
 herself in the same run with some probability.
 
 Learning arithmetic operations is also a tough task, which most persons achieve
-in developed countries. Controlling a computer, compared to basic arithmetics,
+in developed countries. Controlling a computer, compared to basic arithmetic,
 is quite like driving a helicopter, compared to walking. However, unlike the
 helicopter example, it is much safer: Python is a free-libre program, you can
 get it gratuitously; accidentally breaking a computer while learning
@@ -460,7 +457,7 @@ computer science with Python is most unlikely.
 
 In a few words, the best guide to learn Python quickly is your own curiosity,
 as long as you choose a project which makes sense. Good tutorials exist in many
-places, here is the tutorial of the Python Fundation:
+places, here is the tutorial of the Python Foundation:
 https://docs.python.org/3/tutorial/index.html.
 
 Currently, there are two families in the Python language, known as Python2 and
@@ -556,7 +553,7 @@ Let us comment the few lines in the program =p1.py=:
      want a shorter alias, it is possible to declare it, more about that later ...
 - p=expeyes.eyesj.open() :: this line calls the function =open()= from the library
      which drives expEYES-Junior, and the resulting object is stored into the
-     /variable/ =p=; hence, =p= contains the intialized driver to deal with the
+     /variable/ =p=; hence, =p= contains the initialized driver to deal with the
      measurement box.
 - t, v=p.capture(1,100,2000) :: this line calls the method =capture()= from the
      driver, with three parameters:
@@ -566,7 +563,7 @@ Let us comment the few lines in the program =p1.py=:
   3. =2000= is the duration between two consecutive measurements: measurements
      will be done every $2000\, ns = 2\, \mu s$; so the total duration of the
      "experiment" is requested to be $200\, \mu s$. The results are assigned to
-     /variables/ =t= and =v=, =t= is the list of timestamps, =v= is the liste of measured
+     /variables/ =t= and =v=, =t= is the list of timestamps, =v= is the list of measured
      voltages.
 - =print(v)= :: this line asks to print the hundred values measured in the
      /standard output/ of the program, which is the /Terminal/, there.
@@ -631,13 +628,13 @@ take in account all the possibilities.
 The module numpy allows you to declare or to construct numeric arrays, which
 contain only numbers, and which can be computed efficiently. The figure [[fig:np0]]
 shows the code to get the same numbers as above in an array.
-#+CAPTION: ten first even numbers, with numpy: source code, and ouput
+#+CAPTION: ten first even numbers, with numpy: source code, and output
 #+NAME: fig:np0
 [[./img/np0.png]]
 The =arange= function allows us to build very easily long arithmetic
-series. For example =arange(0,2,1e-3)= yelds an array of two thousand numbers.
+series. For example =arange(0,2,1e-3)= yields an array of two thousand numbers.
 
-Numpy provides also mathematic functions and operators which work directly on
+Numpy provides also mathematical functions and operators which work directly on
 arrays; here are two example programs, in figures [[fig:np1]] and [[fig:np2]].
 
 Both compute =y=2*x= and =z=sin(x)= for any element of an arithmetic series, we can
@@ -661,7 +658,7 @@ However user interfaces must often contain some controls to let the user trigger
 a physic interaction, or to launch some process on captured data. So, general
 purpose GUI (Graphic User Interface) modules are useful. A good GUI library
 allows one to internationalize easily a program, making it usable by wide
-communities. Additionnally, good GUI libraries inherit knowledge about
+communities. Additionally, good GUI libraries inherit knowledge about
 human-machine interaction, and the author of programs can focus her attention
 about things which really matter for the end user: creating an /intuitive
 interface/, /i.e./ reusing popular widgets with well-known behaviors, defining
@@ -683,7 +680,7 @@ Let us create our first GUI layout with =designer=, which will feature:
 2. one button to launch a specific process
 3. one button to quit the application.
 
-To begin with, the appplication =designer= must be launched without any option. So
+To begin with, the application =designer= must be launched without any option. So
 it will display a menu and we shall choose the =Main Window= item. An empty Main
 Window prototype appears in the center of the screen, collections of widgets are
 proposed in a column at the left side.
@@ -729,7 +726,7 @@ interpret this format efficiently and to compose a sensible user interface.
    this line should contain: =from qwt import QwtPlot=, to comply with the name of
    the module inside a Debian distribution (I assume that we are working with
    the USB live stick). This second operation should not be necessary, it is
-   just implied by a small bug in the debian package of =pyuic4=, the convertor
+   just implied by a small bug in the Debian package of =pyuic4=, the converter
    from =designer='s =.ui= format to Python source.
 
 *** Our first working program
@@ -796,7 +793,7 @@ voltage measurements, and =self.curve.setData(t,v,len(t))= to plot them.
 The conclusion is: that *four lines of code* are sufficient to turn
 a general-purpose GUI program into a usable scientific tool.
 *** A few more code, to deal with real life problems and exceptions
-The program =p2.py= works very well, with one exception: when no exPEYES Junior
+The program =p2.py= works very well, with one exception: when no expEYES Junior
 box is connected to the computer, nothing happens as expected. If the program
 was  launched from a command line in a Terminal, you may notice error messages
 appearing there. But if the program is launched by some other method, chances
@@ -817,13 +814,14 @@ sense) if anything goes wrong; the second one is governed by the keyword =except
 and contain instructions to process if an error was raised in the previous
 block.
 
+#+CAPTION:
 #+NAME: prog:p3
 [[https://raw.githubusercontent.com/georgesk/course-affordable-science/master/prog/p3.py][Here you can download]] a third program, which can deal with mistaken connection to
 expEYES Junior (or any error reason which can fool the detection of the
 hardware)
 
 The differences between programs =p2.py= and =p3.py= are few:
-- In the =try:= clause, :: the line =self.p = ej.open()= is now embeded in the =try:=
+- In the =try:= clause, :: the line =self.p = ej.open()= is now embedded in the =try:=
   block. A condition is tested just after this line: =assert(self.p.fd)= is an
   affirmation that the driver has a working file descriptor; unless this
   descriptor exists, a Python error is raised (you would see it if you write the
@@ -931,7 +929,7 @@ Here is a list of wanted features:
    and triggers the begin of the capture when the voltage changes quicker that
    a predefined threshold
 5. when the program is no longer in "/alert mode/", the user can launch fitting
-   tools and compare the record to theoritical descriptions.
+   tools and compare the record to theoretical descriptions.
 6. The curve of position vs. time is plotted inside a big frame, synchronously
    or asynchronously.
 ** Coding the new program
@@ -1003,7 +1001,7 @@ pops up: "Sorry, not implemented", except for the method =close= which is
 inherited from the ancestor =QMainWindow= class.
 *** Adding methods to toggle the way curves will be plotted
 There will be two methods to plot the curves:
-1. immediately, while the pendule is still oscillating
+1. immediately, while the pendulum is still oscillating
 2. once, when the scheduled data have been recorded
 
 To implement this, a new property, =self.isImmediate= is initialized to =True= in the
@@ -1020,7 +1018,7 @@ In this non-definitive version, the method =wakeUp= begins to capture data as so
 as the button is clicked,and the flag =self.isImmediate= is disregarded: data are
 captured first, and the plot is refreshed later.
 
-Most code have been copied from the file =p3.py= studied [[prog:p3][previously]]. The
+Most code have been copied from the file =p3.py= studied [[A few more code, to deal with real life problems and exceptions][previously]]. The
 implementation is done in file =oscill2.py=, which can be downloaded from the
 [[https://github.com/georgesk/course-affordable-science/blob/master/oscill/oscill2.py]["repository"]]. Figure [[fig:prog_oscill2_2]] shows the code of the naive version of
 the method =wakeUp=.
@@ -1118,7 +1116,7 @@ method.
 The =waitForThreshold= method has a parameter named =timeOut=, which allows one to
 specify the longest possible wait period.
 *** The fit utility
-Thanks to the library =expeyes.eyemayh=, fitting a signal against a damped
+Thanks to the library =expeyes.eyemath=, fitting a signal against a damped
 sinusoidal function is quite straightforward. The function =fit_dsine= does all
 the job, in a few steps: first, it guesses the pseudo-frequency of the signal
 thanks to a Fourier transform, then it calls a routine from the module
@@ -1179,7 +1177,7 @@ user interface =oscill4.ui=, the help file =oscill4.html=. To start any exercise
 you can make a copy of all those files. Some other files like as =Makefile= and
 =oscill4.org= can also be of some help if you are using appropriate tools:
 respectively the command [[https://www.gnu.org/software/make/][make]] and an integrated development environment
-with emacs, org-mode, $\TeX live$.
+with emacs, org-mode, \TeX live.
 
 1. Display a message in the status bar (=self.ui.statusBar=) just after one clicks
    on the /Wake up/ button, and remove the message when the measurements
@@ -1261,7 +1259,7 @@ Let us take a look at [[https://en.wikipedia.org/wiki/Aspirin][Wikipedia's artic
 the source code in mediawiki syntax which gives the normalized description of
 the molecule:
 
-#+BEGIN_SRC mediawiki
+#+BEGIN_SRC sh
   {{Infobox drug
   <!-- (many missing lines) -->
   <!--Chemical data-->
@@ -1360,7 +1358,7 @@ If you prefer, for some reason, to work independently from the Wikimedia
 Foundation, this is still possible! A criterion to say that a software is free
 is the so-called "[[https://wiki.debian.org/DesertIslandTest][Desert Island Test]]":
 
-#+BEGIN_SRC plain_text
+#+BEGIN_SRC sh
   A good test case for whether a license is free [...]
   is whether a disconnected group of people on a desert
   island could distribute the software among themselves.
@@ -1395,3 +1393,174 @@ a book.
 4. Chose some pages from Mediawiki which have currently no translation in your
    language, and translate them; then create a small book out of them in your
    language.
+* ExpEYES as a common good
+The expEYES box is Open Hardware, its design is published under the [[https://github.com/expeyes/expeyes-programs/blob/master/EJun/LICENSE.txt][Open
+Hardware License]]. It implies that in foreseeable future, this measurement box
+will always exist. If current suppliers cease to sell it now, we can hire any
+electronics manufacturing company to make new boxes with the same features.
+
+So, being part of the community of users of expEYES makes some sense. Currently,
+this community has few visible activities. Most people using expEYES are living
+in India, and the communication through Internet is in English language.
+** Mailing list
+There is a mailing list owned by this community, named after the previous name
+of the project: [[http://www.freelists.org/list/phoenix-project][PHOENIX-PROJECT]] where /PHOENIX/ stands for
+[[http://www.iuac.res.in/~elab/phoenix/docs/phoenix_report.pdf][Physics with Home-made Equipment and Innovative Experiments]], a project initiated
+more than ten years ago by /Ajith Kumar/ in /Inter University Accelerator Centre,
+New Delhi/. In this mailing list, training sessions are announced regularly. Some
+messages are invitations to propose a talk at free software meetings, and most
+of the traffic is about technical questions.
+
+You can freely subscribe to this mailing list.
+** Software repositories
+The latest versions of source code for expEYES are available at github.com, in
+the repositories named [[https://github.com/expeyes/expeyes-programs][expeyes-programs]] and [[https://github.com/expeyes/expeyes-doc][expeyes-doc]], which contain
+respectively source code and schematics for the first one, /User Manual/ and
+/Programmer Manual/ for the second one. Currently, manuals and the message strings
+of the software are available in English and French language. If we want to
+extend the community of users, new localizations of of these documents and
+messages can be done to comply with languages used in schools.
+** Contributing to the software
+Previous parts of this course were about mastering Python and writing a minimal
+application for expEYES. So far, there have been few authors contributing to
+this software. However, as this is free software, you can step forward as soon
+as you want, any help is appreciated.
+*** Reporting bugs and feature requests
+Few people know that Free Software can progress significantly when end-users
+write bug reports and send wishes for new features. Of course, as long as
+software developers are not hired by some company to maintain the software, they
+decide finally what they will do. However, while this interaction seems to be
+very loose, it has proven to be better than the support which many companies
+provide to end-users when they try to ask for help they have paid for.
+
+The software package for expEYES is primarily distributed as a Debian package,
+so the right way to report bug sand wishes is [[https://www.debian.org/Bugs/Reporting][the bug reporting system]] of Debian.
+
+If you are using =expeyes-junior=, you are inside a Debian GNU-Linux system
+(unless other packages have been created), for example during a session
+initiated by a Live USB stick.
+*** =reportbug= utility, with an email-enabled system
+If your Linux system is fully enabled to send e-mails, the best way for sending
+bugreports is the =reportbug= utility. To file a bug, launch the command
+=reportbug=, then go through the successive steps (figures [[reportbug01]] to
+[[reportbug04]]).
+
+1. giving the name of the package: =expeyes=
+2. you can have a look at previous bug reports targetting this package; if your
+   report is new, go to the next step, giving a short title to your report;
+3. write the full bug report, with the help of the template which is given;
+4. choose the severity of your report in the range Important \rightarrow Wishlist;
+5. send the bug report.
+
+
+#+CAPTION: reportbug -- giving the package's name
+#+NAME: reportbug01
+[[./img/reportbug01.png]]
+
+#+CAPTION: reportbug -- writing a very short title
+#+NAME: reportbug02
+[[./img/reportbug02.png]]
+
+#+CAPTION: reportbug -- choosing the severity
+#+NAME: reportbug03
+[[./img/reportbug03.png]]
+
+#+CAPTION: reportbug -- final step
+#+NAME: reportbug04
+[[./img/reportbug04.png]]
+
+*** Reports when you are unsure that your system can send e-mails
+In the last step previously described, just under the button /Submit the bug .../,
+there is another button to save the bug report into a file. Choose this button,
+save the report in some text file. Then you can sign in your preferred webmail
+site, and paste relevant parts of the text file to send the bug report.
+*** Translating software into your language
+As =expeyes= is a software which follows good practices defined by [[https://www.gnu.org/software/gettext/gettext.html][GNU Gettext]],
+you can translate the software without having programming skills. All you need
+is to know your language and the topics covered by =expeyes=, /i.e./ physic
+experiments. If you are reading this course in English, you already have the
+last prerequisite skill. Here is the complete method:
+1. Download the file =messages.pot=, available [[https://raw.githubusercontent.com/expeyes/expeyes-programs/master/po/messages.pot][here]].
+2. Open the file in a text editor, like Notepad++ or Geany, and save it under
+   a new name, which accounts for the new language. For example, to make
+   a Spanish translation, the name should be =es_ES.po= or =es.po=; =es_ES= means
+   Spanish as spoken in Spain, likewise =es_AR= would mean Spanish as spoken in
+   Argentina. If you want to make a Turkish translation, the name =tr.po= should
+   be correct. The suffix =.po= must be used for /PO/ files, which are translation
+   files in the most suitable format for GNU Gettext.
+3. For every =msgid= instance, you must define the =msgstr= translation. See [[tr_po][below]]
+   for an example.
+4. Send the new file to the maintainer, so he can rebuild the package with the
+   new translation, and get the new package when it is ready, install it.
+5. Enjoy.
+
+#+NAME: tr_po
+#+CAPTION: Example translation en \rightarrow tr.
+[[./img/po_excerpt.png]]
+
+*** Translating within a collaborative environment
+The best collaborative environment for such a work is a so-called
+"Etherpad". Here is a method to create an Etherpad inside the free web service
+provided by the Mozilla Foundation:
+1. Open the URL https://public.etherpad-mozilla.org
+2. Click on the /New Pad/ button (figure [[etherpad01]])
+3. We are provided a newly created Etherpad. We can paste the contents of the
+   file =messages.pot= in its main text area (figure [[etherpad02]]).
+4. The URL of the working pad must be sent to teammates to allow them to access
+   it (see figure [[etherpad03]])
+5. As soon as teammates access this URL, their names (which can be customized
+   by each other) appear in the top right area, associated with a background
+   color.
+6. Everybody can begin working of the document which is shared inside the main
+   area. A /chat/ area is available in the bottom right corner of the window, and
+   we can enjoy it to share messages within the team.
+
+When the collaborative work is finished in the pad, one can copy it and paste it
+to another text editor, save it in a local file, etc.
+
+#+CAPTION: Creation of a new pad.
+#+NAME: etherpad01
+[[./img/etherpad01.png]]
+
+#+CAPTION: A newly created pad, with a welcome message (to be erased)
+#+NAME: etherpad02
+[[./img/etherpad02.png]]
+
+#+CAPTION: The pad's URL which must be shared
+#+NAME: etherpad03
+[[./img/etherpad03.png]]
+
+** Exercises
+1. Send a bugreport with severity /Wishlist/ for the package =expeyes=. As the
+   author of the course is also the maintainer of the package, you will soon be
+   able to watch how this bug report is managed. Do not hesitate to tell about
+   feature requests.
+2. Create a new Etherpad, for example in  https://public.etherpad-mozilla.org
+   and edit collaboratively a wishlist for possible continuations of this course.
+3. Create a new etherpad and begin editing a /PO/ file containing translations for
+   your language.
+4. Try to reopen a /PO/ file is some specialized editor, like Kbabel, Linguist,
+   PoEdit, or Emacs with the po-mode. Have a look at the additional features.
+* Conclusion, License
+This very course is as free as are the programs and the hardware of expEYES. So
+you can distribute it, modify it (the source of the course is the file
+=course.org=, available in the github repositorymentioned above, it is modifiable
+thanks to Emacs and org-mode.)
+
+Do not hesitate to improve it, to translate it. Its license is Creative
+Commons-BY-SA version 3.0 ([[https://creativecommons.org/licenses/by-sa/3.0/][CC-BY-SA 3.0]]). So, here are your legal rights and
+obligations:
+
+|------------------------------------------------------------------------------------|
+| You are free to:                                                                   |
+|                                                                                    |
+| - *Share* — copy and redistribute the material in any medium or format               |
+| - *Adapt* — remix, transform, and build upon the material                            |
+| for any purpose, even commercially.                                                |
+|                                                                                    |
+| The licensor cannot revoke these freedoms as long as you follow the license terms. |
+|                                                                                    |
+|------------------------------------------------------------------------------------|
+
+
+The author's e-mail address is: [[mailto:georges.khaznadar@free.fr?Subject=Course+2016+affordable][<georges.khaznadar@free.fr>]]
